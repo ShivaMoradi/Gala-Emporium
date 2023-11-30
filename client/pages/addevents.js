@@ -9,10 +9,33 @@ $(document).ready(function(){
         return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
     };
 
+    function displayEvents(eventList){
+        // initialize empty string
+        let eventsHTML = '';
+        // Iterate through eventList, populate 'eventsHTML' with HTML of each event.
+        eventList.forEach(event => {
+            eventsHTML += createEventHTML(event);
+        });
+        // Add event to #event-list on index.html. 
+        $('#event-list').html(eventsHTML);
+    }
+
+        //Create HTML structure to display events.
+    function createEventHTML(event){
+        return `
+            <div class='event'>
+                <h3>${event.name}</h3>
+                <p>${event.club}</p>
+                <p>Date: ${event.date}</p>
+                <p>Time: ${event.time}</p>
+                <p>Description: ${event.description}</p>
+            </div>    
+        `
+    };
 
 
+    //sort events, then display events.
 
-
-
-
+    let sortedEvents = sortEvents(mockEventData);
+    displayEvents(sortedEvents);
 });
