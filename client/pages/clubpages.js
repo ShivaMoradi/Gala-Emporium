@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const clubs = [
   { name: "Blue Club", id: "blue-club" },
   { name: "Rock Club", id: "rock-club" },
@@ -15,3 +16,6 @@ function generateClubNavigation() {
 $(document).ready(function () {
   generateClubNavigation();
 });
+=======
+//test this shit
+>>>>>>> 907ea410195fa1fae46d0511f7474e60f0254773
