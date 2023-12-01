@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 const clubs = [
   { name: "Blue Club", id: "blue-club" },
   { name: "Rock Club", id: "rock-club" },
@@ -26,12 +22,9 @@ $(document).ready(function () {
     displayClubEvents(clubId);
   });
 });
-<<<<<<< HEAD
-=======
 
 // Filtrera och visa evenemang baserat på vald klubb
 function displayClubEvents(clubId) {
   const filteredEvents = mockEventData.filter(event => event.club.replace(" ", "-").toLowerCase() === clubId);
   displayEvents(filteredEvents);
 }
->>>>>>> main
