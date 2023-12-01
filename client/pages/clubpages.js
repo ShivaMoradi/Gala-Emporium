@@ -9,6 +9,7 @@ function displayImage() {
 }
 
 displayImage();
+
 const clubs = [
   { name: "Blue Club", id: "blue-club" },
   { name: "Rock Club", id: "rock-club" },
