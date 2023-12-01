@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     const mockEventData = [
-        { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1"  },
+        { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1"},
         { id: 2, name: "Rock Concert", date: "2023-12-12", time: "18:00", club: "Rock Club", description: "Experience the best of rock.", image: "https://shorturl.at/ajvGV"},
     ];
 
@@ -22,6 +22,8 @@ $(document).ready(function(){
 
         //Create HTML structure to display events.
         //Remove image style when css has been applied to event-image.
+        
+        //TODO Create link to event webpage.
 
     function createEventHTML(event){
         return `
@@ -32,7 +34,7 @@ $(document).ready(function(){
                 <p>Date: ${event.date}</p>
                 <p>Time: ${event.time}</p>
                 <p>Description: ${event.description}</p>
-                
+    
             </div>    
         `
     };
