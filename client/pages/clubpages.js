@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
 const clubs = [
   { name: "Blue Club", id: "blue-club" },
   { name: "Rock Club", id: "rock-club" },
@@ -17,7 +17,7 @@ function generateClubNavigation() {
 $(document).ready(function () {
   generateClubNavigation();
 });
-=======
+
 function displayImage() {
     const imageUrl = './images/blue club jazz.jpg'
 
@@ -30,4 +30,3 @@ function displayImage() {
 
 displayImage();
 
->>>>>>> imageStructure
