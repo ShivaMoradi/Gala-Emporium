@@ -1,10 +1,20 @@
 function displayImage() {
+<<<<<<< HEAD
   const imageUrl = '../images/coverimg.jpg'
   const imageElement = document.createElement( 'img' )
   imageElement.src = imageUrl
     imageElement.alt = 'Blue Club Jazz'
     const imageContainer = document.getElementById('image-container');
     imageContainer.appendChild(imageElement)
+=======
+  const imageUrl = './images/blue club jazz.jpg'
+
+  const imageElement = document.createElement('img')
+  imageElement.src = imageUrl
+  imageElement.alt = 'Blue Club Jazz'
+  const imageContainer = document.getElementById('image-container');
+  imageContainer.appendChild(imageElement)
+>>>>>>> c17d07e68c535117e7b4aeeac270a0b8697141f1
 }
 
 displayImage();
@@ -39,3 +49,4 @@ function displayClubEvents(clubId) {
   const filteredEvents = mockEventData.filter(event => event.club.replace(" ", "-").toLowerCase() === clubId);
   displayEvents(filteredEvents);
 }
+
