@@ -1,21 +1,45 @@
-<<<<<<< HEAD
-const clubs = [
-  { name: "Blue Club", id: "blue-club" },
-  { name: "Rock Club", id: "rock-club" },
-];
-
-// navigationslänkar för varje klubb
-function generateClubNavigation() {
-  let navigationHTML = '';
-  clubs.forEach(club => {
-    navigationHTML += `<a href="#${club.id}" class="club-link">${club.name}</a> `;
-  });
-  document.getElementById('club-navigation').innerHTML = navigationHTML;
+export default function () {
+  return  `<ul class="card-list">
+	
+	<li class="card">
+		<a class="card-image" href="#club1" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-500.jpg">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/psychopomp-100.jpg" alt="Psychopomp" />
+		</a>
+		<a class="card-description" href="#club1" target="_blank">
+			<h2>Club # 1</h2>
+			<p>Description</p>
+		</a>
+	</li>
+	
+	<li class="card">
+		<a class="card-image" href="#" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-500.jpg">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/lets-go-100.jpg" alt="let's go" />
+		</a>
+		<a class="card-description" href="https://inlovewithaghost.bandcamp.com/album/lets-go" target="_blank">
+			<h2>Club # 2</h2>
+			<p>Description</p>
+		</a>
+	</li>
+	
+	<li class="card">
+		<a class="card-image" href="#" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/beautiful-game-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/beautiful-game-500.jpg">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/beautiful-game-100.jpg" alt="The Beautiful Game" />
+		</a>
+		<a class="card-description" href="#" target="_blank">
+			<h2>Club # 3</h2>
+			<p>Description</p>
+		</a>
+	</li>
+	
+	<li class="card">
+		<a class="card-image" href="https://convergecult.bandcamp.com/album/jane-doe" target="_blank" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg);" data-image-full="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-500.jpg">
+			<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/310408/jane-doe-100.jpg" alt="Jane Doe" />
+		</a>
+		<a class="card-description" href="https://convergecult.bandcamp.com/album/jane-doe" target="_blank">
+			<h2>Club # 1</h2>
+			<p>Description</p>
+		</a>
+	</li>
+	
+</ul>`
 }
-
-$(document).ready(function () {
-  generateClubNavigation();
-});
-=======
-//test this shit
->>>>>>> 907ea410195fa1fae46d0511f7474e60f0254773

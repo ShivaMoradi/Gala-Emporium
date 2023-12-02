@@ -1,4 +1,5 @@
-$(document).ready(function(){
+
+$(document).ready(function () {
 
     const mockEventData = [
         { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1"},
