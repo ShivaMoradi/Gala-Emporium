@@ -4,7 +4,7 @@ export default function (server, db) {
     const events = await db.query("SELECT * FROM events")
     res.json(events)
   })
-/*
+
   server.post('/api/club', async (req, res) => {
     if (req.body.name.trim().length > 0) {
       const result = await db.query("INSERT INTO events(klubb_name, title, description, date, price) VALUES (?)", [req.body.klubb_name, title, description, date, price])
@@ -16,7 +16,7 @@ export default function (server, db) {
       res.json({ bookAdded: false })
     }
   })
-*/
+
   server.put('/api/club/:id', (req, res) => {
   })
 
