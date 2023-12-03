@@ -20,11 +20,11 @@ server.use(session({
 
 // Configure MySQL connection
 const db = mysql.createConnection({
-//db-19
+  //db-19
 host: '161.97.144.27',
 port: '8019',
 user: 'root',
-  password: 'swiftgiraffegallops',
+password: 'swiftgiraffegallops',
 database: 'galaEmporia'
 
 

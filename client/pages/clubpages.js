@@ -9,6 +9,7 @@ function displayImage() {
 
 displayImage();
 
+
 const clubs = [
   { name: "Blue Club", id: "blue-club" },
   { name: "Rock Club", id: "rock-club" },
@@ -39,3 +40,4 @@ function displayClubEvents(clubId) {
   const filteredEvents = mockEventData.filter(event => event.club.replace(" ", "-").toLowerCase() === clubId);
   displayEvents(filteredEvents);
 }
+
