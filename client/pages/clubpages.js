@@ -1,44 +1,46 @@
 function displayImage() {
-  const imageUrl = '../images/coverimg.jpg'
-  const imageElement = document.createElement( 'img' )
-  imageElement.src = imageUrl
-    imageElement.alt = 'Blue Club Jazz'
-    const imageContainer = document.getElementById('image-container');
-    imageContainer.appendChild(imageElement)
+  const imageUrl = '../images/coverimg.jpg'; // Hårdkodad sökväg till cover-bild
+
+  const imageElement = document.createElement('img');
+  imageElement.src = imageUrl;
+  imageElement.alt = altText;
+  const imageContainer = document.getElementById('image-container');
+  imageContainer.innerHTML = ''; 
+  imageContainer.appendChild(imageElement);
 }
 
 displayImage();
 
 
 const clubs = [
-  { name: "Blue Club", id: "blue-club", description: "Vibrant jazz nights and more." },
-  { name: "Rock Club", id: "rock-club", description: "Home of rock and roll." },
-  // kan lägga fler klubbar sen...
+  { name: "Blue Club", id: "blue-club", description: "The main description of the Blue Club...", imageUrl: '../images/blue club jazz.jpg' },
+  { name: "Rock Club", id: "rock-club", description: "The main description of the Rock Club...", imageUrl: '../images/rock-club-rock.jpg' },
+  // Lägg till fler klubbar här...
 ];
 
-// navigationslänkar för varje klubb
-function generateClubNavigation() {
-  let navigationHTML = '';
-  clubs.forEach( club => {
-    navigationHTML += `<a href="#" class="club-link" data-clubid="${club.id}">${club.name}</a> `;
-  });
-  document.getElementById('club-navigation').innerHTML = navigationHTML;
+
+function clubpages() {
+  let clubsHTML = clubs.map(club => {
+    return `
+      <div class='club'>
+        <h3>${club.name}</h3>
+        <p>${club.description}</p>
+        <button class="show-events-btn" data-club="${club.name}">Show Events</button>
+      </div>
+    `;
+  }).join('');
+  $('#club-list').html(clubsHTML);
 }
 
-$(document).ready(function () {
-  generateClubNavigation();
-
-  // Eventlyssnare för klick på klubb-länkar
-  $('#club-navigation').on('click', '.club-link', function (event) {
-    event.preventDefault();
-    const clubId = $(this).data('clubid');
-    displayClubEvents(clubId);
-  });
+$(document).on('click', '.show-events-btn', function () {
+  const clubName = $(this).data('club');
+  const selectedClub = clubs.find(club => club.name === clubName);
+  if (selectedClub) {
+    displayImage(selectedClub.imageUrl, selectedClub.name); // Bild på klubben
+    displayEventsForClub(clubName);
+  }
 });
 
-// Filtrera och visa evenemang baserat på vald klubb
-function displayClubEvents(clubId) {
-  const filteredEvents = mockEventData.filter(event => event.club.replace(" ", "-").toLowerCase() === clubId);
-  displayEvents(filteredEvents);
-}
 
+// Exportera clubpages, vi använder ES6-moduler?
+export { clubpages };
