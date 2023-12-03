@@ -1,11 +1,10 @@
 function displayImage() {
-  const imageUrl = './images/blue club jazz.jpg'
-
-  const imageElement = document.createElement('img')
+  const imageUrl = '../images/coverimg.jpg'
+  const imageElement = document.createElement( 'img' )
   imageElement.src = imageUrl
-  imageElement.alt = 'Blue Club Jazz'
-  const imageContainer = document.getElementById('image-container');
-  imageContainer.appendChild(imageElement)
+    imageElement.alt = 'Blue Club Jazz'
+    const imageContainer = document.getElementById('image-container');
+    imageContainer.appendChild(imageElement)
 }
 
 displayImage();
@@ -18,7 +17,7 @@ const clubs = [
 // navigationslänkar för varje klubb
 function generateClubNavigation() {
   let navigationHTML = '';
-  clubs.forEach(club => {
+  clubs.forEach( club => {
     navigationHTML += `<a href="#" class="club-link" data-clubid="${club.id}">${club.name}</a> `;
   });
   document.getElementById('club-navigation').innerHTML = navigationHTML;
@@ -40,4 +39,3 @@ function displayClubEvents(clubId) {
   const filteredEvents = mockEventData.filter(event => event.club.replace(" ", "-").toLowerCase() === clubId);
   displayEvents(filteredEvents);
 }
-
