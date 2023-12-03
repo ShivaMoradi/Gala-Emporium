@@ -53,8 +53,15 @@ $(document).ready(function(){
             $('#event-details-page').html(displayEventDetails(foundEvent)).show();
             $('#event-list').hide();
         }
-
     });
+
+
+    // Event handler for back-button
+    $(document).on('click', '#return-button', function(){
+        $('#event-details-page').hide();
+        $('#event-list').show();
+    });
+
 
     function displayEventDetails(event){
         return `
@@ -65,6 +72,7 @@ $(document).ready(function(){
             <p>Time: ${event.time}</p>
             <p>${event.description}</p>
             <p>Price: ${event.price}</p>
+            <button id="return-button">Back</button>
         </div>
     `;
     }
