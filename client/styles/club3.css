@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+:root {
+  --clr1: #f95b11;
+  --clr2: #fff;
+  --clr3: #000;
+  --clr4: #f42f1d;
+  --clr5: limegreen;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'PT Sans', sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+html {
+  font-size: 65%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--clr4);
+}
+
+.btn {
+  margin-top: 2rem;
+  padding: 1.3rem 4rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  letter-spacing: .1rem;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: .5rem;
+  box-shadow: 0rem 2rem 2rem rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: var(--clr3);
+  box-shadow: 0px .2rem 2rem rgba(255, 85, 94, 0.4);
+  color: #fff;
+  transform: translateY(-1rem);
+}
+
+.btn:active {
+  transform: translateY(-.1rem);
+}
+
+section {
+  padding: 4rem 9%;
+  margin-top: 8rem;
+}
+
+section h3 {
+  font-size: 3rem;
+  color: var(--clr2);
+  text-transform: none;
+  text-align: center;
+  letter-spacing: .2rem;
+}
+
+section h4 {
+  margin: 0 0 1rem 25rem;
+  padding: .2rem;
+  width: 50%;
+  font-size: 3rem;
+  color: var(--clr2);
+  text-transform: none;
+  text-align: center;
+  align-items: center;
+  letter-spacing: .2rem;
+  clip-path: polygon(0% 15%, 25% 28%, 15% 0%, 85% 0%, 70% 28%, 100% 15%, 100% 85%, 67% 70%, 85% 100%, 15% 100%, 28% 66%, 0% 85%);
+  background: var(--clr4);
+}
+
+section h2 {
+  padding: 2rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--clr3);
+  text-transform: capitalize;
+  letter-spacing: .1rem;
+}
+
+section p {
+  color: var(--clr2);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  line-height: 2.5rem;
+  word-wrap: normal;
+}
+
+.head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  background: var(--clr4);
+  color: var(--clr2);
+  padding: 3rem 9%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.head h1 {
+  font-size: 2.5rem;
+}
+
+.head .fa-pizza-slice {
+  animation: icon 5s ease infinite;
+}
+
+@keyframes icon {
+  25% {
+    transform: translateY(-1.5rem);
+  }
+
+  50% {
+    transform: translateY(1.5rem);
+  }
+}
+
+.head .navbar a {
+  color: var(--clr2);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 2rem;
+}
+
+.head .navbar a:hover {
+  transition: .4s ease;
+  color: var(--clr3);
+}
+
+.head .side-bar i {
+  padding: 1.5rem;
+  font-size: 2.1rem;
+  border: none;
+  background: var(--clr2);
+  color: var(--clr4);
+}
+
+.head .side-bar i:hover {
+  background: var(--clr3);
+  color: var(--clr4);
+  transition: .5s ease all;
+}
+
+#bars {
+  display: none;
+}
+
+.search-bar {
+  height: 7rem;
+  padding: 0 1rem;
+  display: flex;
+  position: absolute;
+  top: 99%;
+  left: 50%;
+  right: 0;
+  align-items: center;
+  background: var(--clr3);
+  border: 2px solid var(--clr4);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 0, 0 0);
+}
+
+.search-bar.active {
+  transition: .2s ease;
+  border: hidden;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+}
+
+.search-bar input {
+  width: 100%;
+  background: none;
+  border: hidden;
+  text-transform: none;
+  font-size: 1.5rem;
+  color: #fff;
+}
+.inner-blog {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1.2fr;
+  grid-gap: 1rem;
+}
+
+.blog-content {
+  position: relative;
+  background: var(--clr2);
+}
+
+.im {
+  height: 20rem;
+  position: relative;
+}
+
+.im img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.in-blog-icon {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-between;
+  background: var(--clr3);
+}
+
+.in-blog-icon a {
+  font-size: 1.5rem;
+  color: var(--clr2);
+  text-transform: capitalize;
+}
+
+.in-blog-icon i {
+  padding-right: .5rem;
+  color: var(--clr2);
+}
+
+.in-blog-content {
+  text-align: center;
+  padding: 2.5rem;
+  background: #eee;
+}
+
+.in-blog-content h2,
+.in-blog-content p {
+  color: var(--clr3);
+}
