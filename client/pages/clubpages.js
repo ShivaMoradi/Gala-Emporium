@@ -10,9 +10,10 @@ function displayImage() {
 displayImage();
 
 const clubs = [
-  { name: "Blue Club", id: "blue-club" },
-  { name: "Rock Club", id: "rock-club" },
-]; //kan lägga till mer klubbar sen
+  { name: "Blue Club", id: "blue-club", description: "Vibrant jazz nights and more." },
+  { name: "Rock Club", id: "rock-club", description: "Home of rock and roll." },
+  // kan lägga fler klubbar sen...
+];
 
 // navigationslänkar för varje klubb
 function generateClubNavigation() {
