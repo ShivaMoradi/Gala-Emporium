@@ -43,4 +43,7 @@ $(document).on('click', '.show-events-btn', function () {
 
 
 // Exportera clubpages, vi använder ES6-moduler?
-export { clubpages }; 
+export { clubpages };
+
+  
+  
