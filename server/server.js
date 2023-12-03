@@ -20,11 +20,12 @@ server.use(session({
 
 // Configure MySQL connection
 const db = mysql.createConnection({
-//db-19
-Host: '161.97.144.27'
-Port: '8019'
-User: 'root'
-Password: 'swiftgiraffegallops'
+  //db-19
+host: '161.97.144.27',
+port: '8019',
+user: 'root',
+password: 'swiftgiraffegallops',
+database: 'galaEmporia'
 
 
 /*Linus server

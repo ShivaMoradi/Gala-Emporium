@@ -1,14 +1,14 @@
 export default function (server, db) {
 
-  server.get('/api/books', async (req, res) => {
-    const products = await db.query("SELECT * FROM books")
-    res.json(products)
+  server.get('/api/club', async (req, res) => {
+    const events = await db.query("SELECT * FROM events")
+    res.json(events)
   })
 
-  server.post('/api/books', async (req, res) => {
+  server.post('/api/club', async (req, res) => {
     if (req.body.name.trim().length > 0) {
-      const result = await db.query("INSERT INTO books (name) VALUES (?)", [req.body.name])
-      result.bookAdded = true
+      const result = await db.query("INSERT INTO events(klubb_name, title, description, date, price) VALUES (?)", [req.body.klubb_name, title, description, date, price])
+      result.eventAdded = true
       res.json(result)
       console.log("Result - ", result);
     } else {
@@ -17,10 +17,10 @@ export default function (server, db) {
     }
   })
 
-  server.put('/api/books/:id', (req, res) => {
+  server.put('/api/club/:id', (req, res) => {
   })
 
-  server.delete('/api/books/:id', (req, res) => {
+  server.delete('/api/club/:id', (req, res) => {
   })
 
 }
