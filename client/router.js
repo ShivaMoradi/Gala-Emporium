@@ -1,4 +1,4 @@
-import addevents from "./pages/addevents.js";
+
 import clubpages from "./pages/clubpages.js";
 
 async function router() {
@@ -8,7 +8,7 @@ async function router() {
       break;
 
     case "#clubpages":
-      $("main").html("<h1> clubpage</h1>")
+      $("main").html(clubpages())
       break;
 
     case "#addevent":
