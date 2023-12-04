@@ -1,14 +1,13 @@
-
-#image-container {
-  padding-right:1px;
+header{
+  border: 1px solid black;
 }
-#image-container 
-  img {
-      position: relative;
-      /* Allows image to fill container */
-      width: 100%;
-      height: 30%;
-      object-fit:cover;
+
+#menu-links-list{
+  display: flex;
+  list-style-type: none;
+}
+#menu-links-list > li {
+  margin-left: 1vw;
 }
 
 @media screen and (min-width: 0) {
@@ -28,8 +27,6 @@
     background-color: #f38ba8;
     
   }
-   
-
 }
 
 @media screen and (min-width: 992px) {
@@ -37,9 +34,7 @@
     background-color: #5c695c;
    
 
-}
- 
-}
+}}
 
 @media screen and (min-width: 1200px) {
   body {
