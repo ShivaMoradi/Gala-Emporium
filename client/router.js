@@ -12,11 +12,11 @@ async function router() {
       break;
 
     case "#addevent":
-      $("main").html("<h1>This page will ad an event</h1>")
+      $("main").html("<h1>This page will add an event</h1>")
       break;
 
     default:
-      $("main").html("<h1>Denna sidan finns inte!</h1>")
+      $("main").html("<h1>Page not found!</h1>")
       break;
   }
 }
