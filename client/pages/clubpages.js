@@ -1,7 +1,30 @@
 export default function clubpages(){
-  console.log('Is it working?')
-  return  `<p> Yes its working!!!!!! </p>`
-};
+  return `
+  <div id="clubPage">
+  <header>
+      <h1>Club title</h1>
+  </header>
+
+  <section id="clubBody">
+      <div id="mediaContainer"> 
+          <p> Video and images goes here</p>       
+          <!---VIDEO AND IMAGES GO HERE-->
+      </div>
+      
+      <article id="clubDescription">
+          <p>Club Description goes here</p>
+          <!-- CLUB DESRIPTION GOES HERE  -->
+      </article>
+
+      <section id="event-list">
+          <p>Club specific events goes here</p>
+          <!---EVENTS GOES HERE-->
+      </section>
+  </section>
+</div>
+  `
+}
+
 
 // function displayImage() {
 //   const imageUrl = '../images/coverimg.jpg'; // Hårdkodad sökväg till cover-bild
@@ -48,6 +71,7 @@ export default function clubpages(){
 
 
 // // Exportera clubpages, vi använder ES6-moduler?
+// export { clubpages };
 
   
   
