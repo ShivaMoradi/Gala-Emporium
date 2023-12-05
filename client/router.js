@@ -8,7 +8,7 @@ async function router() {
       break;
 
     case "#clubpages":
-      $("main").html("<h1> clubpage</h1>")
+      $("main").html(clubpages())
       break;
 
     case "#addevent":
