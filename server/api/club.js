@@ -1,7 +1,6 @@
 export default function (server, db) {
-
   server.get('/api/club', async (req, res) => {
-    const events = await db.query("SELECT * FROM events")
+    const events = await db.query("select * from club join events on club.id = events.clubId")
     res.json(events)
   })
 
