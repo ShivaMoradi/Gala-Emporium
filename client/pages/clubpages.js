@@ -1,3 +1,6 @@
+import { getEventsForClub, createEventHTML } from './addevents.js';
+
+
 export default async function clubpages() {
   const clubData = await getclubs();
   console.log(clubData);
