@@ -1,4 +1,7 @@
-    const mockEventData = [
+export {getEventsForClub, createEventHTML, createEventHTMLDetails};
+
+
+const mockEventData = [
         { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1", price: "100 kr" },
         { id: 2, name: "Rock Concert", date: "2023-12-12", time: "18:00", club: "Rock Club", description: "Experience the best of rock.", image: "https://shorturl.at/ajvGV", price: "150 kr" },
     ];
