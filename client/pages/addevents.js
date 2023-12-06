@@ -71,7 +71,7 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData
 
 
 // Sort events based on date.
-// Only used within addevents.js
+
     function sortEvents(eventList){ 
         return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
     };
