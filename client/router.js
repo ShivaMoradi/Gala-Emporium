@@ -1,24 +1,26 @@
-
 import clubpages from "./pages/clubpages.js";
 
 async function router() {
-  switch (window.location.hash) {
+let content;
+  // Populate "content" with whatever
+switch(window.location.hash){
     case "":
-      $("main").html("<h1>Start Sida</h1>")
+      content = "<h1> Homepage </h1>"
       break;
-
     case "#clubpages":
-      $("main").html(clubpages())
+      content = await clubpages("Blue Club");
       break;
-
-    case "#addevent":
-      $("main").html("<h1>This page will add an event</h1>")
+    case "addevent":
+      content = "<h1>Placeholder for addevent page</h1>"
       break;
-
     default:
-      $("main").html("<h1>Page not found!</h1>")
-      break;
+      content = "<h1><bold>Page not found!</bold></h1>"
+      break
   }
+
+  // Populate <main> with whatever content.
+ $('main').html(content);
+
 }
 
 window.onload = router
