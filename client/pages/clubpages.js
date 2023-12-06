@@ -1,4 +1,4 @@
-import { getEventsForClub, createEventHTML } from './addevents.js';
+import { getEventsForClub, createEventHTML, createEventHTMLDetails } from './addevents.js';
 
 
 export default async function clubpages() {
