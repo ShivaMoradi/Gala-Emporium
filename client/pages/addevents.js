@@ -5,9 +5,18 @@ $(document).ready(function(){
         { id: 2, name: "Rock Concert", date: "2023-12-12", time: "18:00", club: "Rock Club", description: "Experience the best of rock.", image: "https://shorturl.at/ajvGV", price: "150 kr" },
     ];
 
-    function sortEvents(eventList){ // Sort events based on date.
+  
+
+    // Filter Events based on club.
+    function getEventsForClub(clubName, eventList){
+        return eventList.filter(event => event.club === clubName)
+    }
+
+
+      function sortEvents(eventList){ // Sort events based on date.
         return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
     };
+
 
     function displayEvents(eventList){
         // initialize empty string
