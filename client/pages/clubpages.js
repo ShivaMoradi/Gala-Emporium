@@ -1,19 +1,35 @@
-import { getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData} from './addevents.js';
+import { getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData, mockClubData} from './addevents.js';
 
 
-export default async function clubpages() {
-    const clubData = await getclubs();
+export default async function clubpages(clubName) {
+    //const clubData = await getclubs();
+    
+    
+    
+    //using club mock Data untill data has been fetched. Cannot access database data at the time of writing.  
+    const clubDetails = mockClubData.find(club => club.name === clubName);
 
-    // Filter events based on Club name. (function is in addevents.js)
+    console.log(clubDetails);
+
+
+    if(!clubDetails){
+        return `
+            <div> 
+                <p>Club not found</p>
+            </div>
+        `
+    }
+
+    // Filter events based on Club name and mockData. 
     const clubEvents = getEventsForClub(clubName, mockEventData);
 
-    //Generate HTML for each Event. (function is in addevents.js)
-    const eventHTML = clubEvents.map(createEventHTML).join('');
+    //Generate HTML for each Event. 
+    const eventsHTML = clubEvents.map(createEventHTML).join('');
 
     return `
         <div id = "clubPage">
             <header>
-                <h1>Club title</h1>
+                <h1>${clubDetails.name}</h1>
             </header>
 
             <section id="clubBody">
@@ -24,13 +40,12 @@ export default async function clubpages() {
                 </div>
 
                 <article id="clubDescription">
-                <p>Club Description goes here</p>
+                <p>${clubDetails.description}</p>
                 <!-- CLUB DESRIPTION GOES HERE  -->
                 </article>
 
                 <section id="event-list">
-                <p>Club specific events goes here</p>
-                <!---EVENTS GOES HERE-->
+                    ${eventsHTML}
                 </section>
             
             </section>
@@ -39,8 +54,11 @@ export default async function clubpages() {
         `;
 }
 
-async function getclubs() {
-  const response = await fetch("/api/club")
-  const data = await response.json()
-  return data;
-}
+
+// async function getclubs() {
+//   const response = await fetch("/api/club")
+//   const data = await response.json()
+//   return data;
+// }
+
+
