@@ -1,5 +1,88 @@
+
+@media screen and (min-width: 0) {}
+@media screen and (min-width: 576px) {}
+@media screen and (min-width: 768px) {}
+@media screen and (min-width: 992px) {}
+@media screen and (min-width: 1200px) {}
+@media screen and (min-width: 1920px) {}
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
+:root {
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --base: #1e1e2e;
+  --mantle: #7a6551;
+  --crust: #11111b;
+}
+
+
+
+body {
+  color: var(--text);
+  background-color: var(--surface0);
+  font-size: 22px;
+  font-family: 'PT Mono', monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  background-color:var(--crust);
+  border-bottom: 2px solid var(--crust);
+  display: flex;
+  gap: 2vw;
+}
+
+nav>a {
+  margin: 1vh 1vw;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+nav>a:hover {
+  filter: brightness(125%);
+  text-decoration: underline;
+}
+#coverImage img {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+main {
+  padding: 1vh 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main>h1 {
+  text-align: center;
+}
 header{
-  border: 1px solid black;
+background-position: inherit;
 }
 
 #menu-links-list{
@@ -8,45 +91,4 @@ header{
 }
 #menu-links-list > li {
   margin-left: 1vw;
-}
-
-@media screen and (min-width: 0) {
-  body {
-    background-color: #89dceb;
-  }
-}
-
-@media screen and (min-width: 576px) {
-  body {
-    background-color: #b4befe;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    background-color: #f38ba8;
-    
-  }
-}
-
-@media screen and (min-width: 992px) {
-  body {
-    background-color: #5c695c;
-   
-
-}}
-
-@media screen and (min-width: 1200px) {
-  body {
-    background-color: #695353;
-    
-  }
-
-
-}
-
-@media screen and (min-width: 1920px) {
-  body {
-    background-color: rgb(170, 137, 117);
-  }
 }
