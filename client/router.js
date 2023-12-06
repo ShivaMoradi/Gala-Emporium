@@ -21,5 +21,5 @@ async function router() {
   }
 }
 
-window.onload = router()
+window.onload = router
 window.onhashchange = router
