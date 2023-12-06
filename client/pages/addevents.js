@@ -1,7 +1,7 @@
-export {getEventsForClub, createEventHTML, createEventHTMLDetails};
+export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData};
 
 
-const mockEventData = [
+    const mockEventData = [
         { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1", price: "100 kr" },
         { id: 2, name: "Rock Concert", date: "2023-12-12", time: "18:00", club: "Rock Club", description: "Experience the best of rock.", image: "https://shorturl.at/ajvGV", price: "150 kr" },
     ];
@@ -11,8 +11,6 @@ const mockEventData = [
     function getEventsForClub(clubName, eventList){
         return eventList.filter(event => event.club === clubName)
     }
-
-
 
 
 //Create HTML structure to display events.
@@ -35,17 +33,17 @@ const mockEventData = [
 // Create HTML Structure in different div to style differently. (full-page event view?)
     function createEventHTMLDetails(event){
         return `
-        <div class="event-details">
-            <h2>${event.name}</h2>
-            <img src="${event.image}" alt="${event.name}" style="max-width: 300px; height: auto;">
-            <p>Date: ${event.date}</p>
-            <p>Time: ${event.time}</p>
-            <p>${event.description}</p>
-            <p>Price: ${event.price}</p>
-            <button id="return-button">Back</button>
-        </div>
-    `;
-    }
+            <div class="event-details">
+                <h2>${event.name}</h2>
+                <img src="${event.image}" alt="${event.name}" style="max-width: 300px; height: auto;">
+                <p>Date: ${event.date}</p>
+                <p>Time: ${event.time}</p>
+                <p>${event.description}</p>
+                <p>Price: ${event.price}</p>
+                <button id="return-button">Back</button>
+            </div>
+        `
+    };
 
 
 
