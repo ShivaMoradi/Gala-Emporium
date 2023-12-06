@@ -6,7 +6,7 @@ import { promisify } from 'util'
 import apiRegister from './api-register.js'
 
 const server = express()
-const port = 3000
+let port = ""
 
 // Express now includes a built-in JSON body parser
 server.use(express.json())
