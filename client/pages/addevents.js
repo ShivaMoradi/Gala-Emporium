@@ -1,37 +1,20 @@
-$(document).ready(function(){
-
     const mockEventData = [
         { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1", price: "100 kr" },
         { id: 2, name: "Rock Concert", date: "2023-12-12", time: "18:00", club: "Rock Club", description: "Experience the best of rock.", image: "https://shorturl.at/ajvGV", price: "150 kr" },
     ];
 
   
-
-    // Filter Events based on club.
+// Filter Events based on club.
     function getEventsForClub(clubName, eventList){
         return eventList.filter(event => event.club === clubName)
     }
 
 
-      function sortEvents(eventList){ // Sort events based on date.
-        return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
-    };
 
 
-    function displayEvents(eventList){
-        // initialize empty string
-        let eventsHTML = '';
-        // Iterate through eventList, populate 'eventsHTML' with HTML of each event.
-        eventList.forEach(event => {
-            eventsHTML += createEventHTML(event);
-        });
-        // Add event to #event-list on index.html. 
-        $('#event-list').html(eventsHTML);
-    }
-        //Create HTML structure to display events.
-        //Remove image style when css has been applied to event-image.
-
-        //TODO Create link to event webpage.
+//Create HTML structure to display events.
+//TODO Remove image style when css has been applied to event-image.
+//TODO Create link to event webpage.
     function createEventHTML(event){
         return `
             <div class='event'>
@@ -46,33 +29,8 @@ $(document).ready(function(){
         `
     };
 
-    //sort events, then display events.
-    let sortedEvents = sortEvents(mockEventData);
-    displayEvents(sortedEvents);
-
-
-
-
-    // Event handler for listening to click on Event title
-    $(document).on('click', '.event-title-link', function(e){
-        e.preventDefault();
-        let eventID = $(this).data('id')
-        const foundEvent = mockEventData.find(event => event.id === eventID)
-        if(foundEvent){
-            $('#event-details-page').html(displayEventDetails(foundEvent)).show();
-            $('#event-list').hide();
-        }
-    });
-
-
-    // Event handler for back-button
-    $(document).on('click', '#return-button', function(){
-        $('#event-details-page').hide();
-        $('#event-list').show();
-    });
-
-
-    function displayEventDetails(event){
+// Create HTML Structure in different div to style differently. (full-page event view?)
+    function createEventHTMLDetails(event){
         return `
         <div class="event-details">
             <h2>${event.name}</h2>
@@ -85,5 +43,42 @@ $(document).ready(function(){
         </div>
     `;
     }
+
+
+
+
+// Sort events based on date.
+// Only used within addevents.js
+    function sortEvents(eventList){ 
+        return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
+    };
+
+
+
+
+
+
+// Event handlers:
+$(document).ready(function(){
+// Event handler for listening to click on Event title
+    $(document).on('click', '.event-title-link', function(e){
+        e.preventDefault();
+        let eventID = $(this).data('id')
+        const foundEvent = mockEventData.find(event => event.id === eventID)
+        if(foundEvent){
+            $('#event-details-page').html(createEventHTMLDetails(foundEvent)).show();
+            $('#event-list').hide();
+        }
+    });
+
+
+    // Event handler for back-button
+    $(document).on('click', '#return-button', function(){
+        $('#event-details-page').hide();
+        $('#event-list').show();
+    });
+
+
+
 
 });
