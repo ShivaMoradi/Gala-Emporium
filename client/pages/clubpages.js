@@ -1,10 +1,8 @@
 import { getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData, mockClubData} from './addevents.js';
 
-
 export default async function clubpages(clubName) {
-    //const clubData = await getclubs();
-    
-    
+    const clubData = await getClubEvents(clubName);
+    console.log("All events - ", clubData);
     
     //using club mock Data untill data has been fetched. Cannot access database data at the time of writing.  
     const clubDetails = mockClubData.find(club => club.name === clubName);
@@ -12,10 +10,11 @@ export default async function clubpages(clubName) {
     console.log(clubDetails);
 
 
-    if(!clubDetails){
+    if (!clubDetails) {
         return `
             <div> 
                 <p>Club not found</p>
+                <h1>${clubData[0].event_name}</h1>
             </div>
         `
     }
@@ -55,10 +54,9 @@ export default async function clubpages(clubName) {
 }
 
 
-// async function getclubs() {
-//   const response = await fetch("/api/club")
-//   const data = await response.json()
-//   return data;
-// }
-
+async function getClubEvents(clubName) {
+    const response = await fetch("/api/club/" + clubName)
+    const data = await response.json()
+    return data;
+}
 
