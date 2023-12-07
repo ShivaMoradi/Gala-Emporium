@@ -1,4 +1,5 @@
 import clubpages from "./pages/clubpages.js";
+import bookClub from "./pages/clubpages.js";
 
 async function router() {
 let content;
@@ -8,8 +9,11 @@ switch(window.location.hash){
       content = "<h1> Homepage </h1>"
       break;
     case "#clubpages":
-      content = await clubpages("Blue Club");
-      break;
+    content = await clubpages("blue club");
+    break;
+    case "#bookClub":
+    content = await clubpages("book club");
+    break;
     case "addevent":
       content = "<h1>Placeholder for addevent page</h1>"
       break;

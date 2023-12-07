@@ -1,9 +1,13 @@
-
 @media screen and (min-width: 0) {}
+
 @media screen and (min-width: 576px) {}
+
 @media screen and (min-width: 768px) {}
+
 @media screen and (min-width: 992px) {}
+
 @media screen and (min-width: 1200px) {}
+
 @media screen and (min-width: 1920px) {}
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
@@ -38,7 +42,6 @@
 }
 
 
-
 body {
   color: var(--text);
   background-color: var(--surface0);
@@ -49,7 +52,7 @@ body {
 }
 
 nav {
-  background-color:var(--crust);
+  background-color: var(--crust);
   border-bottom: 2px solid var(--crust);
   display: flex;
   gap: 2vw;
@@ -59,12 +62,27 @@ nav>a {
   margin: 1vh 1vw;
   color: var(--blue);
   text-decoration: none;
+  
 }
 
-nav>a:hover {
-  filter: brightness(125%);
-  text-decoration: underline;
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
 }
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Show the dropdown menu when hovering over the trigger element */
+.dropdown-container:hover .dropdown-menu {
+  display: block;
+}
+
 #coverImage img {
   width: 100%;
   height: 400px;
@@ -81,14 +99,45 @@ main {
 main>h1 {
   text-align: center;
 }
-header{
-background-position: inherit;
+
+header {
+  background-position: inherit;
 }
 
-#menu-links-list{
+#menu-links-list {
   display: flex;
   list-style-type: none;
 }
-#menu-links-list > li {
+
+#menu-links-list>li {
   margin-left: 1vw;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#menu-links-list a,
+.dropdown-trigger,
+.dropdown-menu li {
+  text-decoration: none;
+  color: var(--blue)
+}
+
+
+nav>a:hover,
+.dropdown-trigger:hover {
+  filter: brightness(125%);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.dropdown-menu li:hover {
+  background-color: var(--overlay0);
+  color: var(--text);
+  font-weight: bold;
+}
+
+.dropdown-container:hover .dropdown-trigger {
+  filter: brightness(125%);
+  font-weight: bold;
 }

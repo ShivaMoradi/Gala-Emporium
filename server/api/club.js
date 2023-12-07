@@ -5,6 +5,11 @@ export default function (server, db) {
     console.log(club)
     res.json(club)
   })
+  server.get('/api/club/:clubName', async (req, res) => {//clubName 
+    const club = await db.query("SELECT * FROM event_club WHERE club_name = ?", [req.params.clubName])
+    console.log(club)
+    res.json(club)
+  })
 
   server.post('/api/club', async (req, res) => {
     if (req.body.name.trim().length > 0) {
