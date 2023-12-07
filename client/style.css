@@ -62,12 +62,10 @@ nav>a {
   margin: 1vh 1vw;
   color: var(--blue);
   text-decoration: none;
+  
 }
 
-nav>a:hover {
-  filter: brightness(125%);
-  text-decoration: none;
-}
+
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -114,6 +112,7 @@ header {
 #menu-links-list>li {
   margin-left: 1vw;
   cursor: pointer;
+  font-weight: bold;
 }
 
 #menu-links-list a,
@@ -121,4 +120,24 @@ header {
 .dropdown-menu li {
   text-decoration: none;
   color: var(--blue)
+}
+
+
+nav>a:hover,
+.dropdown-trigger:hover {
+  filter: brightness(125%);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.dropdown-menu li:hover {
+  background-color: var(--overlay0);
+  color: var(--text);
+  font-weight: bold;
+}
+
+.dropdown-container:hover .dropdown-trigger {
+  filter: brightness(125%);
+  font-weight: bold;
 }
