@@ -1,4 +1,4 @@
-{
+{ "type": "module",
   "name": "server",
   "version": "1.0.0",
   "description": "",
@@ -108,6 +108,7 @@
     "util-deprecate": "^1.0.2",
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2",
+    
     "yallist": "^4.0.0"
     
   },
