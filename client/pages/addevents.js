@@ -6,8 +6,6 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData
     const mockEventData = [
         { id: 1, name: "Jazz Night", date: "2023-12-10", time: "20:00", club: "Blue Club", description: "A night with smooth jazz.", image: "https://shorturl.at/fkLO1", price: "100 kr" },
         { id: 2, name: "Rock Concert", date: "2023-12-12", time: "18:00", club: "Rock Club", description: "Experience the best of rock.", image: "https://shorturl.at/ajvGV", price: "150 kr" },
-        { id: 3, name: "A night to remember", date: "2024-08-06", time: " 22:46", club: "Book Club", description: "lets talk about the book that made us fall in love with i t's characters ", image: "https://shorturl.at/chBJZ", price: "100 kr" },
-
     ];
 
 
@@ -22,14 +20,9 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData
             description: "Rock Club offers an electrifying atmosphere with rock and roll classics and modern hits.",
             image: "https://example.com/images/rock-club.jpg", // Placeholder image URL
         },
-        {
-            name: "Book Club",
-            description: "For you to meet other book lovers",
-            image: "images/bookclub_event.jpg", // Placeholder image URL
-        },
-
         // Add more clubs as needed
     ];
+    
 // ------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------- //
 // ------------------------------------------------------------------------------------- //
@@ -41,6 +34,8 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData
     function getEventsForClub(clubName, eventList){
         return eventList.filter(event => event.club === clubName)
     }
+
+
 
 
 //Create HTML structure to display events.
@@ -59,6 +54,7 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData
             </div>    
         `
     };
+
 
 // Create HTML Structure in different div to style differently. (full-page event view?)
     function createEventHTMLDetails(event){
@@ -79,11 +75,9 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData
 
 
 // Sort events based on date.
-
     function sortEvents(eventList){ 
         return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
     };
-
 
 
 
@@ -103,7 +97,7 @@ $(document).ready(function(){
     });
 
 
-    // Event handler for back-button
+// Event handler for back-button
     $(document).on('click', '#return-button', function(){
         $('#event-details-page').hide();
         $('#event-list').show();

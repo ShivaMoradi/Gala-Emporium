@@ -4,8 +4,8 @@ export default async function clubpages(clubName) {
     const clubData = await getClubEvents(clubName);
     console.log("All events - ", clubData);
     
-    //using club mock Data untill data has been fetched. Cannot access database data at the time of writing.  
-    const clubDetails = mockClubData.find(club => club.name === clubName);
+    // Changed mockClubData to instead go through clubData.
+    const clubDetails = clubData.find(club => club.club_name.toLowerCase() === clubName.toLowerCase());
 
     console.log(clubDetails);
 
@@ -25,10 +25,13 @@ export default async function clubpages(clubName) {
     //Generate HTML for each Event. 
     const eventsHTML = clubEvents.map(createEventHTML).join('');
 
+
+
+        // Changed clubdata attribute names to correspond to names fetched from database,.
     return `
         <div id = "clubPage">
             <header>
-                <h1>${clubDetails.name}</h1>
+                <h1>${clubDetails.club_name}</h1>
             </header>
 
             <section id="clubBody">
@@ -39,7 +42,7 @@ export default async function clubpages(clubName) {
                 </div>
 
                 <article id="clubDescription">
-                <p>${clubDetails.description}</p>
+                <p>${clubDetails.club_description}</p>
                 <!-- CLUB DESRIPTION GOES HERE  -->
                 </article>
 
