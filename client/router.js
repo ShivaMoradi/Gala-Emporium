@@ -6,7 +6,7 @@ let content;
   // Populate "content" with whatever
 switch(window.location.hash){
     case "":
-      content = "<h1> Homepage </h1>"
+      content = ""
       break;
     case "#clubpages":
     content = await clubPages("blue club");
