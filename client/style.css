@@ -45,7 +45,7 @@
 body {
   color: var(--text);
   background-color: var(--surface0);
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'PT Mono', monospace;
   display: flex;
   flex-direction: column;
