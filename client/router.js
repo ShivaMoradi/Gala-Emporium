@@ -9,10 +9,10 @@ switch(window.location.hash){
       content = "<h1> Homepage </h1>"
       break;
     case "#clubpages":
-    content = await clubpages("Blue Club");
+    content = await clubpages("blue club");
     break;
     case "#bookClub":
-    content = await bookClub("Book Club");
+    content = await clubpages("book club");
     break;
     case "addevent":
       content = "<h1>Placeholder for addevent page</h1>"
