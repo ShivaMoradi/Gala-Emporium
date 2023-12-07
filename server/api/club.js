@@ -1,6 +1,6 @@
 export default function (server, db) {
 
-  server.get('/api/club', async (req, res) => {
+  server.get('/api/clubpages', async (req, res) => {
     const club = await db.query("SELECT * FROM event_club ")
     console.log(club)
     res.json(club)
@@ -28,5 +28,8 @@ export default function (server, db) {
 
   server.delete('/api/club/:id', (req, res) => {
   })
+  
+   
+
 
 }
