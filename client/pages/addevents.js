@@ -33,7 +33,6 @@ export {getEventsForClub, createEventHTML};
             .then( data => {
                 const eventDisplay = document.getElementById( 'eventDisplay' );
 
-                // Iterate through the received data and create HTML for each object
                 data.forEach( clubData => {
                     const eventHTML = createEventHTML( clubData );
                     const eventContainer = document.createElement( 'div' );
