@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
 @media screen and (min-width: 0) {}
 
 @media screen and (min-width: 576px) {}
@@ -10,7 +12,7 @@
 
 @media screen and (min-width: 1920px) {}
 
-@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+
 
 :root {
   --rosewater: #f5e0dc;
