@@ -1,6 +1,5 @@
 import { createEventHTML } from "./pages/addevents.js";
 import clubPages from "./pages/clubpages.js";
-import bookClub from "./pages/clubpages.js";
 
 async function router() {
 let content;
