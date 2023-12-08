@@ -1,4 +1,4 @@
-export {getEventsForClub, createEventHTML, createEventHTMLDetails};
+export {getEventsForClub, createEventHTML};
 
 
 // Filter Events based on 
@@ -28,19 +28,19 @@ export {getEventsForClub, createEventHTML, createEventHTMLDetails};
 
 
 // Create HTML Structure in different div to style differently. (full-page event view?)
-    function createEventHTMLDetails(clubData){
-        return `
-            <div class="event-details">
-                <h2>${clubData.eventName}</h2>
-                <img src="${clubData.image}" alt="${clubData.eventName}" style="max-width: 300px; height: auto;">
-                <p>Date: ${clubData.date}</p>
-                <p>Time: ${clubData.time}</p>
-                <p>${clubData.eventDescription}</p>
-                <p>Price: ${clubData.price}</p>
-                <button id="return-button">Back</button>
-            </div>
-        `
-    };
+    // function createEventHTMLDetails(clubData){
+    //     return `
+    //         <div class="event-details">
+    //             <h2>${clubData.eventName}</h2>
+    //             <img src="${clubData.image}" alt="${clubData.eventName}" style="max-width: 300px; height: auto;">
+    //             <p>Date: ${clubData.date}</p>
+    //             <p>Time: ${clubData.time}</p>
+    //             <p>${clubData.eventDescription}</p>
+    //             <p>Price: ${clubData.price}</p>
+    //             <button id="return-button">Back</button>
+    //         </div>
+    //     `
+    // };
 
 
 
