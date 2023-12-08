@@ -12,7 +12,8 @@ export {getEventsForClub, createEventHTML};
 //Create HTML structure to display events.
 //TODO Remove image style when css has been applied to event-image.
 //TODO Create link to event webpage.
-  function createEventHTML(clubData){
+// Fetch club data from the backend
+function createEventHTML(clubData){
         return `
     <div class="grid-container" id="eventDisplay"></div>
                         <div class='event'>
@@ -37,13 +38,14 @@ export {getEventsForClub, createEventHTML};
                     const eventHTML = createEventHTML( clubData );
                     const eventContainer = document.createElement( 'div' );
                     eventContainer.innerHTML = eventHTML;
+                    eventContainer.classList.add( 'event' );
+
                     eventDisplay.appendChild( eventContainer );
                 } );
             } )
             .catch( error => {
                 console.error( 'Error fetching club data:', error );
             } );
-   
 
 
 // Create HTML Structure in different div to style differently. (full-page event view?)
