@@ -1,4 +1,4 @@
-import { createEventHTML } from "./pages/addevents.js";
+import { createEventHTML, event } from "./pages/addevents.js";
 import clubPages from "./pages/clubpages.js";
 
 async function router() {
@@ -6,7 +6,7 @@ let content;
   // Populate "content" with whatever
 switch(window.location.hash){
     case "":
-      content = await createEventHTML("")
+    content = createEventHTML( "")
       break;
     case "#rockClub":
         content = await clubPages("rock club");
@@ -17,8 +17,8 @@ switch(window.location.hash){
     case "#bookClub":
       content = await clubPages("book club");
       break;
-    case "addevent":
-      content = "<h1>Placeholder for addevent page</h1>"
+    case "#addevent":
+    content = await event( "");
       break;
     default:
       content = "<h1><bold>Page not found!</bold></h1>"

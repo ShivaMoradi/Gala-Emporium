@@ -1,4 +1,4 @@
-export {getEventsForClub, createEventHTML};
+export {getEventsForClub, createEventHTML,event};
 
 
 // Filter Events based on 
@@ -39,13 +39,55 @@ function createEventHTML(clubData){
                     const eventContainer = document.createElement( 'div' );
                     eventContainer.innerHTML = eventHTML;
                     eventContainer.classList.add( 'event' );
-
+                
                     eventDisplay.appendChild( eventContainer );
                 } );
             } )
             .catch( error => {
                 console.error( 'Error fetching club data:', error );
             } );
+
+function event() {
+    return `
+  <form class= "addEvent" onsubmit="addEvent(); return false">
+    <h1>Add new Event!</h1>
+    <input type="varchar(200)" name="eventsName" placeholder="events name">
+        <input type="varchar(255)" eventDescription="eventsDescription" placeholder="events description">
+    <input type="datetime" data="eventsDate" placeholder="events date">
+    <input type="varchar(200)" address="eventsAddress" placeholder="events address">
+    <input type="int" price="eventsPrice" placeholder="events price">
+    <input type="int" clubId="clubId" placeholder="club id">
+    <input type="blob" name="eventsImages" placeholder="events images">
+    <input id="submit" type="submit" value="Add Event">
+    
+
+  </form>
+  `
+}
+
+async function addEvent () {
+    const eventName = $( "[name=eventName]" ).val()
+    console.log( eventName )
+
+    if ( eventName.trim().length > 0 ) {
+        const response = await fetch( "api/club", {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify( { name: eventName } )
+        } )
+        const result = await response.json()
+
+        if ( result.eventAdded ) {
+            alert( `${ eventName.trim() } added` )
+            $( "[name=eventName]" ).val( "" )
+        }
+    } else {
+        alert( "Please write your event name!" )
+    }
+}
+event();
+
+window.addBook = addEvent
 
 
 // Create HTML Structure in different div to style differently. (full-page event view?)

@@ -97,7 +97,7 @@ main {
 }
 
 main>h1 {
-  text-align: center;
+  text-align: left;
 }
 
 header {
@@ -148,4 +148,17 @@ nav>a:hover,
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   gap: 10px;
   border: 1px solid #cccccc00;
+}
+.addEvent{
+  border-style:solid;
+  border-color: rgb(117, 38, 38);
+  border-radius: 7px;
+  padding-bottom: 30px;
+  padding-top: 5px;
+  padding-left: 10%;
+}
+.footer{
+  margin-top: 100px;
+  padding: 5px;
+  align-items: center;
 }
