@@ -12,19 +12,39 @@ export {getEventsForClub, createEventHTML};
 //Create HTML structure to display events.
 //TODO Remove image style when css has been applied to event-image.
 //TODO Create link to event webpage.
-    function createEventHTML(clubData){
+  function createEventHTML(clubData){
         return `
-            <div class='event'>
-                <h3> <a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3> 
-                <p>${clubData.clubName}</p>
-                <img src="${clubData.image}" alt="Image of ${clubData.eventName}" class="event-image" style="max-width:300px;height:auto;">  
-                <p>Date: ${clubData.date}</p>
-                <p>Time: ${clubData.time}</p>
-                <p>Description: ${clubData.eventDescription}</p>
-                <p>Price: ${clubData.price}</p>
-            </div>    
-        `
-    };
+    <div class="grid-container" id="eventDisplay"></div>
+                        <div class='event'>
+                            <h3><a href="#" class="event-title-link" data-id="${ clubData.id }">${ clubData.eventName }</a></h3>
+                            <p>${ clubData.clubName }</p>
+                            <img src="${ clubData.image }" alt="Image of ${ clubData.eventName }" class="event-image" style="max-width:300px;height:auto;">
+                            <p>Date: ${ clubData.date }</p>
+                            <p>Time: ${ clubData.time }</p>
+                            <p>Description: ${ clubData.eventDescription }</p>
+                            <p>Price: ${ clubData.price }</p>
+                        </div>
+                    `;
+        } 
+
+        // Fetch club data from the backend
+        fetch( '/api/club' )
+            .then( response => response.json() )
+            .then( data => {
+                const eventDisplay = document.getElementById( 'eventDisplay' );
+
+                // Iterate through the received data and create HTML for each object
+                data.forEach( clubData => {
+                    const eventHTML = createEventHTML( clubData );
+                    const eventContainer = document.createElement( 'div' );
+                    eventContainer.innerHTML = eventHTML;
+                    eventDisplay.appendChild( eventContainer );
+                } );
+            } )
+            .catch( error => {
+                console.error( 'Error fetching club data:', error );
+            } );
+   
 
 
 // Create HTML Structure in different div to style differently. (full-page event view?)
