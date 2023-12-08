@@ -1,34 +1,37 @@
-import { getEventsForClub, createEventHTML, createEventHTMLDetails, mockEventData, mockClubData} from './addevents.js';
+import { getEventsForClub, createEventHTML} from './addevents.js';
 
-export default async function clubpages(clubName) {
-    const clubData = await getClubEvents(clubName);
-    console.log("All events - ", clubData);
+export default async function clubPages(clubName) {
+    //Clubdata includes all event information.
+    const clubData = await getClubEvents(clubName.toLowerCase());
+
     
-    //using club mock Data untill data has been fetched. Cannot access database data at the time of writing.  
-    const clubDetails = mockClubData.find(club => club.name === clubName);
 
-    console.log(clubDetails);
+    // Changed mockClubData to instead go through clubData.
+    const clubDetails = clubData.find(club => club.clubName.toLowerCase() === clubName.toLowerCase());
+
 
 
     if (!clubDetails) {
         return `
             <div> 
                 <p>Club not found</p>
-                <h1>${clubData[0].event_name}</h1>
             </div>
         `
     }
 
     // Filter events based on Club name and mockData. 
-    const clubEvents = getEventsForClub(clubName, mockEventData);
+    const clubEvents = getEventsForClub(clubName, clubData);
 
     //Generate HTML for each Event. 
     const eventsHTML = clubEvents.map(createEventHTML).join('');
 
+
+
+        // Changed clubdata attribute names to correspond to names fetched from database,.
     return `
         <div id = "clubPage">
             <header>
-                <h1>${clubDetails.name}</h1>
+                <h1>${clubDetails.clubName}</h1>
             </header>
 
             <section id="clubBody">
@@ -39,7 +42,7 @@ export default async function clubpages(clubName) {
                 </div>
 
                 <article id="clubDescription">
-                <p>${clubDetails.description}</p>
+                <p>${clubDetails.clubDescription}</p>
                 <!-- CLUB DESRIPTION GOES HERE  -->
                 </article>
 
@@ -59,4 +62,5 @@ async function getClubEvents(clubName) {
     const data = await response.json()
     return data;
 }
+
 
