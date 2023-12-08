@@ -1,3 +1,4 @@
+import { createEventHTML } from "./pages/addevents.js";
 import clubPages from "./pages/clubpages.js";
 import bookClub from "./pages/clubpages.js";
 
@@ -6,7 +7,7 @@ let content;
   // Populate "content" with whatever
 switch(window.location.hash){
     case "":
-      content = ""
+      content = await createEventHTML("")
       break;
     case "#rockClub":
         content = await clubPages("rock club");
