@@ -7,9 +7,8 @@ export default function (server, db) {
   })
 
 
-  server.get('/api/club/:clubName', async (req, res) => {//clubName 
-    const club = await db.query("SELECT * FROM clubEvents WHERE club_name = ?", [req.params.clubName])
-    console.log(club)
+  server.get('/api/club/clubName', async (req, res) => {//clubName 
+    const club = await db.query("SELECT * FROM clubEvents WHERE clubName = ?", [req.params.clubName])
     res.json(club)
   })
 
@@ -24,12 +23,12 @@ export default function (server, db) {
       res.json({ clubAdded: false })
     }
   })
-server.get('/api/club/:clubName', async (req, res) => {//clubName 
+/*server.get('/api/club/:clubName', async (req, res) => {//clubName 
     const club = await db.query("SELECT * FROM event_club WHERE club_name = ?", [req.params.clubName])
     console.log(club)
     res.json(club)
   })
-
+*/
 
   server.put('/api/club/:id', (req, res) => {
   })
