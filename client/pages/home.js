@@ -67,9 +67,6 @@ export default async function crearEstructuraHTML() {
           viewDetailsLink.textContent = 'View Details';
 
           // Agregar los elementos al DOM
-          
-
-          
           timeDiv.appendChild(h2);
           detailsDiv.appendChild(h3);
           detailsDiv.appendChild(detailsParagraph);
@@ -83,7 +80,7 @@ export default async function crearEstructuraHTML() {
       }
     }
     // Agregar los elementos al DOM
-  
+   
     contentDiv.appendChild(h1);
     contentDiv.appendChild(paragraph);
     section.appendChild(eventsDiv);
@@ -95,6 +92,7 @@ export default async function crearEstructuraHTML() {
   // Devolver la estructura como una cadena HTML
   return section.outerHTML;
 }
+
 
 
 async function eventsByClub() {

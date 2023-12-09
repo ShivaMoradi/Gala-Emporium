@@ -1,31 +1,30 @@
 import clubpages from "./pages/clubpages.js";
-import bookClub from "./pages/clubpages.js";
 import crearEstructuraHTML from "./pages/home.js";
+import bookClub from "./pages/clubpages.js";
 
 async function router() {
-//let content;
+let content;
   // Populate "content" with whatever
 switch(window.location.hash){
-  case "":
-    console.log("Home")
-     $('main').html(await crearEstructuraHTML()); 
-      break;
     case "":
-     $('main').html(await clubpages("blue club")); 
+    content = await crearEstructuraHTML();
+      break;
+    case "#clubpages":
+    content = await clubpages("blue club");
     break;
     case "#bookClub":
-     $('main').html( await clubpages("book club"));
+    content = await clubpages("book club");
     break;
     case "addevent":
-       $('main').html("<h1>Placeholder for addevent page</h1>"); 
+      content = "<h1>Placeholder for addevent page</h1>"
       break;
     default:
-       $('main').html("<h1><bold>Page not found!</bold></h1>"); 
+      content = "<h1><bold>Page not found!</bold></h1>"
       break
   }
 
   // Populate <main> with whatever content.
-
+ $('main').html(content);
 
 }
 
