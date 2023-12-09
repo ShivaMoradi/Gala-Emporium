@@ -1,6 +1,6 @@
 import clubpages from "./pages/clubpages.js";
 import bookClub from "./pages/clubpages.js";
-import homePage from "./pages/home.js";
+import crearEstructuraHTML from "./pages/home.js";
 
 async function router() {
 //let content;
@@ -8,7 +8,7 @@ async function router() {
 switch(window.location.hash){
   case "":
     console.log("Home")
-     $('main').html(await homePage()); 
+     $('main').html(await crearEstructuraHTML()); 
       break;
     case "":
      $('main').html(await clubpages("blue club")); 
