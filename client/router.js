@@ -1,3 +1,6 @@
+import login from "./pages/login.js";
+$('#login').html(login());
+
 import clubPages from "./pages/clubpages.js";
 import bookClub from "./pages/clubpages.js";
 
