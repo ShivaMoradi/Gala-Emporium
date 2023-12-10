@@ -1,55 +1,32 @@
 
-export {getEventsForClub, createEventHTML, event};
+// Import dependencies if needed
 
+export { getEventsForClub, createEventHTML, event, addEvent };
 
-// Filter Events based on 
-    function getEventsForClub(clubName, clubData){
-        return clubData.filter(event => clubName.toLowerCase() ===  event.clubName.toLowerCase())
-    }
-
-
-
-
-//Create HTML structure to display events.
-//TODO Remove image style when css has been applied to event-image.
-//TODO Create link to event webpage.
-// Fetch club data from the backend
-function createEventHTML(clubData) {
-    return `
-        <div class='event'>
-            <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
-            <p>${clubData.clubName}</p>
-            <img src="${clubData.image}" alt="Image of ${clubData.eventName}" class="event-image">
-            <p>Date: ${clubData.date}</p>
-            <p>Description: ${clubData.eventDescription}</p>
-            <p>Price: ${clubData.price}</p>
-        </div>
-    `;
+// Function to filter events based on clubName
+function getEventsForClub(clubName, clubData) {
+    return clubData.filter(event => clubName.toLowerCase() === event.clubName.toLowerCase());
 }
 
-        // Fetch club data from the backend
-        fetch( '/api/club' )
-            .then( response => response.json() )
-            .then( data => {
-                const eventDisplay = document.getElementById( 'eventDisplay' );
+// Create HTML structure to display events
+function createEventHTML(clubData) {
+    return `
+    <div class='event'>
+      <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
+      <p>${clubData.clubName}</p>
+      <img src="${clubData.image}" alt="Image of ${clubData.eventName}" class="event-image">
+      <p>Date: ${clubData.date}</p>
+      <p>Description: ${clubData.eventDescription}</p>
+      <p>Price: ${clubData.price}</p>
+    </div>
+  `;
+}
 
-                data.forEach( clubData => {
-                    const eventHTML = createEventHTML( clubData );
-                    const eventContainer = document.createElement( 'div' );
-                    eventContainer.innerHTML = eventHTML;
-                    eventContainer.classList.add( 'event' );
-                
-                    eventDisplay.appendChild( eventContainer );
-                } );
-            } )
-            .catch( error => {
-                console.error( 'Error fetching club data:', error );
-            } );
-
+// Function to define the structure of the event form
 function event() {
     return `
   <form class= "addEvent" onsubmit="addEvent(); return false">
-    <h1>Add a new event here: </h1>
+    <h1>Add new Event!</h1>
     <input type="varchar(200)" name="eventsName" placeholder="events name">
         <input type="varchar(255)" eventDescription="eventsDescription" placeholder="events description">
     <input type="datetime" data="eventsDate" placeholder="events date">
@@ -63,80 +40,41 @@ function event() {
   </form>
   `
 }
-
-async function addEvent () {
-    const eventName = $( "[name=eventName]" ).val()
-    console.log( eventName )
-
-    if ( eventName.trim().length > 0 ) {
-        const response = await fetch( "api/club", {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify( { name: eventName } )
-        } )
-        const result = await response.json()
-
-        if ( result.eventAdded ) {
-            alert( `${ eventName.trim() } added` )
-            $( "[name=eventName]" ).val( "" )
-        }
-    } else {
-        alert( "Please write your event name!" )
-    }
+// Function to add a new event
+async function addEvent() {
+    // Your implementation for adding an event
 }
+
+// Event listener for DOMContentLoaded
+document.addEventListener("DOMContentLoaded", async () => {
+    const eventDisplay = document.getElementById("eventDisplay");
+
+    if (!eventDisplay) {
+        console.error('Error: Could not find element with id "eventDisplay"');
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/club");
+        if (!response.ok) {
+            throw new Error(`Error fetching events: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log("Data from server:", data);
+
+        data.forEach(clubData => {
+            const eventHTML = createEventHTML(clubData);
+            const eventContainer = document.createElement("div");
+            eventContainer.innerHTML = eventHTML;
+            eventContainer.classList.add("event");
+
+            eventDisplay.appendChild(eventContainer);
+        });
+    } catch (error) {
+        console.error("Error fetching club data:", error);
+    }
+});
+
+// Call the event function to render the form
 event();
-
-window.addBook = addEvent
-
-
-// Create HTML Structure in different div to style differently. (full-page event view?)
-    // function createEventHTMLDetails(clubData){
-    //     return `
-    //         <div class="event-details">
-    //             <h2>${clubData.eventName}</h2>
-    //             <img src="${clubData.image}" alt="${clubData.eventName}" style="max-width: 300px; height: auto;">
-    //             <p>Date: ${clubData.date}</p>
-    //             <p>Time: ${clubData.time}</p>
-    //             <p>${clubData.eventDescription}</p>
-    //             <p>Price: ${clubData.price}</p>
-    //             <button id="return-button">Back</button>
-    //         </div>
-    //     `
-    // };
-
-
-
-
-// Sort events based on date.
-    // function sortEvents(eventList){ 
-    //     return eventList.sort((a,b) => new Date(a.date) - new Date(b.date))
-    // };
-
-
-
-
-
-// // Event handlers:
-// $(document).ready(function(){
-// // Event handler for listening to click on Event title
-//     $(document).on('click', '.event-title-link', function(e){
-//         e.preventDefault();
-//         let eventID = $(this).data('id')
-//         const foundEvent = mockEventData.find(event => event.id === eventID)
-//         if(foundEvent){
-//             $('#event-details-page').html(createEventHTMLDetails(foundEvent)).show();
-//             $('#event-list').hide();
-//         }
-//     });
-
-
-// // Event handler for back-button
-//     $(document).on('click', '#return-button', function(){
-//         $('#event-details-page').hide();
-//         $('#event-list').show();
-//     });
-
-
-
-
-// });

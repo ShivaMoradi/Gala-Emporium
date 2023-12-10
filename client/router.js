@@ -12,7 +12,6 @@ async function router() {
     case "":
       content = await getAllEvents();
       break;
-
     case "#rockClub":
       content = await clubPages("rock club");
       break;
@@ -23,7 +22,7 @@ async function router() {
       content = await clubPages("book club");
       break;
     case "#addevent":
-      content = await event("");
+      content = event("");
       break;
     default:
       content = "<h1><bold>Page not found!</bold></h1>"
@@ -36,10 +35,21 @@ async function router() {
 }
 
 async function getAllEvents() {
-  const data = await fetch('/api/club').then(response => response.json());
-  const eventsHTML = data.map(createEventHTML).join('');
-  return `<div class="grid-container">${eventsHTML}</div>`;
+  try {
+    const data = await fetch('/api/club');
+    if (!data.ok) {
+      throw new Error(`Failed to fetch events. Status: ${data.status}`);
+    }
+
+    const eventData = await data.json();
+    const eventsHTML = eventData.map(createEventHTML).join('');
+    return `<div class="grid-container">${eventsHTML}</div>`;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return '<p>Error fetching events. Please try again later.</p>';
+  }
 }
+
 
 window.onload = router
 window.onhashchange = router
