@@ -33,7 +33,7 @@ export default async function clubPages(clubName) {
             <header>
                 <h1>${clubDetails.clubName}</h1>
             </header>
-
+ 
             <section id="clubBody">
 
                 <div id="mediaContainer"> 
