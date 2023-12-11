@@ -6,7 +6,7 @@ let content;
   // Populate "content" with whatever
 switch(window.location.hash){
     case "":
-    content = createEventHTML( "")
+    content = createEventHTML("")
       break;
     case "#rockClub":
         content = await clubPages("rock club");

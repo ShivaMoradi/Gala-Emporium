@@ -15,16 +15,7 @@ export {getEventsForClub, createEventHTML,event};
 // Fetch club data from the backend
 function createEventHTML(clubData){
         return `
-    <div class="grid-container" id="eventDisplay"></div>
-                        <div class='event'>
-                            <h3><a href="#" class="event-title-link" data-id="${ clubData.id }">${ clubData.eventName }</a></h3>
-                            <p>${ clubData.clubName }</p>
-                            <img src="${ clubData.image }" alt="Image of ${ clubData.eventName }" class="event-image" style="max-width:300px;height:auto;">
-                            <p>Date: ${ clubData.date }</p>
-                            <p>Time: ${ clubData.time }</p>
-                            <p>Description: ${ clubData.eventDescription }</p>
-                            <p>Price: ${ clubData.price }</p>
-                        </div>
+    
                     `;
         } 
 
@@ -141,3 +132,4 @@ window.addBook = addEvent
 
 
 // });
+
