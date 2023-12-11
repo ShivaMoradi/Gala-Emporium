@@ -4,10 +4,10 @@ export default function (server, db) {
 
   server.get('/api/login', async (req, res) => {
     // are we logged in? get logged in user
-    const users = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [req.session.user?.email, req.session.user?.password])
-    if (users[0]) {
-      req.session.user = users[0]
-      res.json({ email: users[0].email })
+    const admin = await db.query("SELECT * FROM admin WHERE email = ? AND password = ?", [req.session.admin?.email, req.session.admin?.password])
+    if (admin[0]) {
+      req.session.admin = admin[0]
+      res.json({ email: admin[0].email })
     } else {
       res.status(401)
       res.json({ loggedIn: false })
@@ -16,7 +16,7 @@ export default function (server, db) {
 
   server.post('/api/login', async (req, res) => {
     // perform login
-    const users = await db.query("SELECT * FROM users WHERE email = ? AND password = ?", [req.body.email, req.body.password])
+    const admin = await db.query("SELECT * FROM admin WHERE email = ? AND password = ?", [req.body.email, req.body.password])
     if (users[0]) {
       req.session.user = users[0]
       res.json({ loggedIn: true })
