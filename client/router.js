@@ -19,7 +19,11 @@ switch(window.location.hash){
       break;
     case "#addevent":
     content = await event( "");
+    break;
+   case "#loveClub":
+      content = "<h1>Hola LOve</h1>";
       break;
+  
     default:
       content = "<h1><bold>Page not found!</bold></h1>"
       break
