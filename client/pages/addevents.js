@@ -15,37 +15,52 @@ export {getEventsForClub, createEventHTML,event};
 // Fetch club data from the baackend
 async function createEventHTML(clubData) {
     const b = await eventsByClub();
-        return `
+    let club = "";
+    let event = "";
+     for (const clave in b) {
+        club += ` <h1>${b[clave].clubName}</h1>
+            <p>${b[clave].clubDescrip}</p>`
+         if (b.hasOwnProperty(clave)) {
+             const objetoInterior = b[clave];
+             if (objetoInterior.hasOwnProperty("eventos")) {
+                 const arregloInterior = objetoInterior.eventos;
+                 // Crear las listas desordenadas con elementos li
+                 for (const valor of arregloInterior) {
+                      const datebd = `${b[clave].date}`;
+                       const dateNew = new Date(datebd)
+                      const date = dateNew.getUTCDate();
+                       const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                      const monthLetter = month[dateNew.getUTCMonth()];
+                      event =`<ul>
+              <li>
+                <div class="time">
+                  <h2>${date}<br><span>${monthLetter}</span></h2>
+                </div>
+                <div class="details">
+                  <h3>${b[clave].eventName}</h3>
+                  <p>${b[clave].eventDescrip} .</p>
+                  <a href="#">View Details</a>
+                </div>
+                <div style="clear: both;"></div>
+              </li>
+            </ul>`
+                      club += event;
+                 }
+                
+             }
+         }
+         
+    }
+    return       `
 <section>
       
       </div>
         <div class="events">
         <div class="leftBox">
           <div class="content">
-            <h1></h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a
-            type specimen book. It has survived not only five
-            centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged .</p>
-            <ul>
-              <li>
-                <div class="time">
-                  <h2>24<br><span>June</span></h2>
-                </div>
-                <div class="details">
-                  <h3>Where does it come from</h3>
-                  <p>Contrary to popular belief, Lorem Ipsum is not
-                    simply random text. It has roots in a piece of
-                    classical Latin literature from 45 BC, making it
-                    over 2000 years old .</p>
-                  <a href="#">View Details</a>
-                </div>
-                <div style="clear: both;"></div>
-              </li>
-            </ul>
+           
+            ${club}
+        
             
            
 
@@ -55,7 +70,8 @@ async function createEventHTML(clubData) {
         </div>
     </section>
     
-                    `;
+                    `;;
+
         } 
 
         // Fetch club data from the backend
