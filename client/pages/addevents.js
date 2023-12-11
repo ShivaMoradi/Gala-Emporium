@@ -1,6 +1,4 @@
 
-// Import dependencies if needed
-
 export { getEventsForClub, createEventHTML, event, addEvent };
 
 // Function to filter events based on clubName
