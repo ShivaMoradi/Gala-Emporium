@@ -1,6 +1,4 @@
 
-// Import dependencies if needed
-
 export { getEventsForClub, createEventHTML, event, addEvent };
 
 // Function to filter events based on clubName
@@ -39,11 +37,52 @@ function event() {
 
   </form>
   `
+
 }
+
 // Function to add a new event
 async function addEvent() {
-    // Your implementation for adding an event
+    try {
+        const eventName = document.querySelector('input[name="eventsName"]').value;
+        const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
+        const date = document.querySelector('input[name="eventsDate"]').value;
+        const address = document.querySelector('input[name="eventsAddress"]').value;
+        const price = document.querySelector('input[name="eventsPrice"]').value;
+        const clubName = document.querySelector( 'input[name="clubId"]' ).value;
+        // Assuming clubId is actually clubName
+        const clubDescription = "";  // Assuming clubDescription is not present in your form
+
+        const response = await fetch("/api/club", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                eventName,
+                eventDescription,
+                date,
+                address,
+                price,
+                clubName,
+                clubDescription,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error adding event: ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        console.log("Result from server:", result);
+
+        // Handle success as needed
+    } catch (error) {
+        console.error('Error adding event:', error);
+        // Handle the error appropriately
+    }
 }
+
+window.addEvent = addEvent
 
 // Event listener for DOMContentLoaded
 document.addEventListener("DOMContentLoaded", async () => {
