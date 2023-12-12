@@ -107,7 +107,6 @@ async function event() {
 }
 
 async function addEvent () {
-    $( "#addEventbyAdmin" ).html( await event() )
 
     const eventName = $( "[name=eventName]" ).val()
     console.log( eventName )

@@ -1,4 +1,4 @@
-import { event } from "./addevents.js";
+import { event,addEvent } from "./addevents.js";
 export default async function init () {
   return `
     <form onsubmit="login(); return false">
@@ -63,7 +63,6 @@ async function checkLogin () {
     $( '#login' ).html( `
       <button onclick="logout()">Logout</button>
     `)
-    $( "#addEventbyAdmin" ).html( "" ) // remove add event when you logout
 
   }
 }
