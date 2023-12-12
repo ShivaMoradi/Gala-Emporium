@@ -37,26 +37,90 @@ async function createClubHTML(club) {
         </div>`;
 }
 
-async function createEventHTML() {
-    try {
-        const clubData = await eventsByClub();
-        const clubsHTML = await Promise.all(Object.values(clubData).map(createClubHTML));
-
-        document.getElementById('app').innerHTML = `
-            <section>
-                <div class="events">
-                    <div class="leftBox">
-                        <div class="content">
-                            ${clubsHTML.join('')}
-                        </div>
-                    </div>
+//Create HTML structure to display events.
+//TODO Remove image style when css has been applied to event-image.
+//TODO Create link to event webpage.
+// Fetch club data from the baackend
+async function createEventHTML(clubData) {
+    const b = await eventsByClub();
+    let club = "";
+    let event = "";
+    for (const clave in b) {
+        club += ` <h1>${b[clave].clubName}</h1>
+            <p>${b[clave].clubDescrip}</p>`
+        if (b.hasOwnProperty(clave)) {
+            const objetoInterior = b[clave];
+            if (objetoInterior.hasOwnProperty("eventos")) {
+                const arregloInterior = objetoInterior.eventos;
+                // Crear las listas desordenadas con elementos li
+                for (const valor of arregloInterior) {
+                    const datebd = `${b[clave].date}`;
+                    const dateNew = new Date(datebd)
+                    const date = dateNew.getUTCDate();
+                    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                    const monthLetter = month[dateNew.getUTCMonth()];
+                    event = `<ul>
+              <li>
+                <div class="time">
+                  <h2>${date}<br><span>${monthLetter}</span></h2>
                 </div>
-            </section>`;
-    } catch (error) {
-        console.error('Error fetching and rendering events:', error);
-        // Hantera fel på lämpligt sätt
+                <div class="details">
+                  <h3>${b[clave].eventName}</h3>
+                  <p>${b[clave].eventDescrip} .</p>
+                  <a href="#">View Details</a>
+                </div>
+                <div style="clear: both;"></div>
+              </li>
+            </ul>`
+                    club += event;
+                }
+
+            }
+        }
+
     }
+    return `
+<section>
+      
+      </div>
+        <div class="events">
+        <div class="leftBox">
+          <div class="content">
+           
+            ${club}
+        
+            
+           
+
+          </div>
+
+
+        </div>
+    </section>
+    
+                    `;;
+
 }
+
+// Fetch club data from the backend
+fetch('/api/club')
+    .then(response => response.json())
+    .then(data => {
+        const eventDisplay = document.getElementById('eventDisplay');
+
+        data.forEach(clubData => {
+            const eventHTML = createEventHTML(clubData);
+            const eventContainer = document.createElement('div');
+            eventContainer.innerHTML = eventHTML;
+            eventContainer.classList.add('event');
+
+            eventDisplay.appendChild(eventContainer);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching club data:', error);
+    });
+
 
 function event() {
     return `
@@ -130,32 +194,33 @@ async function addEvent() {
 window.addEvent = addEvent;
 
 async function eventsByClub() {
-    const response = await fetch("/api/club");
-    const data = await response.json();
-
+    const clubData = await getClubEvents();
     const eventosPorClub = {};
-    for (const evento of data) {
+    for (const evento of clubData) {
         if (!eventosPorClub[evento.clubName]) {
             eventosPorClub[evento.clubName] = {
                 clubName: evento.clubName,
                 eventos: [],
                 clubDescrip: evento.clubDescription,
+                date: evento.date,
+                eventName: evento.eventName,
+                eventDescrip: evento.eventDescription
             };
         }
         eventosPorClub[evento.clubName].eventos.push({
             eventName: evento.eventName,
-            eventDescrip: evento.eventDescription,
-            date: evento.date,
-            price: evento.price,
-            // Include more properties of the event if necessary
+            // Puedes incluir más propiedades del evento si es necesario
         });
     }
-    return eventosPorClub;
+    return eventosPorClub
 }
 
 
+
+
+
 async function getClubEvents() {
-    const response = await fetch("/api/club");
-    const data = await response.json();
+    const response = await fetch("/api/club")
+    const data = await response.json()
     return data;
 }
