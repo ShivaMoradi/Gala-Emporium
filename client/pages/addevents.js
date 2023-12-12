@@ -85,7 +85,6 @@ async function createEventHTML(clubData) {
                 console.error( 'Error fetching club data:', error );
             } );
 
->>>>>>> shiva
 async function event() {
     return `
   <form class= "addEvent" onsubmit="addEvent(); return false">
