@@ -126,10 +126,11 @@ async function addEvent() {
 window.addEvent = addEvent;
 
 async function eventsByClub() {
-    const clubData = await getClubEvents();
-    console.log("Club Data:", clubData);  // Lägg till detta för att logga data
+    const response = await fetch("/api/club");
+    const data = await response.json();
+
     const eventosPorClub = {};
-    for (const evento of clubData) {
+    for (const evento of data) {
         if (!eventosPorClub[evento.clubName]) {
             eventosPorClub[evento.clubName] = {
                 clubName: evento.clubName,
@@ -147,6 +148,7 @@ async function eventsByClub() {
     }
     return eventosPorClub;
 }
+
 
 async function getClubEvents() {
     const response = await fetch("/api/club");
