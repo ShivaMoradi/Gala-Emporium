@@ -15,7 +15,7 @@ function createEventHTML(clubData) {
       <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
       <p>${clubData.clubName}</p>
       <img src="${clubData.image}" alt="Image of ${clubData.eventName}" class="event-image">
-      <p>Date: ${clubData.date}</p>
+      <p>Date and time: ${clubData.date}</p>
       <p>Description: ${clubData.eventDescription}</p>
       <p>Price: ${clubData.price}</p>
     </div>
@@ -28,12 +28,12 @@ function event() {
   <form class= "addEvent" onsubmit="addEvent(); return false">
     <h1>Add new Event!</h1>
     <input type="varchar(200)" name="eventsName" placeholder="events name">
-        <input type="varchar(255)" eventDescription="eventsDescription" placeholder="events description">
-    <input type="datetime" data="eventsDate" placeholder="events date">
+    <input type="varchar(255)" eventDescription="eventsDescription" placeholder="events description">
+    <input type="datetime" date="eventsDate" placeholder="events date">
     <input type="varchar(200)" address="eventsAddress" placeholder="events address">
     <input type="int" price="eventsPrice" placeholder="events price">
     <input type="int" clubId="clubId" placeholder="club id">
-    <input type="blob" name="eventsImages" placeholder="events images">
+    <input type="blob" images="eventsImages" placeholder="events images">
     <input id="submit" type="submit" value="Add Event">
     
 
@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             const eventContainer = document.createElement("div");
             eventContainer.innerHTML = eventHTML;
             eventContainer.classList.add("event");
-
             eventDisplay.appendChild(eventContainer);
         });
     } catch (error) {
