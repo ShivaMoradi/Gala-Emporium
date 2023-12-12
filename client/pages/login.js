@@ -1,17 +1,4 @@
-/*export default function () {
-  return `
-    <form>
-      <input name="email" placeholder="your email">
-      <input name="password" placeholder="your password">
-      <input type="submit" value="Login">
-    </form>  
-  `
-}*/
-
-import { event } from "./addevents.js";
-
-
-
+import { event,addEvent } from "./addevents.js";
 export default async function init () {
   return `
     <form onsubmit="login(); return false">
@@ -27,7 +14,7 @@ async function login () {
     email: $( '[name=email]' ).val(),
     password: $( '[name=password]' ).val()
   }
-
+  $( "#addEventbyAdmin" ).html( await event() )
   console.log( credentials )
   let response = await fetch( '/api/login', {
     // tell the server we want to send/create data
@@ -43,14 +30,10 @@ async function login () {
     $( '#login' ).html( `
       <button onclick="logout()">Logout</button>
     `)
-      $( "#addEventbyAdmin" ).html( await event() );
     event()// render event when you login
-  } else {
-    
-      logout()
-    }
-
+  
   }
+}
 
 
 
@@ -80,7 +63,6 @@ async function checkLogin () {
     $( '#login' ).html( `
       <button onclick="logout()">Logout</button>
     `)
-    $( "#addEventbyAdmin" ).html( "" ) // remove add event when you logout
 
   }
 }
