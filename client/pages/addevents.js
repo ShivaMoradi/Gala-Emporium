@@ -12,20 +12,66 @@ export {getEventsForClub, createEventHTML,event};
 //Create HTML structure to display events.
 //TODO Remove image style when css has been applied to event-image.
 //TODO Create link to event webpage.
-// Fetch club data from the backend
-function createEventHTML(clubData){
-        return `
-    <div class="grid-container" id="eventDisplay"></div>
-                        <div class='event'>
-                            <h3><a href="#" class="event-title-link" data-id="${ clubData.id }">${ clubData.eventName }</a></h3>
-                            <p>${ clubData.clubName }</p>
-                            <img src="${ clubData.image }" alt="Image of ${ clubData.eventName }" class="event-image" style="max-width:300px;height:auto;">
-                            <p>Date: ${ clubData.date }</p>
-                            <p>Time: ${ clubData.time }</p>
-                            <p>Description: ${ clubData.eventDescription }</p>
-                            <p>Price: ${ clubData.price }</p>
-                        </div>
-                    `;
+// Fetch club data from the baackend
+async function createEventHTML(clubData) {
+    const b = await eventsByClub();
+    let club = "";
+    let event = "";
+     for (const clave in b) {
+        club += ` <h1>${b[clave].clubName}</h1>
+            <p>${b[clave].clubDescrip}</p>`
+         if (b.hasOwnProperty(clave)) {
+             const objetoInterior = b[clave];
+             if (objetoInterior.hasOwnProperty("eventos")) {
+                 const arregloInterior = objetoInterior.eventos;
+                 // Crear las listas desordenadas con elementos li
+                 for (const valor of arregloInterior) {
+                      const datebd = `${b[clave].date}`;
+                       const dateNew = new Date(datebd)
+                      const date = dateNew.getUTCDate();
+                       const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                      const monthLetter = month[dateNew.getUTCMonth()];
+                      event =`<ul>
+              <li>
+                <div class="time">
+                  <h2>${date}<br><span>${monthLetter}</span></h2>
+                </div>
+                <div class="details">
+                  <h3>${b[clave].eventName}</h3>
+                  <p>${b[clave].eventDescrip} .</p>
+                  <a href="#">View Details</a>
+                </div>
+                <div style="clear: both;"></div>
+              </li>
+            </ul>`
+                      club += event;
+                 }
+                
+             }
+         }
+         
+    }
+    return       `
+<section>
+      
+      </div>
+        <div class="events">
+        <div class="leftBox">
+          <div class="content">
+           
+            ${club}
+        
+            
+           
+
+          </div>
+
+
+        </div>
+    </section>
+    
+                    `;;
+
         } 
 
         // Fetch club data from the backend
@@ -141,3 +187,37 @@ window.addBook = addEvent
 
 
 // });
+
+
+
+async function eventsByClub() {
+  const clubData = await getClubEvents();
+  const eventosPorClub = {};
+for (const evento of clubData) {
+  if (!eventosPorClub[evento.clubName]) {
+    eventosPorClub[evento.clubName] = {
+      clubName: evento.clubName,
+      eventos: [],
+      clubDescrip: evento.clubDescription,
+      date: evento.date,
+      eventName: evento.eventName,
+      eventDescrip:evento.eventDescription
+    };
+  }
+  eventosPorClub[evento.clubName].eventos.push({
+    eventName: evento.eventName,
+    // Puedes incluir más propiedades del evento si es necesario
+  });
+}
+ return eventosPorClub
+}
+ 
+
+
+
+
+async function getClubEvents() {
+    const response = await fetch("/api/club")
+    const data = await response.json()
+    return data;
+}
