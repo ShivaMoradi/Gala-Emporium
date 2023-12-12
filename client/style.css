@@ -53,6 +53,11 @@ body {
   flex-direction: column;
 }
 
+#container {
+  display: flex;
+  flex-direction: column;
+}
+
 nav {
   background-color: var(--crust);
   border-bottom: 2px solid var(--crust);
@@ -289,3 +294,8 @@ section .events ul li .details a {
 
 }
 
+#app {
+  padding: 10px;
+  background-color: var(--crust);
+  /* Adjust background color as needed */
+}

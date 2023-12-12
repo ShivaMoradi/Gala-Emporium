@@ -8,7 +8,7 @@ async function router() {
   let content;
   // Populate "content" with whatever
   switch (window.location.hash) {
-    case "":
+    case "#home":
       content = await createEventHTML();
       break;
     case "#rockClub":
@@ -20,7 +20,7 @@ async function router() {
     case "#bookClub":
       content = await clubPages("book club");
       break;
-    case "#addevent":
+    case "#addEvent": // Update this line
       content = event();
       break;
     case "#loveClub":
@@ -34,7 +34,6 @@ async function router() {
   // Populate <main> with whatever content.
   $('main').html(content);
 }
-
 async function getAllEvents() {
   try {
     const data = await fetch('/api/club');

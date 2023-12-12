@@ -38,24 +38,29 @@ async function createClubHTML(club) {
 }
 
 async function createEventHTML() {
-    const clubData = await eventsByClub();
-    const clubsHTML = await Promise.all(Object.values(clubData).map(createClubHTML));
+    try {
+        const clubData = await eventsByClub();
+        const clubsHTML = await Promise.all(Object.values(clubData).map(createClubHTML));
 
-    document.getElementById('app').innerHTML = `
-        <section>
-            <div class="events">
-                <div class="leftBox">
-                    <div class="content">
-                        ${clubsHTML.join('')}
+        document.getElementById('app').innerHTML = `
+            <section>
+                <div class="events">
+                    <div class="leftBox">
+                        <div class="content">
+                            ${clubsHTML.join('')}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>`;
+            </section>`;
+    } catch (error) {
+        console.error('Error fetching and rendering events:', error);
+        // Hantera fel på lämpligt sätt
+    }
 }
 
 function event() {
     return `
-        <form class="addEvent" onsubmit="addEvent(); return false">
+        <form id="addEventForm" class="addEvent"
             <h1>Add new Event!</h1>
             <input type="text" name="eventsName" placeholder="Event name">
             <input type="text" name="eventsDescription" placeholder="Event description">
@@ -64,7 +69,7 @@ function event() {
             <input type="number" name="eventsPrice" placeholder="Event price">
             <input type="text" name="clubId" placeholder="Club ID">
             <input type="text" name="eventsImages" placeholder="Event images">
-            <input id="submit" type="submit" value="Add Event">
+            <button id="submit" type="button" onclick="addEvent()">Add Event</button>
         </form>`;
 }
 
@@ -122,7 +127,6 @@ async function addEvent() {
         // Handle error appropriately
     }
 }
-
 window.addEvent = addEvent;
 
 async function eventsByClub() {
