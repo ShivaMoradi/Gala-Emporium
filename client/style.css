@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');*/
 
 @media screen and (min-width: 0) {}
 
@@ -144,22 +144,23 @@ nav>a:hover,
   font-weight: bold;
 }
 
-
 .grid-container {
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   gap: 10px;
   border: 1px solid #cccccc00;
 }
-.addEvent{
-  border-style:solid;
-  border-color: rgb(117, 38, 38);
+
+.addEvent {
+  border-style: solid;
+  border-color: rgb(92, 16, 185);
   border-radius: 7px;
   padding-bottom: 30px;
   padding-top: 5px;
   padding-left: 10%;
 }
-.footer{
+
+.footer {
   margin-top: 100px;
   padding: 5px;
   align-items: center;
