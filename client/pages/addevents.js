@@ -1,6 +1,6 @@
 
 import init from "./login.js";
-export { getEventsForClub, createEventHTML,event, event, addEvent };
+export { getEventsForClub, createEventHTML,event, addEvent };
 
 // Function to filter events based on clubName
 function getEventsForClub(clubName, clubData) {
