@@ -102,23 +102,30 @@ async function createEventHTML(clubData) {
 
 }
 
-// Fetch club data from the backend
-fetch('/api/club')
-    .then(response => response.json())
-    .then(data => {
-        const eventDisplay = document.getElementById('eventDisplay');
+// Hämta klubbdata från backend
+fetch("/api/club")
+    .then((response) => response.json())
+    .then(async (data) => {
+        const eventDisplay = document.getElementById("eventDisplay");
 
-        data.forEach(clubData => {
-            const eventHTML = createEventHTML(clubData);
-            const eventContainer = document.createElement('div');
-            eventContainer.innerHTML = eventHTML;
-            eventContainer.classList.add('event');
+        // Kontrollera om det finns minst en klubb
+        if (data && data.length > 0) {
+            // Skapa HTML för alla klubbar och händelser
+            const eventsHTML = await createEventHTML(data);
 
-            eventDisplay.appendChild(eventContainer);
-        });
+            // Kontrollera om eventDisplay är null innan du ändrar innerHTML
+            if (eventDisplay) {
+                eventDisplay.innerHTML = eventsHTML;
+            } else {
+                console.error("Error: eventDisplay is null");
+            }
+        } else {
+            // Hantera fallet där det inte finns några klubbar
+            console.error("Error: No clubs available");
+        }
     })
-    .catch(error => {
-        console.error('Error fetching club data:', error);
+    .catch((error) => {
+        console.error("Fel vid hämtning av klubbdata:", error);
     });
 
 
