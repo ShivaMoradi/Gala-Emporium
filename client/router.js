@@ -9,11 +9,11 @@ async function router() {
   // Populate "content" with whatever
   switch (window.location.hash) {
     case "":
-      content = await getAllEvents();
+    content = await createEventHTML("")
       break;
     case "#rockClub":
-      content = await clubPages("rock club");
-      break;
+        content = await clubPages("rock club");
+        break;
     case "#blueClub":
       content = await clubPages("blue club");
       break;
@@ -21,8 +21,12 @@ async function router() {
       content = await clubPages("book club");
       break;
     //case "#addevent":
-      //content = event("");
-      //break;
+    //content = await event( "");
+    //break;
+   case "#loveClub":
+      content = "<h1>Hola LOve</h1>";
+      break;
+  
     default:
       content = "<h1><bold>Page not found!</bold></h1>"
       break
