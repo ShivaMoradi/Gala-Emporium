@@ -34,24 +34,6 @@ async function router() {
   // Populate <main> with whatever content.
   $('main').html(content);
 }
-async function getAllEvents() {
-  try {
-    const data = await fetch('/api/club');
-    if (!data.ok) {
-      throw new Error(`Failed to fetch events. Status: ${data.status}`);
-    }
-
-    const clubData = await data.json();
-
-    // Map over each club and create HTML for events
-    const clubsHTML = clubData.map(createClubHTML).join('');
-
-    return `<div class="grid-container">${clubsHTML}</div>`;
-  } catch (error) {
-    console.error('Error fetching events:', error);
-    return '<p>Error fetching events. Please try again later.</p>';
-  }
-}
 
 window.onload = router;
 window.onhashchange = router;
