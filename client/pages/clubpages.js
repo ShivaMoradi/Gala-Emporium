@@ -20,7 +20,8 @@ export default async function clubPages(clubName) {
     }
 
     // Filter events based on Club name and mockData. 
-    const clubEvents = getEventsForClub(clubName, clubData);
+    const clubEvents = await getEventsForClub(clubName, clubData);
+
 
     //Generate HTML for each Event. 
     const eventsHTML = clubEvents.map(createEventHTML).join('');

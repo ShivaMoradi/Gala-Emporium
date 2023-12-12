@@ -1,28 +1,60 @@
+export { getEventsForClub, createEventHTML, event, addEvent, eventsByClub, getClubEvents };
 
-export { getEventsForClub, createEventHTML, event, addEvent };
-
-// Function to filter events based on clubName
-function getEventsForClub(clubName, clubData) {
+async function getEventsForClub(clubName, clubData) {
     return clubData.filter(event => clubName.toLowerCase() === event.clubName.toLowerCase());
 }
 
-// Create HTML structure to display events
-function createEventHTML(clubData) {
+async function createSingleEventHTML(event) {
+    const dateNew = new Date(event.date);
+    const date = dateNew.getUTCDate();
+    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthLetter = month[dateNew.getUTCMonth()];
+
     return `
-    <div class='event'>
-      <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
-      <p>${clubData.clubName}</p>
-      <img src="${clubData.image}" alt="Image of ${clubData.eventName}" class="event-image">
-      <p>Date: ${clubData.date}</p>
-      <p>Description: ${clubData.eventDescription}</p>
-      <p>Price: ${clubData.price}</p>
-    </div>
-  `;
+        <ul>
+            <li>
+                <div class="time">
+                    <h2>${date}<br><span>${monthLetter}</span></h2>
+                </div>
+                <div class="details">
+                    <h3>${event.eventName}</h3>
+                    <p>${event.eventDescrip} .</p>
+                    <a href="#">View Details</a>
+                </div>
+                <div style="clear: both;"></div>
+            </li>
+        </ul>`;
 }
 
-// Function to define the structure of the event form
+async function createClubHTML(club) {
+    const eventsHTML = await Promise.all(club.eventos.map(createSingleEventHTML));
+
+    return `
+        <div class="club">
+            <h1>${club.clubName}</h1>
+            <p>${club.clubDescrip}</p>
+            <div class="events">${eventsHTML.join('')}</div>
+        </div>`;
+}
+
+async function createEventHTML() {
+    const clubData = await eventsByClub();
+    const clubsHTML = await Promise.all(Object.values(clubData).map(createClubHTML));
+
+    document.getElementById('app').innerHTML = `
+        <section>
+            <div class="events">
+                <div class="leftBox">
+                    <div class="content">
+                        ${clubsHTML.join('')}
+                    </div>
+                </div>
+            </div>
+        </section>`;
+}
+
 function event() {
-        return `
+    return `
         <form class="addEvent" onsubmit="addEvent(); return false">
             <h1>Add new Event!</h1>
             <input type="text" name="eventsName" placeholder="Event name">
@@ -33,83 +65,91 @@ function event() {
             <input type="text" name="clubId" placeholder="Club ID">
             <input type="text" name="eventsImages" placeholder="Event images">
             <input id="submit" type="submit" value="Add Event">
-        </form>
-    `;
+        </form>`;
 }
 
-// Function to add a new event
 async function addEvent() {
     try {
-        const eventName = document.querySelector('input[name="eventsName"]').value;
-        const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
-        const date = document.querySelector('input[name="eventsDate"]').value;
-        const address = document.querySelector('input[name="eventsAddress"]').value;
-        const price = document.querySelector('input[name="eventsPrice"]').value;
-        const clubName = document.querySelector('input[name="clubId"]').value;  // Assuming clubId is actually clubName
-        const clubDescription = "";  // Assuming clubDescription is not present in your form
+        const eventName = document.querySelector("[name=eventsName]").value;
+        const eventDescription = document.querySelector("[name=eventsDescription]").value;
+        const eventDate = document.querySelector("[name=eventsDate]").value;
+        const eventAddress = document.querySelector("[name=eventsAddress]").value;
+        const eventPrice = document.querySelector("[name=eventsPrice]").value;
+        const clubId = document.querySelector("[name=clubId]").value;
+        const eventImages = document.querySelector("[name=eventsImages]").value;
+
+        // Basic validation
+        if (!eventName || eventName.trim().length === 0 || !eventDate) {
+            alert('Event name and date are required.');
+            return;
+        }
+
+        const eventData = {
+            eventName,
+            eventDescription,
+            eventDate,
+            eventAddress,
+            eventPrice,
+            clubId,
+            eventImages
+        };
 
         const response = await fetch("/api/club", {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                eventName,
-                eventDescription,
-                date,
-                address,
-                price,
-                clubName,
-                clubDescription,
-            }),
+            body: JSON.stringify(eventData)
         });
 
-        if (!response.ok) {
-            throw new Error(`Error adding event: ${response.statusText}`);
-        }
-
         const result = await response.json();
-        console.log("Result from server:", result);
 
-        // Handle success as needed
+        if (result.eventAdded) {
+            alert(`${eventName} added`);
+            // Clear form fields after successful addition
+            document.querySelector("[name=eventsName]").value = "";
+            document.querySelector("[name=eventsDescription]").value = "";
+            document.querySelector("[name=eventsDate]").value = "";
+            document.querySelector("[name=eventsAddress]").value = "";
+            document.querySelector("[name=eventsPrice]").value = "";
+            document.querySelector("[name=clubId]").value = "";
+            document.querySelector("[name=eventsImages]").value = "";
+        } else {
+            alert(`Failed to add ${eventName}. Please try again.`);
+        }
     } catch (error) {
         console.error('Error adding event:', error);
-        // Handle the error appropriately
+        // Handle error appropriately
     }
 }
 
-window.addEvent = addEvent
+window.addEvent = addEvent;
 
-// Event listener for DOMContentLoaded
-document.addEventListener("DOMContentLoaded", async () => {
-    const eventDisplay = document.getElementById("eventDisplay");
-
-    if (!eventDisplay) {
-        console.error('Error: Could not find element with id "eventDisplay"');
-        return;
-    }
-
-    try {
-        const response = await fetch("/api/club");
-        if (!response.ok) {
-            throw new Error(`Error fetching events: ${response.statusText}`);
+async function eventsByClub() {
+    const clubData = await getClubEvents();
+    console.log("Club Data:", clubData);  // Lägg till detta för att logga data
+    const eventosPorClub = {};
+    for (const evento of clubData) {
+        if (!eventosPorClub[evento.clubName]) {
+            eventosPorClub[evento.clubName] = {
+                clubName: evento.clubName,
+                eventos: [],
+                clubDescrip: evento.clubDescription,
+            };
         }
-
-        const data = await response.json();
-        console.log("Data from server:", data);
-
-        data.forEach(clubData => {
-            const eventHTML = createEventHTML(clubData);
-            const eventContainer = document.createElement("div");
-            eventContainer.innerHTML = eventHTML;
-            eventContainer.classList.add("event");
-
-            eventDisplay.appendChild(eventContainer);
+        eventosPorClub[evento.clubName].eventos.push({
+            eventName: evento.eventName,
+            eventDescrip: evento.eventDescription,
+            date: evento.date,
+            price: evento.price,
+            // Include more properties of the event if necessary
         });
-    } catch (error) {
-        console.error("Error fetching club data:", error);
     }
-});
+    return eventosPorClub;
+}
 
-// Call the event function to render the form
-event();
+async function getClubEvents() {
+    const response = await fetch("/api/club");
+    const data = await response.json();
+    return data;
+}
