@@ -10,9 +10,6 @@ export {getEventsForClub, createEventHTML,event};
 
 
 //Create HTML structure to display events.
-//TODO Remove image style when css has been applied to event-image.
-//TODO Create link to event webpage.
-// Fetch club data from the baackend
 async function createEventHTML(clubData) {
     const b = await eventsByClub();
     let club = "";
@@ -61,16 +58,12 @@ async function createEventHTML(clubData) {
            
             ${club}
         
-            
-           
-
           </div>
-
 
         </div>
     </section>
     
-                    `;;
+          `;;
 
         } 
 
