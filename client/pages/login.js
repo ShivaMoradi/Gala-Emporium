@@ -8,8 +8,11 @@
   `
 }*/
 
+import { event } from "./addevents.js";
 
-export default function init () {
+
+
+export default async function init () {
   return `
     <form onsubmit="login(); return false">
       <input name="email" placeholder="your email">
@@ -24,6 +27,7 @@ async function login () {
     email: $( '[name=email]' ).val(),
     password: $( '[name=password]' ).val()
   }
+
   console.log( credentials )
   let response = await fetch( '/api/login', {
     // tell the server we want to send/create data
@@ -39,12 +43,18 @@ async function login () {
     $( '#login' ).html( `
       <button onclick="logout()">Logout</button>
     `)
-    cart() // render cart when you login
+      $( "#addEventbyAdmin" ).html( await event() );
+    event()// render event when you login
+  } else {
+    
+      logout()
+    }
+
   }
 
-}
 
-window.login = login // expose login to global (html) scope
+
+window.login = login 
 
 
 async function logout () {
@@ -55,8 +65,7 @@ async function logout () {
   let result = await response.json();
   console.log( result )
   if ( !result.loggedIn ) {
-    $( '#login' ).html( init() )
-    $( "#addevent" ).html( "" ) // remove add event when you logout
+    $( '#login' ).html(await init() )
   }
 }
 
@@ -71,6 +80,8 @@ async function checkLogin () {
     $( '#login' ).html( `
       <button onclick="logout()">Logout</button>
     `)
+    $( "#addEventbyAdmin" ).html( "" ) // remove add event when you logout
+
   }
 }
 

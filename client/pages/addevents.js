@@ -1,4 +1,5 @@
 
+import init from "./login.js";
 export { getEventsForClub, createEventHTML, event, addEvent };
 
 // Function to filter events based on clubName
@@ -19,9 +20,13 @@ function createEventHTML(clubData) {
     </div>
   `;
 }
+init()
+
+
+
 
 // Function to define the structure of the event form
-function event() {
+async function event() {
     return `
   <form class= "addEvent" onsubmit="addEvent(); return false">
     <h1>Add new Event!</h1>
@@ -34,30 +39,28 @@ function event() {
     <input type="blob" images="eventsImages" placeholder="events images">
     <input id="submit" type="submit" value="Add Event">
     
-
   </form>
   `
-
 }
 
 // Function to add a new event
-async function addEvent() {
+async function addEvent () {
     try {
-        const eventName = document.querySelector('input[name="eventsName"]').value;
-        const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
-        const date = document.querySelector('input[name="eventsDate"]').value;
-        const address = document.querySelector('input[name="eventsAddress"]').value;
-        const price = document.querySelector('input[name="eventsPrice"]').value;
+        const eventName = document.querySelector( 'input[name="eventsName"]' ).value;
+        const eventDescription = document.querySelector( 'input[name="eventsDescription"]' ).value;
+        const date = document.querySelector( 'input[name="eventsDate"]' ).value;
+        const address = document.querySelector( 'input[name="eventsAddress"]' ).value;
+        const price = document.querySelector( 'input[name="eventsPrice"]' ).value;
         const clubName = document.querySelector( 'input[name="clubId"]' ).value;
         // Assuming clubId is actually clubName
         const clubDescription = "";  // Assuming clubDescription is not present in your form
 
-        const response = await fetch("/api/club", {
+        const response = await fetch( "/api/club", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
+            body: JSON.stringify( {
                 eventName,
                 eventDescription,
                 date,
@@ -65,15 +68,18 @@ async function addEvent() {
                 price,
                 clubName,
                 clubDescription,
-            }),
-        });
+            } ),
+            
+        } );
+    
 
-        if (!response.ok) {
-            throw new Error(`Error adding event: ${response.statusText}`);
+        if ( !response.ok ) {
+            throw new Error( `Error adding event: ${ response.statusText }` );
         }
-
+        
         const result = await response.json();
-        console.log("Result from server:", result);
+        console.log( "Result from server:", result );
+    
 
         // Handle success as needed
     } catch (error) {

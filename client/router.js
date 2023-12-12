@@ -1,7 +1,6 @@
 import login from "./pages/login.js";
-$('#login').html(login());
-
-import { createEventHTML, event } from "./pages/addevents.js";
+$('#login').html( await login());
+import { createEventHTML } from "./pages/addevents.js";
 import clubPages from "./pages/clubpages.js";
 
 
@@ -21,9 +20,9 @@ async function router() {
     case "#bookClub":
       content = await clubPages("book club");
       break;
-    case "#addevent":
-      content = event("");
-      break;
+    //case "#addevent":
+      //content = event("");
+      //break;
     default:
       content = "<h1><bold>Page not found!</bold></h1>"
       break
