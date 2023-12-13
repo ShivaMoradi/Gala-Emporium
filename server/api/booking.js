@@ -25,7 +25,7 @@ export default function (server, db) {
       // Infoga bokningen i 'bookings'-tabellen
       console.log('Inserting into booking:', userEmail, orderNr, eventsID);
       const resultBooking = await db.query(
-        "INSERT INTO booking (booking_id, userEmail, orderNr, eventsID) VALUES (null, ?, ?, ?)",
+        "INSERT INTO booking (userEmail, orderNr, eventsID) VALUES ( ?, ?, ?)",
         [userEmail, orderNr, eventsID]
       );
 
