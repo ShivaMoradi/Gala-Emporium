@@ -4,6 +4,9 @@ import session from 'express-session'
 import { promisify } from 'util'
 // rest apis
 import apiRegister from './api-register.js'
+import club from './api/club.js'
+import login from './api/login.js'
+import booking from './api/booking.js'
 
 const server = express()
 const port = 3000
@@ -54,6 +57,9 @@ db.connect(err => {
 
   // connect to API:s
   apiRegister(server, db)
+  club(server, db)
+  login(server, db)
+  booking(server,db)
 
   // Start the server
   server.listen(port, () => {
