@@ -144,3 +144,7 @@ nav>a:hover,
   filter: brightness(125%);
   font-weight: bold;
 }
+.grid-container{
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+}
