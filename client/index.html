@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gala-Emporia</title>
     <script src="jquery-3.7.1.min.js"></script>
-    <script type="module" src="router.js"></script>
+    <script type="module" src="./router.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <script src="./pages/addevents.js"></script>
-
+    <script type="module" src="./pages/addevents.js"></script>
+    <script type="module" src="./pages/login.js"></script>
+    <script type="module" src="./pages/booking.js"></script>
 </head>
 
 <body>
-
     <header>
         <h1 id="website-title">
             Gala-Emporia
         </h1>
-       
-        
+
     </header>
     <div>
         <nav>
@@ -30,31 +29,33 @@
                         <div class="dropdown-trigger">Clubs</div>
                         <div class="dropdown-menu">
                             <ul>
-                                <li>Rock club</li>
-                                <li><a href="#clubpages">Blue Club</a></li>
+                                <li><a href="#rockClub">Rock Club</a></li>
+                                <li><a href="#blueClub">Blue Club</a></li>
                                 <li><a href="#bookClub">Book Club</a></li>
                                 <li>Jumping club</li>
-                                <li>Loving club</li>
+                                <li><a href="#loveClub">Loving club</a> </li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <li><a href="#addevent">Add event</a></li>
             </ul>
         </nav>
+        <aside id="login"></aside>
+
     </div>
+
     <div>
         <section id="coverImage">
             <img src="./images/What-we-do-desktop-banner.png" alt="club events">
         </section>
     </div>
-    
-   
+    <div id="addEventbyAdmin"></div>
 
     <main>
+        <div id="eventDisplay" class="grid-container"></div>
+
     </main>
-    
-    
+
     <footer class="margen-interno">
         <div class="footer">
             <div class="container margen-interno">
@@ -64,7 +65,6 @@
                     <p>Phone:+121 56556 565556</p>
                     <p>Address:Your Address 123 street</p>
                 </div>
-                
             </div>
             <div class="bottom-bar">
                 <p>&copy; 2023 your company . All rights reserved</p>
@@ -72,4 +72,5 @@
         </div>
     </footer>
 </body>
+
 </html>
