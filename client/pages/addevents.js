@@ -69,13 +69,13 @@ async function addEvent() {
                 clubName,
                 clubDescription,
             }),
-
         });
-
+        console.log('Server response status:', response.status);
 
         if (!response.ok) {
-            throw new Error(`Error adding event: ${response.statusText}`);
+            throw new Error(`Error adding event 6767: ${response.statusText}`);
         }
+
 
         const result = await response.json();
         console.log("Result from server:", result);

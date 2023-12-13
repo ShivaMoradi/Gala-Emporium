@@ -13,16 +13,33 @@ export default function (server, db) {
   })
  
   server.post('/api/club', async (req, res) => {
-    if (req.body.name.trim().length > 0) {
-      const result = await db.query("INSERT INTO clubEvents (eventName, eventDescription, date, address, price, clubName, clubDescription) VALUES (?, ?, ?, ?, ?, ?, ?)", [req.body.eventName, req.body.eventDescription, req.body.date, req.body.address, req.body.price, req.body.clubName, req.body.clubDescription])
-      result.clubAdded = true
-      res.json(result)
+    try {
+      const { eventName, eventDescription, eventDate, eventAddress, eventPrice, clubId, eventImages } = req.body;
+
+      // Validate required fields
+      if (!eventName || eventName.trim().length === 0) {
+        res.status(400).json({ error: 'Event name is required' });
+        return;
+      }
+
+      // Insert the event into the 'events' table
+      const resultEvents = await db.query("INSERT INTO events (eventName, eventDescription, date, address, price, clubId, images) VALUES (?, ?, ?, ?, ?, ?, ?)", [eventName, eventDescription, eventDate, eventAddress, eventPrice, clubId, eventImages]);
+
+      // Include additional checks if needed for the 'events' table
+
+      // Combine results and respond
+      const result = {
+        eventAdded: true,
+        // Include other properties if needed
+      };
+
+      res.json(result);
       console.log("Result - ", result);
-    } else {
-      res.status(401)
-      res.json({ clubAdded: false })
+    } catch (error) {
+      console.error('Error adding event:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-  })
+  });
  
   server.put('/api/club/:id', (req, res) => {
   })
