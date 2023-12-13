@@ -24,7 +24,7 @@ function createEventHTML(clubData) {
     <div class='event'>
       <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
       <p>${clubData.clubName}</p>
-      <img src="${clubData.images}" class="event-image">
+      <img src="${clubData.images}" class="event-image" width="300" height="200">
       <p>Date and time: ${formattedDate}</p>
       <p>Description: ${clubData.eventDescription}</p>
       <p>Price: ${clubData.price}</p>
