@@ -14,7 +14,7 @@ export default function (server, db) {
  
   server.post('/api/club', async (req, res) => {
     try {
-      const { eventName, eventDescription, eventDate, eventAddress, eventPrice, clubId, eventImages } = req.body;
+      const { eventName, eventDescription, date, address, price, clubId, images } = req.body;
 
       // Validate required fields
       if (!eventName || eventName.trim().length === 0) {
@@ -23,7 +23,7 @@ export default function (server, db) {
       }
 
       // Insert the event into the 'events' table
-      const resultEvents = await db.query("INSERT INTO events (eventName, eventDescription, date, address, price, clubId, images) VALUES (?, ?, ?, ?, ?, ?, ?)", [eventName, eventDescription, eventDate, eventAddress, eventPrice, clubId, eventImages]);
+      const resultEvents = await db.query("INSERT INTO events (eventName, eventDescription, date, address, price, clubId, images) VALUES (?, ?, ?, ?, ?, ?, ?)", [eventName, eventDescription, date, address, price, clubId, images]);
 
       // Include additional checks if needed for the 'events' table
 
