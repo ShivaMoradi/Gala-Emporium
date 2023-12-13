@@ -12,12 +12,20 @@ export { getEventsForClub, createEventHTML, event, addEvent };
 
 // Create HTML structure to display events
 function createEventHTML(clubData) {
+    const formattedDate = new Date(clubData.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    });
     return `
     <div class='event'>
       <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
       <p>${clubData.clubName}</p>
-      <img src="${clubData.image}" alt="Image of ${clubData.eventName}" class="event-image">
-      <p>Date and time: ${clubData.date}</p>
+      <img src="${clubData.image}" alt="Image of ${clubData.image}" class="event-image">
+      <p>Date and time: ${formattedDate}</p>
       <p>Description: ${clubData.eventDescription}</p>
       <p>Price: ${clubData.price}</p>
       <button class="book-button" data-event-id="${clubData.id}">Book Now</button>
