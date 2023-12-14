@@ -144,27 +144,3 @@ nav>a:hover,
   filter: brightness(125%);
   font-weight: bold;
 }
-
-
-/*footer*/
-
-footer {
-  width: 100%;
-  background: #202020;
-  color: white;
-
-}
-.container-footer {
-  width: 100%;
-  background: #101010;
-}
-footer {
-  width: 100%;
-  background: #202020;
-  color: white;
-
-}
-.information a {
-  text-decoration: none;
-  color: #C7C7C7;
-}
