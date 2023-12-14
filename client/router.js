@@ -4,6 +4,8 @@ import { createEventHTML } from "./pages/addevents.js";
 import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
+import loveHtml from "./pages/love.js";
+
 
 
 
@@ -27,7 +29,7 @@ async function router() {
       content = await clubPages("jumping club");
       break;
     case "#loveClub":
-      content = await clubPages("jumping club");
+      content = await loveHtml()
       break;
     case "addevent":
       content = "<h1>Placeholder for addevent page</h1>"
