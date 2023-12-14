@@ -18,10 +18,10 @@ export default function (server, db) {
 
       // Validate required fields
       if (!eventName || eventName.trim().length === 0) {
-        res.status(400).json({ error: 'Event name is required' });
+                 res.status(400).json({ error: 'Event name is required' });
         return;
       }
-
+    
       // Insert the event into the 'events' table
       const resultEvents = await db.query("INSERT INTO events (name, eventDescription, date, address, price, clubId, images) VALUES (?, ?, ?, ?, ?, ?, ?)", [eventName, eventDescription, date, address, price, clubId, images]);
 
@@ -32,7 +32,7 @@ export default function (server, db) {
         eventAdded: true,
         // Include other properties if needed
       };
-      result.insertEvent = true
+       result.insertEvent = true
       res.json(result);
 
       console.log("Result - ", result);

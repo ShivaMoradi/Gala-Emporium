@@ -36,6 +36,66 @@ export default async function clubPages(clubName) {
  
             <section id="clubBody">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
                 <div id="mediaContainer"> 
                 <p> Video and images goes here</p>       
                 <!---VIDEO AND IMAGES GO HERE-->
