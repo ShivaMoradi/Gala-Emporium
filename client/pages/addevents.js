@@ -56,7 +56,7 @@ async function event() {
 
 // Function to add a new event
 async function addEvent() {
-
+      
         const eventName = document.querySelector('input[name="eventsName"]').value;
         const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
         const date = document.querySelector('input[name="eventsDate"]').value;
@@ -79,23 +79,21 @@ async function addEvent() {
                 price,
                 clubId,
                 clubDescription,
+               
             }),
         });
-       
-
-
-        const result = await response.json();
-         if (result.insertEvent) {
+          const result = await response.json()
+          console.log(result)
+             if (result.insertEvent) {
       alert(`${eventName.trim()} was added`)
-      $("[name=eventsName]").val("")
+      $("[name=bookName]").val("")
     }
   } else {
-    alert("You must fill out the fields!")
+    alert("Du måste skriva något!")
   }
-
-
-        // Handle success as needed
-   
+           
+           
+     
 }
 
 window.addEvent = addEvent
