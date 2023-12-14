@@ -23,7 +23,7 @@ export default function (server, db) {
       }
 
       // Insert the event into the 'events' table
-      const resultEvents = await db.query("INSERT INTO events (eventName, eventDescription, date, address, price, clubId, images) VALUES (?, ?, ?, ?, ?, ?, ?)", [eventName, eventDescription, date, address, price, clubId, images]);
+      const resultEvents = await db.query("INSERT INTO events (name, eventDescription, date, address, price, clubId, images) VALUES (?, ?, ?, ?, ?, ?, ?)", [eventName, eventDescription, date, address, price, clubId, images]);
 
       // Include additional checks if needed for the 'events' table
 
@@ -32,8 +32,9 @@ export default function (server, db) {
         eventAdded: true,
         // Include other properties if needed
       };
-
+      result.insertEvent = true
       res.json(result);
+
       console.log("Result - ", result);
     } catch (error) {
       console.error('Error adding event:', error);

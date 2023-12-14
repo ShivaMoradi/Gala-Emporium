@@ -56,16 +56,16 @@ async function event() {
 
 // Function to add a new event
 async function addEvent() {
-    try {
+
         const eventName = document.querySelector('input[name="eventsName"]').value;
         const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
         const date = document.querySelector('input[name="eventsDate"]').value;
         const address = document.querySelector('input[name="eventsAddress"]').value;
         const price = document.querySelector('input[name="eventsPrice"]').value;
-        const clubName = document.querySelector('input[name="clubId"]').value;
+        const clubId = document.querySelector('input[name="clubId"]').value;
         // Assuming clubId is actually clubName
         const clubDescription = "";  // Assuming clubDescription is not present in your form
-
+        if(eventName.trim().length > 0 && eventDescription.trim().length > 0 && date.trim().length > 0 && address.trim().length > 0 && price.trim().length > 0 && clubId.trim().length > 0 ){
         const response = await fetch("/api/club", {
             method: 'POST',
             headers: {
@@ -77,26 +77,25 @@ async function addEvent() {
                 date,
                 address,
                 price,
-                clubName,
+                clubId,
                 clubDescription,
             }),
         });
-        console.log('Server response status:', response.status);
-
-        if (!response.ok) {
-            throw new Error(`Error adding event 6767: ${response.statusText}`);
-        }
+       
 
 
         const result = await response.json();
-        console.log("Result from server:", result);
+         if (result.insertEvent) {
+      alert(`${eventName.trim()} was added`)
+      $("[name=eventsName]").val("")
+    }
+  } else {
+    alert("You must fill out the fields!")
+  }
 
 
         // Handle success as needed
-    } catch (error) {
-        console.error('Error adding event:', error);
-        // Handle the error appropriately
-    }
+   
 }
 
 window.addEvent = addEvent

@@ -1,0 +1,41 @@
+export default async function editarHTML() { 
+ 
+  return `<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/update/<%= customer.id %>" method="POST">
+          <input
+            type="text"
+            name="name"
+            value="<%= customer.name %>"
+            placeholder="Name"
+            class="form-control mb-3"
+            autofocus
+          />
+          <input
+            type="text"
+            name="address"
+            value="<%= customer.address%>"
+            placeholder="Address"
+            class="form-control mb-3"
+          />
+          <input
+            type="text"
+            name="phone"
+            value="<%= customer.phone%>"
+            placeholder="Phone"
+            class="form-control mb-3"
+          />
+
+          <button type="submit" class="btn btn-primary">save customer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>`
+
+
+
+
+}
