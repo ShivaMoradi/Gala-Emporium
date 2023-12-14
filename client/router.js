@@ -6,6 +6,7 @@ import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
 
 
+
 async function router() {
   let content;
   // Populate "content" with whatever

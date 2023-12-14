@@ -1,13 +1,13 @@
 export default async function clubHtml() {
    let tr =""
-  const club = await clubData();
+  const club = await getClub();
   console.log(club);
   if (club) {
     for(const a in club) {
           tr += ` <tr>
             <td></td>
-            <td>${club[a].clubName}</td>
-            <td>${club[a].clubDescrip}</td>
+            <td>${club[a].name}</td>
+            <td>${club[a].description}</td>
             <td class="d-flex gap-2">
                <button id="delete" onclick="updateClub(${club[a].id})">Update</button>
               <button id="delete" onclick="deleteClub(${club[a].id})">Delete</button>
@@ -74,7 +74,7 @@ async function addClub() {
   console.log(clubName)
 
   if (clubName.trim().length > 0 && clubDescrip.trim().length > 0) {
-    const response = await fetch("api/club", {
+    const response = await fetch("api/admclub", {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: clubName, description:clubDescrip  })
@@ -83,7 +83,8 @@ async function addClub() {
 
     if (result.clubUpdated) {
       alert(`${clubName.trim()} was added`)
-      $("[name=bookName]").val("")
+      $("[name=clubDescrip]").val("")
+       location.reload();
     }
   } else {
     alert("Du måste skriva något!")
@@ -92,13 +93,14 @@ async function addClub() {
 window.addClub = addClub
 
 async function deleteClub(clubId) {
-  console.log(clubId)
-  const response = await fetch(`api/club/${clubId}`, { method: "delete" })
+  
+  const response = await fetch(`api/admclub/${clubId}`, { method: "delete" })
   const result = await response.json()
   console.log("delete club - ", result);
 
   if (result.message === "Club deleted successfully") {
-    alert(result.message)
+    alert('Club was deleted')
+     location.reload();
   } else {
     alert(result.message)
   }
@@ -106,7 +108,12 @@ async function deleteClub(clubId) {
 window.deleteClub = deleteClub
 
 async function updateClub(clubId) {
-   
+  
+  const club = await fetch(`api/admclub/${clubId}`)
+
+  const data = await club.json()
+  
+  console.log("dataADmin",data)
    $("main").html(await `<div class="container mt-5">
   <div class="row">
     <div class="col-md-5 offset-md-3 card bg-dark">
@@ -115,7 +122,7 @@ async function updateClub(clubId) {
           <input
             type="text"
             name="clubName"
-            value=""
+            value="${data[0].name}"
             placeholder="Name"
             class="form-control mb-3"
             autofocus
@@ -123,7 +130,7 @@ async function updateClub(clubId) {
           <input
             type="text"
             name="clubDescription"
-            value=""
+            value="${data[0].description}"
             placeholder="Description"
             class="form-control mb-3"
           />
@@ -135,21 +142,20 @@ async function updateClub(clubId) {
 </div>`)
 }
 async function editClub(clubId) {
-  console.log("Id de club -", clubId)
+  
   const clubName = $("[name=clubName]").val().trim()
   const clubDescription = $("[name=clubDescription]").val().trim()
   if (clubName.length > 0 && clubDescription.length) {
-     const response = await fetch(`api/club/${clubId}`, {
+     const response = await fetch(`api/admclub/${clubId}`, {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: clubName ,description: clubDescription })
     })
     const result = await response.json()
 
-    if (result.bookUpdated) {
-      alert(`${bookName} was updated`)
-      $("h1").html(`Edit Page for: ${bookId} - ${bookName}`)
-      $("[name=bookName]").html(`${bookName}`)
+    if (result.clubUpdated) {
+      alert(`${clubName} was updated`)
+       location.reload();
     }
   } else {
     alert("Du måste skriva något!")
@@ -159,25 +165,11 @@ async function editClub(clubId) {
 }
 window.editClub = editClub
 window.updateClub = updateClub
-async function clubData() {
-  const clubData = await getClubEvents();
-  const club = {};
-for (const evento of clubData) {
-  club[evento.clubName] = {
-      id: evento.id,
-      clubName: evento.clubName,
-      clubDescrip: evento.clubDescription,
-    };
-  }
-    // Puedes incluir más propiedades del evento si es necesario
-  
- return club
-}
  
 
-async function getClubEvents() {
-    const response = await fetch("/api/club")
-    const data = await response.json()
+async function getClub() {
+    const response = await fetch("/api/admclub")
+  const data = await response.json()
     return data;
 }
 
