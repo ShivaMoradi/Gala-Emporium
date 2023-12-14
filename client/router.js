@@ -3,6 +3,8 @@ $('#login').html(await login());
 import { createEventHTML } from "./pages/addevents.js";
 import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
+import clubHtml from "./pages/club.js";
+
 
 
 async function router() {
@@ -19,11 +21,22 @@ async function router() {
       content = await clubPages("blue club");
       break;
     case "#bookClub":
-    content = await clubPages("book club");
-    break;
+      content = await clubPages("book club");
+      break;
+    case "#jumpingClub":
+      content = await clubPages("jumping club");
+      break;
+    case "#loveClub":
+      content = await clubPages("jumping club");
+      break;
     case "addevent":
       content = "<h1>Placeholder for addevent page</h1>"
       break;
+    case "#club":
+    content = await clubHtml();
+    break;
+    case "#admin":
+    content = await init();
   
     default:
       content = "<h1><bold>Page not found!</bold></h1>"
