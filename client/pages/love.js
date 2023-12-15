@@ -1,4 +1,9 @@
 export default async function loveHtml() {
+    const response = await fetch('/api/club/love club')
+     const evenClub = await response.json()
+    if (response) {
+      console.log("BD",evenClub,)
+ 
   const nuevoCSS = document.createElement('link');
   nuevoCSS.rel = 'stylesheet';
   nuevoCSS.href = './styles/love.css';
@@ -95,7 +100,7 @@ export default async function loveHtml() {
         </div>
         <div class="about-content">
             <h3></h3>
-            <p>Lorem Ipsum Dolor, Sit Amet Consectetur Adipisicing Elit. Labore Repellat Doloremque Dolor Aperiam Nulla Amet Maiores Quaerat! Nobis Accusamus, Fugiat Exercitationem Assumenda Quaerat Deserunt Maxime Illo Iusto Maiores Sit Dolorem.</p>
+            <p>! ${evenClub[0].clubDescription}</p>
             
         </div>
     </div>
@@ -125,164 +130,7 @@ export default async function loveHtml() {
     </div>
 </section>
 <!----------------------menu----------------------->
-<section class="menu" id="menu">
-    <h4>Our Menu</h4>
-    <div class="menu-content">
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="veg.png" alt="img" class="veg-icon">
-            <img src="pizza-v1.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>Margherita Sushi Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="veg.png" alt="img" class="veg-icon">
-            <img src="pizza-v2.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>Italian Cuisine Tomato Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="veg.png" alt="img" class="veg-icon">
-            <img src="pizza-v3.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>Pepperoni Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="veg.png" alt="img" class="veg-icon">
-            <img src="pizza-v4.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>Hamburger Calzone Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="veg.png" alt="img" class="veg-icon">
-            <img src="pizza-v5.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>Tomatos Margherita Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="nonveg.png" alt="img" class="veg-icon">
-            <img src="pizza-v6.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>California-Style,Sicilian Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="nonveg.png" alt="img" class="veg-icon">
-            <img src="pizza-v7.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>California-Style,Sicilian Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="nonveg.png" alt="img" class="veg-icon">
-            <img src="pizza-v8.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>California-Style,Sicilian Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="in-box">
-            <i class="far fa-heart"></i>
-            <img src="nonveg.png" alt="img" class="veg-icon">
-            <img src="pizza-v9.png" alt="">
-            <div class="in-content">
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <h2>California-Style,Sicilian Pizza</h2>
-                    <div class="price">Rs.$20.00</div>
-                    <button class="btn">Add to Cart <i class="fas fa-plus-circle"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <!------------------------------------Blog Section----------------->
 <section id="blog" class="blog">
     <h4>Latest Blog</h4>
@@ -298,7 +146,7 @@ export default async function loveHtml() {
 
                 </div>
                 <div class="in-blog-content">
-                    <h2>Pizza is too Good.</h2>
+                    <h2> Good.</h2>
                     <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.</p>
                     <button class="btn">Read More</button>
                 </div>
@@ -315,7 +163,7 @@ export default async function loveHtml() {
 
                 </div>
                 <div class="in-blog-content">
-                    <h2>Amazing Pizza,Best Quality</h2>
+                    <h2>Best Quality</h2>
                     <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.</p>
                     <button class="btn">Read More</button>
                 </div>
@@ -332,7 +180,7 @@ export default async function loveHtml() {
 
                 </div>
                 <div class="in-blog-content">
-                    <h2>Yummy Pizza, We Loved It.</h2>
+                    <h2> We Loved It.</h2>
                     <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.</p>
                     <button class="btn">Read More</button>
                 </div>
@@ -341,6 +189,7 @@ export default async function loveHtml() {
     </div>
 </section>
 `
+ }  
 }
 
 

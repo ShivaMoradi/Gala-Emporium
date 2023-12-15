@@ -255,6 +255,9 @@ section p {
   color: var(--clr3);
   font-size: 1.4rem;
   font-weight: 600;
+  border: 0.1rem solid var(--clr4);
+  background: #eee;
+  
 }
 
 .about-inner h5 {

@@ -1,5 +1,4 @@
 import { getEventsForClub, createEventHTML, event } from './addevents.js';
-
 export default async function clubPages(clubName) {
     //Clubdata includes all event information.
     const clubData = await getClubEvents(clubName.toLowerCase());
@@ -36,66 +35,6 @@ export default async function clubPages(clubName) {
  
             <section id="clubBody">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
                 <div id="mediaContainer"> 
                 <p> Video and images goes here</p>       
                 <!---VIDEO AND IMAGES GO HERE-->
@@ -117,7 +56,7 @@ export default async function clubPages(clubName) {
 }
 
 
-async function getClubEvents(clubName) {
+  async function getClubEvents(clubName) {
     const response = await fetch("/api/club/" + clubName)
     const data = await response.json()
     return data;
