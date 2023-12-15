@@ -1,8 +1,9 @@
-import clubHtml from "./club.js"
-import { eventsHTML } from "./addevents.js";
+import clubPages from "./clubpages.js";
+//import { eventsHTML } from "./addevents.js";
+
 export default async function danceclub () {
   
-  const dance = await clubHtml( club[ a ] );
+  const dance = await new clubPages(clubName)
   return   `
     
    <div class="danceClub">
