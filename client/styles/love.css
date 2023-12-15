@@ -386,11 +386,16 @@ section p {
   display: grid;
   grid-template-columns: 1.2fr 1.2fr 1.2fr;
   grid-gap: 1rem;
+  height: 500px;
+  overflow-x: hidden;
+  
 }
 
 .blog-content {
   position: relative;
   background: var(--clr2);
+  margin-top: 20px ;
+  margin-bottom: 30px;
 }
 
 .im {

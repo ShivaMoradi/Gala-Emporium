@@ -56,7 +56,36 @@ export default async function loveHtml() {
   }
   
   
-  // Si hay un enlace existente, reemplazarlo con el nuevo enlace
+        // Si hay un enlace existente, reemplazarlo con el nuevo enlace
+        /*Events*/ 
+        let eventTag = ""
+        for (const key in evenClub) {
+             eventTag += ` <div class="blog-content">
+            <div class="in-blog">
+                <div class="im">
+                    <img src="blog-1.jpg" alt="img">
+                    <div class="in-blog-icon">
+                        <a href="#"><i class="fas fa-calendar"></i>20th June 2021</a>
+                        <a href="#"><i class="fas fa-user"></i>Admin</a>
+                    </div>
+
+                </div>
+                <div class="in-blog-content">
+                    <h2>${evenClub[key].eventName} </h2>
+                    <p>${evenClub[key].eventDescription}.</p>
+                    <button class="btn">Buy Tycket</button>
+                </div>
+            </div>
+        </div>`
+        }
+
+        /*Events of the month*/
+        const fechaActual = new Date();
+        const mesActual = fechaActual.getMonth() + 1;
+        
+      
+
+
   
   return `
     <header class="head">
@@ -96,7 +125,7 @@ export default async function loveHtml() {
     <h4>About Us</h4>
     <div class="about-sec">
         <div class="img">
-            <img src="pizza1.png" alt="img">
+            <img src="" alt="img">
         </div>
         <div class="about-content">
             <h3></h3>
@@ -107,7 +136,7 @@ export default async function loveHtml() {
 </section>
 <!-----------------------------services-------------------->
 <section class="service" id="service">
-    <h4>Services</h4>
+    <h4>Events of the month</h4>
     <div class="service-content">
         <div class="inner-box">
             <img src="s-1.png" alt="">
@@ -133,59 +162,11 @@ export default async function loveHtml() {
 
 <!------------------------------------Blog Section----------------->
 <section id="blog" class="blog">
-    <h4>Latest Blog</h4>
+    <h4>Events</h4>
     <div class="inner-blog">
-        <div class="blog-content">
-            <div class="in-blog">
-                <div class="im">
-                    <img src="blog-1.jpg" alt="img">
-                    <div class="in-blog-icon">
-                        <a href="#"><i class="fas fa-calendar"></i>20th June 2021</a>
-                        <a href="#"><i class="fas fa-user"></i>Admin</a>
-                    </div>
-
-                </div>
-                <div class="in-blog-content">
-                    <h2> Good.</h2>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.</p>
-                    <button class="btn">Read More</button>
-                </div>
-            </div>
-        </div>
-        <div class="blog-content">
-            <div class="in-blog">
-                <div class="im">
-                    <img src="blog-2.jpg" alt="img">
-                    <div class="in-blog-icon">
-                        <a href="#"><i class="fas fa-calendar"></i>20th June 2021</a>
-                        <a href="#"><i class="fas fa-user"></i>Admin</a>
-                    </div>
-
-                </div>
-                <div class="in-blog-content">
-                    <h2>Best Quality</h2>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.</p>
-                    <button class="btn">Read More</button>
-                </div>
-            </div>
-        </div>
-        <div class="blog-content">
-            <div class="in-blog">
-                <div class="im">
-                    <img src="blog-3.jpg" alt="img">
-                    <div class="in-blog-icon">
-                        <a href="#"><i class="fas fa-calendar"></i>20th June 2021</a>
-                        <a href="#"><i class="fas fa-user"></i>Admin</a>
-                    </div>
-
-                </div>
-                <div class="in-blog-content">
-                    <h2> We Loved It.</h2>
-                    <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit.</p>
-                    <button class="btn">Read More</button>
-                </div>
-            </div>
-        </div>
+       
+        ${eventTag}
+        
     </div>
 </section>
 `
