@@ -1,7 +1,7 @@
 import login from "./pages/login.js";
 $('#login').html(await login());
-import {createEventHTML, event } from "./pages/addevents.js";
-//import { bookEvent } from "./pages/booking.js";
+import { createEventHTML } from "./pages/addevents.js";
+import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
 
@@ -23,14 +23,14 @@ async function router() {
     case "#bookClub":
       content = await clubPages("book club");
       break;
-    case "#danceclub":
-      content = await clubPages("dance club");
+    case "#jumpingClub":
+      content = await clubPages("jumping club");
       break;
     case "#loveClub":
-      content = await clubPages("love club");
+      content = await clubPages("jumping club");
       break;
     case "addevent":
-      content = await event("Add new Event");
+      content = "<h1>Placeholder for addevent page</h1>"
       break;
     case "#club":
     content = await clubHtml();
