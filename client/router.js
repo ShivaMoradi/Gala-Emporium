@@ -4,7 +4,6 @@ import {createEventHTML, event } from "./pages/addevents.js";
 //import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
-import danceclub from "./pages/danceClub.js";
 
 
 
@@ -25,7 +24,7 @@ async function router() {
       content = await clubPages("book club");
       break;
     case "#danceclub":
-      content = await danceclub();
+      content = await clubPages("dance club");
       break;
     case "#loveClub":
       content = await clubPages("love club");
