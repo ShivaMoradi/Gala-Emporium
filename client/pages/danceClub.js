@@ -1,14 +1,22 @@
-import clubPages from "./clubpages.js";
+import { clubPages, getClubEvents } from "./clubpages.js";
 //import { eventsHTML } from "./addevents.js";
 
 export default async function danceclub () {
-  
-  const dance = await new clubPages(clubName)
+  const clubPagesInstance = new clubPages();
+  const clubDetails = await clubPagesInstance.getClubDetails("Dance Club");
+  const eventsInstance = new getClubEvents();
+  const eventsHTML = await eventsInstance.getEventsHTML();
+ 
+  // Use the fetched clubDetails to populate your HTML
+
+
   return   `
-    
+  <header>
+   <h1>${clubDetails.clubName}</h1>
+</header>
    <div class="danceClub">
       <h2>${ clubData.clubName }</h2>
-      <img src="./client/images/dance.jpg" alt="dance club image" class="danceClub-image" width="300" height="200">
+      <img src="./images/dance.jpg" alt="dance club image" class="danceClub-image" width="300" height="200">
       <h3></h3>
       <p>Dance has always been a part of human culture, rituals and celebrations. Today, most dancing is about recreation and self-expression, although it can also be done as a competitive activity.
 
@@ -17,9 +25,10 @@ export default async function danceclub () {
     </div>
       
       `
-
 }
-dance()
+
+
+danceclub()
 
   /*< section id = "home-events-search" class="dark center" > <div class="bg-overlay"> <div class="container"> <div class="content-text"> <h1>Find the best events to dance</h1> <p>Find festivals, congresses, trips, parties, workshops and intensive dance workshops that you like the most (salsa, bachata, kizomba, tango, swing, hip hop...). Live the dance to the fullest, share your experience and enjoy life dancing</p> </div> <form method="get" id="search-event-form" action="/en/events/search"> <div class="landing-form-h f1"> <div class="form-group"> <input name="name" id="event-name-search" class="form-control input-lg" placeholder="Event name..."> </div> <button type="submit" class="btn btn-lg btn-primary" id="btn-search">
                         Buscar
