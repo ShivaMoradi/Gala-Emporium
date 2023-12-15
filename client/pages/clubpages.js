@@ -25,8 +25,6 @@ export default async function clubPages(clubName) {
     //Generate HTML for each Event. 
     const eventsHTML = clubEvents.map(createEventHTML).join('');
 
-
-
         // Changed clubdata attribute names to correspond to names fetched from database,.
     return `
         <div id = "clubPage" class="club-container ${clubDetails.clubName.toLowerCase().replace(' ', '-')}">
