@@ -1,10 +1,12 @@
-import { getEventsForClub, createEventHTML, event } from './addevents.js';
+
+export {clubPages, createEventHTML, getClubData, getEventsForClub}
 
 export default async function clubPages(clubName) {
-    //Clubdata includes all event information.
+    //Clubdata includes Club details: (clubID, clubName, clubDescription). Event details: (eventName, eventDescription, date, address, price, images)
     const clubData = await getClubData(clubName.toLowerCase());
+    
+    //Find club based on the function parameter. If club is not found return club not found.
     const clubDetails = clubData.find(club => club.clubName.toLowerCase() === clubName.toLowerCase());
-
 
     if (!clubDetails) {
         return `
@@ -22,7 +24,7 @@ export default async function clubPages(clubName) {
 
 
 
-        // Changed clubdata attribute names to correspond to names fetched from database,.
+    // Return basic club HTML structure.
     return `
         <div id = "clubPage">
             <header>
@@ -40,6 +42,7 @@ export default async function clubPages(clubName) {
                 <!-- CLUB DESRIPTION GOES HERE  -->
                 </article>
 
+
                 <section id="event-list">
                     ${eventsHTML}
                 </section>
@@ -49,6 +52,42 @@ export default async function clubPages(clubName) {
 
         `;
 }
+
+
+// Filter Events based on  clubName.
+function getEventsForClub(clubName, clubData){
+    return clubData.filter(event =>  clubName.toLowerCase() ===  event.clubName.toLowerCase())
+}
+
+
+
+// Create HTML structure to display events
+function createEventHTML(clubData) {
+const formattedDate = new Date(clubData.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+});
+
+// Add a class based on clubName for styling differentiation
+const clubStyleClass = clubData.clubName.toLowerCase().replace(/\s+/g, '-');
+
+return `
+<div class='event ${clubStyleClass}'>
+  <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
+  <p>${clubData.clubName}</p>
+  <img src="${clubData.images}" class="event-image" width="300" height="200">
+  <p>Date and time: ${formattedDate}</p>
+  <p>Description: ${clubData.eventDescription}</p>
+  <p>Price: ${clubData.price}</p>
+  <button class="book-button" data-event-id="${clubData.id}">Book Now</button>
+</div>
+`;
+}
+
 
 
 async function getClubData(clubName) {

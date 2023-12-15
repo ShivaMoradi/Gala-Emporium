@@ -1,8 +1,7 @@
 import login from "./pages/login.js";
 $('#login').html(await login());
-import { createEventHTML } from "./pages/addevents.js";
+import { createEventHTML, clubPages } from "./shared/clubUtils.js";
 import { bookEvent } from "./pages/booking.js";
-import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
 
 
@@ -42,10 +41,8 @@ async function router() {
       content = "<h1><bold>Page not found!</bold></h1>"
       break;
   }
-
   // Populate <main> with whatever content.
   $('main').html(content);
-
 }
 
 async function getAllEvents() {
