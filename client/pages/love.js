@@ -78,11 +78,15 @@ export default async function loveHtml() {
             </div>
         </div>`
         }
-
-        /*Events of the month*/
         const fechaActual = new Date();
-        const mesActual = fechaActual.getMonth() + 1;
-        
+        const currentMonth = fechaActual.getMonth() + 1;
+        const year = fechaActual.getFullYear();
+        console.log(year)
+        /*Events of the month*/
+        for (const key in evenClub) {
+             const fechaClub = evenClub[key].date
+             
+      }
       
 
 
