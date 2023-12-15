@@ -1,0 +1,7 @@
+.club-container.book-club {
+  background-image: url("./images/bookClubBackground.jpg");
+  /* Add more styles as needed */
+}
+.event.book-club{
+  background-color: aliceblue;
+}

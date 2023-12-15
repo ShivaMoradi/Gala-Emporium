@@ -27,7 +27,7 @@ async function router() {
       content = await clubPages("jumping club");
       break;
     case "#loveClub":
-      content = await clubPages("jumping club");
+      content = await clubPages("love club");
       break;
     case "addevent":
       content = "<h1>Placeholder for addevent page</h1>"
