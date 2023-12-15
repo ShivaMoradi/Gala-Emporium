@@ -29,39 +29,12 @@ export default async function clubPages(clubName) {
 
         // Changed clubdata attribute names to correspond to names fetched from database,.
     return `
-        <div id = "clubPage">
+        <div id = "clubPage" class="club-container ${clubDetails.clubName.toLowerCase().replace(' ', '-')}">
             <header>
                 <h1>${clubDetails.clubName}</h1>
             </header>
  
             <section id="clubBody">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

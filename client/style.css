@@ -163,3 +163,8 @@ footer {
   justify-content: space-between;
   padding: 20px;
 }
+
+.club-container.book-club {
+  background-color: #f0f0f0;
+  /* Add more styles as needed */
+}

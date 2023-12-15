@@ -21,7 +21,7 @@ async function router() {
       content = await clubPages("blue club");
       break;
     case "#bookClub":
-      content = await clubPages("book");
+      content = await clubPages("book club");
       break;
     case "#jumpingClub":
       content = await clubPages("jumping club");
