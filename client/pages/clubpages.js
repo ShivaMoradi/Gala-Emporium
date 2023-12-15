@@ -1,4 +1,9 @@
 import { getEventsForClub, createEventHTML, event } from './addevents.js';
+const clubData = [
+    { clubName: "Dance Club", /* other club details */ },
+    { clubName: "Love Club", /* other club details */ },
+    // Other club data objects...
+];
 
 export default async function clubPages(clubName) {
     //Clubdata includes all event information.
@@ -27,14 +32,12 @@ export default async function clubPages(clubName) {
 
         // Changed clubdata attribute names to correspond to names fetched from database,.
     return `
-        <div id = "clubPage" class="club-container ${clubDetails.clubName.toLowerCase().replace(' ', '-')}">
+        <div id = "clubPage">
             <header>
                 <h1>${clubDetails.clubName}</h1>
             </header>
  
             <section id="clubBody">
-
-
 
                 <div id="mediaContainer"> 
                 <p> Video and images goes here</p>       
