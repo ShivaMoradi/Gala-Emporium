@@ -8,8 +8,10 @@ export default function (server, db) {
 
 
   server.get('/api/admevent/:id', async (req, res) => {//clubName 
+    console.log("Entro aqui dime")
     const club = await db.query("SELECT * FROM events WHERE clubId = ?",[req.params.id])
     res.json(club)
+    console.log("Result - ", club);
   })
 
   server.post('/api/admclub', async (req, res) => {

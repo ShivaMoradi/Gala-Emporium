@@ -96,24 +96,29 @@ export default async function htmlAdminEvent() {
             <!-- Editar -->
             <div class="editar">
                 <h2>Edit Event</h2>
-                <form class="addEvent" onsubmit="addEvent(); return false">
-                    <label>Event Name</label>
-                    <input type="text" id="eventsName" name="eventsName" placeholder="events name">
-                    <label>Description</label>
-                    <input type="text" id="eventsDescription"  name="eventsDescription" placeholder="events description">
-                    <label>Date</label>
-                    <input type="datetime-local"  id="eventsDate" name="eventsDate" placeholder="events date">
-                     <label>Addresss</label>
-                    <input type="text" name="eventsAddress" id="eventsAddress" placeholder="events address">
-                     <label>Price</label>
-                     <input type="number" name="eventsPrice" id="eventsPrice" placeholder="events price">
-                       <label>Club</label>
-                        <select id="eventsInsert" >
+                <form class="addEvent" onsubmit="editEvent(); return false">
+                     <label>Club</label>
+                        <select id="eventsEdit" onchange="selectOptionEdit()">
                         ${delt}
                         </select>
+                    <label>Event Name</label>
+                      <select id="eventId" onchange="selectOptionEditName()">
+                       <option id="optionedit" value="" > </option>
+                    </select>
+                    <label>Event Name</label>
+                    <input type="text" id="eventsNameEdit" name="eventsNameEdit" placeholder="events name" >
+                    <label>Description</label>
+                    <input type="text" id="eventsDescriptionEdit"  name="eventsDescriptionEdit" placeholder="events description">
+                    <label>Date</label>
+                    <input type="datetime-local"  id="eventsDateEdit" name="eventsDateEdit" placeholder="events date">
+                     <label>Addresss</label>
+                    <input type="text" name="eventsAddressEdit" id="eventsAddressEdit" placeholder="events address">
+                     <label>Price</label>
+                     <input type="number" name="eventsPriceEdit" id="eventsPriceEdit" placeholder="events price">
+                      
                     <label>Imagen</label>
                     <input type="text" id="ImagenAñadir">
-                     <input id="submit" class="button" type="submit" value="Edit Event">
+                     <input id="submitEdit" class="button" type="submit" value="Edit Event">
                 </form>
             </div>
 
@@ -123,7 +128,7 @@ export default async function htmlAdminEvent() {
 
                 <form class="deleteEvent" onsubmit="deleteEvent(); return false">
                     <label>Club Name</label>
-                    <select id="productoEliminar" onchange="selectOption()">
+                    <select id="productoEliminar" onchange="selectOptionDelete()">
                        ${delt}
                     </select>
                    <label>Event Name</label>
@@ -191,7 +196,48 @@ async function addEvent() {
 
 window.addEvent = addEvent
   
-async function selectOption() {
+async function editEvent() {
+  let eventsEdit = document.getElementById("eventsEdit");
+  let eventSelect = document.getElementById("eventId");
+  const eventId = eventSelect.value;
+  eventsNameEdit
+  const eventDescription = document.querySelector('input[name="eventsDescriptionEdit"]').value;
+  const date = document.querySelector('input[name="eventsDateEdit"]').value;
+  const address = document.querySelector('input[name="eventsAddressEdit"]').value;
+  const price = document.querySelector('input[name="eventsPriceEdit"]').value;
+  const option = document.getElementById('eventsInsert');
+  const clubId = eventsEdit.value;
+   const response = await fetch(`/api/admevent/${eventId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                eventName,
+                eventDescription,
+                date,
+                address,
+                price,
+                clubId,
+                clubDescription,
+               
+            }),
+        });
+   
+
+
+}
+
+
+window.editEvent = editEvent
+
+
+
+
+
+
+
+async function selectOptionDelete() {
   var selectElement = document.getElementById("productoEliminar");
   console.log("SelectDD",selectElement)
   var inputElement = document.getElementById("eventEliminar");
@@ -219,7 +265,75 @@ async function selectOption() {
    }
  
 
-window.selectOption = selectOption
+window.selectOptionDelete = selectOptionDelete
+
+
+
+async function selectOptionEdit() {
+  console.log("Entra a edit ")
+  var selectElement = document.getElementById("eventsEdit");
+  console.log("SelectDD",selectElement)
+  var inputElement = document.getElementById("eventId");
+    inputElement.innerHTML = ''                                 
+   console.log("inputElement",inputElement)
+  //var inputEl = document.getElementById("productoAna");
+
+  // Escuchar el cambio en el select
+  
+    // Obtener el valor seleccionado
+    var selectedValue = selectElement.value;
+   console.log("SelectValue",selectedValue)
+  const clubDB = await obtenerDatos(selectedValue)
+  console.log("Clubdb", clubDB)
+  for (const key in clubDB) {
+        const nuevaOpcion = document.createElement('option');
+          nuevaOpcion.value = clubDB[key].id;
+         nuevaOpcion.text = clubDB[key].name;
+          console.log("nuevaOpcion",nuevaOpcion)
+         inputElement.appendChild(nuevaOpcion);
+        console.log("inputElement.value",clubDB[key].name )
+      
+  }      
+
+
+}
+
+window.selectOptionEdit = selectOptionEdit
+
+
+async function selectOptionEditName() { 
+  var inputElement = document.getElementById("eventId");
+  var selectedValue = inputElement.value;
+  const response = await fetch(`api/admevent`)
+  const data = await response.json()
+  const event = data.find(objeto => objeto.id ==selectedValue);
+  var eventsNameEdit = document.getElementById("eventsNameEdit");
+  eventsNameEdit.placeholder = '';
+  eventsNameEdit.value =event["name"];
+  var eventsDescriptionEdit = document.getElementById("eventsDescriptionEdit");
+  eventsDescriptionEdit.placeholder = '';
+  eventsDescriptionEdit.value = event["eventDescription"];
+   var eventsAddressEdit = document.getElementById("eventsAddressEdit");
+    eventsAddressEdit.placeholder = '';
+    eventsAddressEdit.value = event["address"];
+   var eventsDate = document.getElementById("eventsDateEdit");
+         eventsDate.value = event["date"];
+  var inputElement = document.getElementById("eventsPriceEdit");
+     inputElement.value = event["price"]; 
+  var inputElement = document.getElementById("ImagenAñadir");
+   console.log("eventDate",event["date"])
+   console.log("eventDBEvent",event)
+   console.log("eventBYID",eventsNameEdit)
+  
+ 
+
+
+
+}
+
+window.selectOptionEditName = selectOptionEditName
+
+
 
 
 async function obtenerDatos(selectedValue) {
