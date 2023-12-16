@@ -37,13 +37,4 @@ font-size: 50px;
     text-decoration: none; /*removes the underline*/
   }
 
-  .event.book-club img.event-image {
-    }
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width:600px) {
-  .event.book-club {
-    width: 100%;
-    margin: 0;
-    /* Set margin to zero or adjust as needed */
-  }
-}
+ 
