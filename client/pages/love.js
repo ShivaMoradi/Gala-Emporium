@@ -1,115 +1,141 @@
 export default async function loveHtml() {
     const response = await fetch('/api/club/love club')
-     const evenClub = await response.json()
+    const evenClub = await response.json()
     if (response) {
-      console.log("BD",evenClub,)
+        console.log("BD", evenClub,)
  
-  const nuevoCSS = document.createElement('link');
-  nuevoCSS.rel = 'stylesheet';
-  nuevoCSS.href = './styles/love.css';
-   console.log("Entra ")
-  // Obtener el elemento head del documento
-  const headElement = document.head;
-  // Obtener el enlace CSS existente que deseas reemplazar
-  const css = document.querySelector('link[href="./style.css"]');
-  console.log("ruta", css)
-  if (css) {
-     console.log("Entra css")
-    headElement.removeChild(css); // Quitar el enlace existente
-  }
-   headElement.appendChild(nuevoCSS);
-  // Añadir el nuevo enlace CSS al head del documento
+        const nuevoCSS = document.createElement('link');
+        nuevoCSS.rel = 'stylesheet';
+        nuevoCSS.href = './styles/love.css';
+        console.log("Entra ")
+        // Obtener el elemento head del documento
+        const headElement = document.head;
+        // Obtener el enlace CSS existente que deseas reemplazar
+        const css = document.querySelector('link[href="./style.css"]');
+        console.log("ruta", css)
+        if (css) {
+            console.log("Entra css")
+            headElement.removeChild(css); // Quitar el enlace existente
+        }
+        headElement.appendChild(nuevoCSS);
+        // Añadir el nuevo enlace CSS al head del documento
   
- const nav = document.getElementById('nav');
-     if (nav) {
-  // Utiliza el método .remove() para quitar el elemento del DOM
-     nav.remove();
-  }
-  const h1 = document.getElementById('website-title');
-     if (h1) {
-  // Utiliza el método .remove() para quitar el elemento del DOM
-     h1.remove();
-  }
+        const nav = document.getElementById('nav');
+        if (nav) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            nav.remove();
+        }
+        const h1 = document.getElementById('website-title');
+        if (h1) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            h1.remove();
+        }
   
   
-  const coverImageSection = document.getElementById('coverImage');
+        const coverImageSection = document.getElementById('coverImage');
 
-// Verifica si el elemento existe antes de intentar quitarlo
-   if (coverImageSection) {
-  // Utiliza el método .remove() para quitar el elemento del DOM
-     coverImageSection.remove();
-  }
-  const login = document.getElementById('login');
-     if (login) {
-  // Utiliza el método .remove() para quitar el elemento del DOM
-     login.remove();
-  }
+        // Verifica si el elemento existe antes de intentar quitarlo
+        if (coverImageSection) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            coverImageSection.remove();
+        }
+        const login = document.getElementById('login');
+        if (login) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            login.remove();
+        }
   
-
-
 
 
-  const footer = document.getElementById('footer');
-     if (footer) {
-  // Utiliza el método .remove() para quitar el elemento del DOM
-     footer.remove();
-  }
-  
-  
+
+
+        const footer = document.getElementById('footer');
+        if (footer) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            footer.remove();
+        }
+        
+        
+      
         // Si hay un enlace existente, reemplazarlo con el nuevo enlace
-        /*Events*/ 
+        /*Events*/
         let eventTag = ""
         for (const key in evenClub) {
-             eventTag += ` <div class="blog-content">
+               const datebd = evenClub[key].date
+                const dateNew = new Date(datebd)
+                const dayEvent = dateNew.getDay();
+                const year = dateNew.getFullYear();
+            const moth = dateNew.getMonth() + 1;
+            console.log("Mese claro",moth)
+            const moths = [
+               'Enero', 'Febrero', 'Marzo', 'Abril',
+                'Mayo', 'Junio', 'Julio', 'Agosto',
+               'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                     ];
+
+              // Obtener el nombre del mes
+                    const m = moths[moth -1];
+            eventTag += ` <div class="blog-content">
             <div class="in-blog">
                 <div class="im">
                     <img src="blog-1.jpg" alt="img">
                     <div class="in-blog-icon">
-                        <a href="#"><i class="fas fa-calendar"></i>20th June 2021</a>
-                        <a href="#"><i class="fas fa-user"></i>Admin</a>
+                        <a href="#"><i class="fas fa-calendar"></i>${dayEvent} ${m} ${year}</a>
+                        <a href="#"><i class="fas fa-user"></i>${evenClub[key].price}.00kr</a>
                     </div>
 
                 </div>
                 <div class="in-blog-content">
                     <h2>${evenClub[key].eventName} </h2>
                     <p>${evenClub[key].eventDescription}.</p>
-                    <button class="btn">Buy Tycket</button>
+                    <button class="btn  book-button-event" data-event-id="${evenClub[key].idEvent}">Buy Tycket</button>
                 </div>
             </div>
         </div>`
         }
-        const fechaActual = new Date();
-        const currentMonth = fechaActual.getMonth() + 1;
-        const year = fechaActual.getFullYear();
-        console.log(year)
+        
         /*Events of the month*/
-        for (const key in evenClub) {
-             const fechaClub = evenClub[key].date
-             
-      }
+       
       
+        let eventsMoth = "";
+        for (const key in evenClub) { 
+           
+            if (eventMonth()) {
+               const datebd = evenClub[key].date
+                const dateNew = new Date(datebd)
+                const dayEvent = dateNew.getDay();
+                const monthEvent = dateNew.getMonth()+ 1;
+                if (monthEvent === currentMonth) {
+                  console.log("Dime mamai",evenClub)
+            eventsMoth += `<div class="inner-box">
+            <img src="s-1.png" alt="">
+            <h2>${evenClub[key].eventName}</h2>
+            <p>${evenClub[key].eventDescription}</p>
+            <h5>Date:${dayEvent} ${monthEvent} </h5>
+            <h5>Palece:${evenClub[key].address} </h5>
+            <h5>Price:${evenClub[key].price} </h5>
+            
+            <button class="btn  book-button" data-event-id="${evenClub[key].idEvent}">Buy Tycket</button>
+        </div>`
+             } else { eventsMoth += ""; }
+            } else {
 
-
+                eventsMoth += `<h2>Sorry we don't have an event this month</h2>`
+             }
+      }
   
-  return `
+            return `
     <header class="head">
         <h1>Love&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
         <nav class="navbar">
             <a href="">Home</a>
-            <a href="#about">About</a>
-            <a href="#service">Services</a>
-            <a href="#menu">Menu</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
+            <a href="#rockClub">Rock Club</a>
+            <a href="#blueClub">Blue Club</a>
+            <a href="#bookClub">Book Club</a>
+            <a href="#jumpingClub">Jumping Club</a>
+            <a href="#contact">Admin</a>
         </nav>
-        <div class="side-bar">
-            <i class="fas fa-search" id="search"></i>
-            <i class="fas fa-user" id="user"></i>
-            <i class="fas fa-bars" id="bars"></i>
-        </div>
-        <form action="#" class="search-bar">
-            <input type="search" name="search" id="1" placeholder="Search Here">
-        </form>
+       
     </header>
 
 <section class="home" id="home">
@@ -139,27 +165,14 @@ export default async function loveHtml() {
     </div>
 </section>
 <!-----------------------------services-------------------->
-<section class="service" id="service">
+<section class="service" id="service" >
     <h4>Events of the month</h4>
-    <div class="service-content">
-        <div class="inner-box">
-            <img src="s-1.png" alt="">
-            <h2>Free Delivery</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi Quod Iure Impedit Alias Labore Placeat Magnam Explicabo.</p>
-            <button class="btn">Read More</button>
-        </div>
-        <div class="inner-box">
-            <img src="s-2.png" alt="">
-            <h2>Online Payment</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi Quod Iure Impedit Alias Labore Placeat Magnam Explicabo.</p>
-            <button class="btn">Read More</button>
-        </div>
-        <div class="inner-box">
-            <img src="s-3.png" alt="">
-            <h2>Fresh Food</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Excepturi Quod Iure Impedit Alias Labore Placeat Magnam Explicabo.</p>
-            <button class="btn">Read More</button>
-        </div>
+    <div class="service-content" id="johan">
+          ${eventsMoth} 
+          <script>
+            
+         
+        </script>
     </div>
 </section>
 <!----------------------menu----------------------->
@@ -174,7 +187,76 @@ export default async function loveHtml() {
     </div>
 </section>
 `
- }  
-}
+        }
+    }
 
 
+ const fechaActual = new Date();
+        const currentMonth = fechaActual.getMonth() + 1;
+        const year = fechaActual.getFullYear();
+        console.log(year)
+        console.log("Eventos del mes", eventMonth())
+async function eventMonth() {
+   
+        const response = await fetch('/api/club/love club')
+        const evenClub = await response.json()
+            for (const key in evenClub) {
+                const datebd = evenClub[key].date
+                const dateNew = new Date(datebd)
+                const monthEvent = dateNew.getMonth() + 1;
+                const yearEvent = dateNew.getFullYear();
+                if (currentMonth === monthEvent && year === yearEvent) {
+                  
+                    return true;
+
+                }
+            }
+        }
+        
+
+       async function bookEvent(eventsId) {
+           try {
+    // Use window.prompt to get user email
+    const email = window.prompt("Ange din e-postadress:");
+               console.log("Email", email.length);
+               
+    if (email !=="" &&  email !== null) {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ eventsID: eventsId, userEmail: email }),
+      });
+
+      console.log('Response from server:', response);
+
+      if (!response.ok) {
+        console.error(`Error booking event: ${response.statusText}`);
+        alert("Ett fel inträffade vid bokningen. Försök igen senare.11");
+        console.log('Error condition reached');
+        return;
+      }
+
+      const result = await response.json();
+      console.log('Result from server:', result);
+      alert(`Du är bokad! Din order-ID är: ${result.orderNr}`);
+    }
+  } catch (error) {
+    console.error('Error booking event:', error);
+    alert("Ett fel inträffade vid bokningen. Försök igen senare.22");
+  }
+} 
+
+document.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("book-button")) {
+        const eventsId = event.target.dataset.eventId;
+        await bookEvent(eventsId);
+    }
+});
+
+
+document.addEventListener("click", async (event) => {
+    if (event.target.classList.contains("book-button-event")) {
+        const eventsId = event.target.dataset.eventId;
+        await bookEvent(eventsId);
+    }
+});

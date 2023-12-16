@@ -5,6 +5,7 @@
   --clr4: #f42f1d;
   --clr5: limegreen;
   --clr6: #ad5aa0 ;
+  --clr7: #f0cdea;
 }
 
 * {
@@ -298,12 +299,12 @@ section p {
 .inner-box {
   padding: 3rem 2rem;
   text-align: center;
-  border: .1rem solid var(--clr4);
+  border: .1rem solid var(--clr3);
   background: #eee;
 }
 
 .inner-box:hover {
-  background: var(--clr4);
+  background: var(--clr7);
   transition: .5s ease all;
 }
 
