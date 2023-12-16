@@ -18,6 +18,40 @@
   background-color: #c27a7a;
 }
 
+/*------------------------Home Section--------------------*/
+
+.home {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(137, 33, 33, 0.5)), url("/img/balloons.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.home-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr;
+}
+
+.inner-content {
+  max-width: 70rem;
+  margin-top: 20rem;
+  text-align: center;
+}
+
+.inner-content-img {
+  margin-top: 2rem;
+}
+
+.inner-content-img img {
+  width: 45rem;
+  height: auto;
+  animation: icon 5s ease infinite;
+}
+
+.inner-content i {
+  color: var(--clr4);
+}
+
 .home h3 {
   font-size: 1.8em;
   color: #14d852;
