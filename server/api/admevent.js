@@ -37,36 +37,36 @@ export default function (server, db) {
   })
 
 
-  server.put('/api/events/:clubId', async (req, res) => {
+  server.put('/api/admevent/:eventId', async (req, res) => {
   console.log("Editar")
-    if (req.body.name.trim().length > 0) {
+    if (req.body.eventName.trim().length > 0) {
     console.log("Entro")
-    console.log(req.body.name)
-    console.log(req.body.description)
+    console.log(req.body)
+    console.log(req.body.eventDescription)
     console.log(req.params.clubId)
     
-      const result = await db.query("UPDATE club SET name = ?, description = ? WHERE id = ?;", [req.body.name, req.body.description,req.params.clubId])
-      result.clubUpdated = true
+      const result = await db.query("UPDATE events SET name = ?, eventDescription = ?, date = ?,address = ?, price = ?, clubId = ?, images = ? WHERE id = ?;", [req.body.eventName, req.body.eventDescription,req.body.date,req.body.address,req.body.price,req.body.clubId,req.body.picture,req.params.eventId])
+      result.editEventUpdated = true
       res.json(result)
       console.log("Result - ", result);
     } else {
       res.status(401)
-      res.json({ clubUpdated: false })
+      res.json({ editEventUpdated: false })
     }
 })
   
 
 
 
-  server.delete('/api/events/:id', async (req, res) => {
+  server.delete('/api/admevent/:id', async (req, res) => {
     console.log("Entro en delete")
     console.log([req.params.id])
-    const result = await db.query("DELETE FROM books WHERE id = ?;", [req.params.id]);
+    const result = await db.query("DELETE FROM events WHERE id = ?;", [req.params.id]);
     if (result.affectedRows > 0) {
-      res.json({ message: "club deleted successfully" })
+      res.json({ message: "Event deleted successfully" })
     } else {
       res.status(401)
-      res.json({ message: "No club was deleted" })
+      res.json({ message: "Event was deleted" })
     }
   })
   

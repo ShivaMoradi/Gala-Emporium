@@ -77,7 +77,7 @@ let delt = "";
                 <h2>Add Club</h2>
                 <form>
                     <label>Club Name</label>
-                    <input type="text" id="productoAñadir" name="clubName">
+                    <input type="text" id="productoAñadir" name="clubNameAdd">
 
                     <label>Description</label>
                     <input type="text" id="valorAñadir"  name="clubDescrip" >
@@ -93,7 +93,7 @@ let delt = "";
                         ${delt}
                     </select>
                     <label>Club Name</label>
-                   <input type="text" id="rea" value ="${club[0].name }" name="clubName">
+                   <input type="text" id="rea" value ="${club[0].name }" name="clubNameEdit">
 
                     <label>Description</label>
                   <input type="text" id="productoAna" value="${club[0].description}" name="clubDescription">
@@ -128,9 +128,79 @@ let delt = "";
 
 
 
+async function addClub() {
+  const clubName = $("[name=clubNameAdd]").val()
+  const clubDescrip = $("[name=clubDescrip]").val()
+  console.log(clubName)
+
+  if (clubName.trim().length > 0 && clubDescrip.trim().length > 0) {
+    const response = await fetch("api/admclub", {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: clubName, description:clubDescrip  })
+    })
+    const result = await response.json()
+
+    if (result.clubUpdated) {
+      alert(`${clubName.trim()} was added`)
+      $("[name=clubDescrip]").val("")
+       location.reload();
+    }
+  } else {
+    alert("Du måste skriva något!")
+  }
+}
+window.addClub = addClub
+
+
+async function editClub() {
+  const option = document.getElementById('productoEditar');
+   const clubId = option.value;
+  const clubName = $("[name=clubNameEdit]").val().trim()
+  const clubDescription = $("[name=clubDescription]").val().trim()
+  if (clubName.length > 0 && clubDescription.length) {
+     const response = await fetch(`api/admclub/${clubId}`, {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: clubName ,description: clubDescription })
+    })
+    const result = await response.json()
+
+    if (result.clubUpdated) {
+      alert(`${clubName} was updated`)
+       location.reload();
+    }
+  } else {
+    alert("Du måste skriva något!")
+  }
+
 
   
-  
+}
+
+window.editClub = editClub
+
+
+  async function deleteClub() {
+  const option = document.getElementById('productoEliminar');
+  console.log("OPtion", option)
+  const clubId = option.value;
+  console.log("CULBID",clubId)
+  const response = await fetch(`api/admclub/${clubId}`, { method: "delete" })
+  const result = await response.json()
+  console.log("delete club - ", result);
+
+  if (result.message === "Club deleted successfully") {
+    alert('Club was deleted')
+     location.reload();
+  } else {
+    alert(result.message)
+  }
+}
+
+window.deleteClub = deleteClub
+
+
   
 async function selectOption() {
   var selectElement = document.getElementById("productoEditar");
@@ -160,79 +230,6 @@ async function obtenerDatos(selectedValue) {
     return data;
 
   }
-
-async function deleteClub() {
-  const option = document.getElementById('productoEliminar');
-  console.log("OPtion", option)
-  const clubId = option.value;
-  console.log("CULBID",clubId)
-  const response = await fetch(`api/admclub/${clubId}`, { method: "delete" })
-  const result = await response.json()
-  console.log("delete club - ", result);
-
-  if (result.message === "Club deleted successfully") {
-    alert('Club was deleted')
-     location.reload();
-  } else {
-    alert(result.message)
-  }
-}
-
-window.deleteClub = deleteClub
-
-async function editClub() {
-  const option = document.getElementById('productoEditar');
-   const clubId = option.value;
-  const clubName = $("[name=clubName]").val().trim()
-  const clubDescription = $("[name=clubDescription]").val().trim()
-  if (clubName.length > 0 && clubDescription.length) {
-     const response = await fetch(`api/admclub/${clubId}`, {
-      method: 'put',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: clubName ,description: clubDescription })
-    })
-    const result = await response.json()
-
-    if (result.clubUpdated) {
-      alert(`${clubName} was updated`)
-       location.reload();
-    }
-  } else {
-    alert("Du måste skriva något!")
-  }
-
-
-  
-}
-
-window.editClub = editClub
-
-async function addClub() {
-  const clubName = $("[ name=clubName]").val()
-  const clubDescrip = $("[name=clubDescrip]").val()
-  console.log(clubName)
-
-  if (clubName.trim().length > 0 && clubDescrip.trim().length > 0) {
-    const response = await fetch("api/admclub", {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: clubName, description:clubDescrip  })
-    })
-    const result = await response.json()
-
-    if (result.clubUpdated) {
-      alert(`${clubName.trim()} was added`)
-      $("[name=clubDescrip]").val("")
-       location.reload();
-    }
-  } else {
-    alert("Du måste skriva något!")
-  }
-}
-window.addClub = addClub
-
-
-
 
 
 

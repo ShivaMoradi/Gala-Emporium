@@ -114,10 +114,9 @@ export default async function htmlAdminEvent() {
                      <label>Addresss</label>
                     <input type="text" name="eventsAddressEdit" id="eventsAddressEdit" placeholder="events address">
                      <label>Price</label>
-                     <input type="number" name="eventsPriceEdit" id="eventsPriceEdit" placeholder="events price">
-                      
+                     <input type="number" name="eventsPriceEdit" id="eventsPriceEdit" placeholder="events price"> 
                     <label>Imagen</label>
-                    <input type="text" id="ImagenAñadir">
+                    <input type="text" id="ImagenAñadirEdit"  name="ImagenAñadirEdit" >
                      <input id="submitEdit" class="button" type="submit" value="Edit Event">
                 </form>
             </div>
@@ -198,31 +197,47 @@ window.addEvent = addEvent
   
 async function editEvent() {
   let eventsEdit = document.getElementById("eventsEdit");
+  const clubId = eventsEdit.value;
+  console.log("clubId",clubId)
   let eventSelect = document.getElementById("eventId");
   const eventId = eventSelect.value;
-  eventsNameEdit
+  const eventName = document.querySelector('input[name="eventsNameEdit"]').value;
+   console.log("eventName",eventName)
   const eventDescription = document.querySelector('input[name="eventsDescriptionEdit"]').value;
+   console.log("eventDescription",eventDescription)
   const date = document.querySelector('input[name="eventsDateEdit"]').value;
+  console.log("date ",date )
   const address = document.querySelector('input[name="eventsAddressEdit"]').value;
+  console.log("address",address)
   const price = document.querySelector('input[name="eventsPriceEdit"]').value;
-  const option = document.getElementById('eventsInsert');
-  const clubId = eventsEdit.value;
-   const response = await fetch(`/api/admevent/${eventId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                eventName,
+  console.log("price",price)
+  const picture = document.querySelector('input[name="ImagenAñadirEdit"]').value;
+  console.log("picture",picture)
+   if (eventName.length > 0) {
+    const response = await fetch(`api/admevent/${eventId}`, {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({eventId,
+        eventName,
                 eventDescription,
                 date,
                 address,
                 price,
                 clubId,
-                clubDescription,
-               
-            }),
-        });
+               eventDescription,
+               picture,
+                })
+    })
+    const result = await response.json()
+
+    if (result.editEventUpdated) {
+      alert(`${eventName} was updated`)
+      $("h1").html(`Edit Page for: ${bookId} - ${bookName}`)
+      $("[name=bookName]").html(`${bookName}`)
+    }
+  } else {
+    alert("Du måste skriva något!")
+  }
    
 
 
@@ -351,12 +366,12 @@ async function deleteEvent() {
  // console.log("CULBID", clubId)
   const optionEvent = document.getElementById('eventEliminar');
   const eventId = optionEvent.value;
-  const response = await fetch(`api/admclub/${eventId}`, { method: "delete" })
+  const response = await fetch(`api/admevent/${eventId}`, { method: "delete" })
   const result = await response.json()
-  console.log("delete club - ", result);
+  console.log("delete Event - ", result);
 
   if (result.message === "Club deleted successfully") {
-    alert('Club was deleted')
+    alert('Event was deleted')
      location.reload();
   } else {
     alert(result.message)
