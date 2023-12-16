@@ -7,10 +7,13 @@
     <title>Gala-Emporia</title>
     <script src="jquery-3.7.1.min.js"></script>
     <script type="module" src="./router.js"></script>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./stylesheet/style.css">
+    <!--<link rel="stylesheet" href="./stylesheet/dance.css">-->
+   <!--<link rel="stylesheet" href="./stylesheet/bookClubStyle.css"> -->
     <script type="module" src="./pages/addevents.js"></script>
     <script type="module" src="./pages/login.js"></script>
     <script type="module" src="./pages/booking.js"></script>
+    <script type="module" defer src="./pages/danceClub.js"></script>
 </head>
 
 <body>
@@ -32,7 +35,7 @@
                                 <li><a href="#rockClub">Rock Club</a></li>
                                 <li><a href="#blueClub">Blue Club</a></li>
                                 <li><a href="#bookClub">Book Club</a></li>
-                                <li> <a href="#jumpingClub">Jumping club </a></li>
+                                <li> <a href="#danceclub">Dance club </a></li>
                                 <li> <a href="#loveClub">Loving club</a> </li>
                             </ul>
                         </div>
@@ -41,6 +44,7 @@
                 <li><a href="#club">Admin</a> </li>
             </ul>
         </nav>
+
         <aside id="login"></aside>
 
     </div>
@@ -57,9 +61,8 @@
  </section>
 
     <main>
-        <div id="eventDisplay" class="grid-container">
-            
-        </div>
+        <div id="eventDisplay" class="grid-container"></div>
+        <div class="danceClub"></div>
 
     </main>
 
