@@ -56,6 +56,9 @@ db.connect(err => {
 
   // serve static client directory
   server.use(express.static("../client"));
+  //server.use(express.static("./client/styles"));
+  
+  
 
   // connect to API:s
   apiRegister(server, db)

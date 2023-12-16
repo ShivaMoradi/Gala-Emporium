@@ -4,7 +4,12 @@ import {createEventHTML, event } from "./pages/addevents.js";
 import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
+import loveHtml from "./pages/love.js";
+import clubHtmlAdmin from "./pages/admin.js";
+import htmlAdminClub from "./pages/adminClub.js";
+import htmlAdminEvent from "./pages/adminEvent.js";
 import wildClubHtml from "./pages/wild.js";
+
 
 
 async function router() {
@@ -27,19 +32,25 @@ async function router() {
       content = await clubPages("dance club");
       break;
     case "#loveClub":
-      content = await clubPages("love club");
+      content = await loveHtml()
       break;
-    case "#wild":
-      content = await wildClubHtml()
+     case "#eventAdmin":
+      content = await  htmlAdminEvent()
+      break;
+    case "#clubAdmin":
+      content = await htmlAdminClub()
       break;
     case "":
       content = await bookEvent();
+      break;
+    case "#wild":
+      content = await wildClubHtml()
       break;
     case "addevent":
       content = await event("Add new Event");
       break;
     case "#club":
-    content = await clubHtml();
+    content = await clubHtmlAdmin();
     break;
     case "#admin":
     content = await init();
