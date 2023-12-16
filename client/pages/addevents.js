@@ -20,8 +20,10 @@ function createEventHTML(clubData) {
         minute: 'numeric',
         hour12: true,
     });
+    // Add a class based on clubName for styling differentiation
+    const eventColumnStyle = clubData.clubName.toLowerCase().replace(/\s+/g, '-');
     return `
-    <div class='event'>
+    <div class='event ${eventColumnStyle}'>
       <h3><a href="#" class="event-title-link" data-id="${clubData.id}">${clubData.eventName}</a></h3>
       <p>${clubData.clubName}</p>
       <img src="${clubData.images}" class="event-image" width="300" height="200">
