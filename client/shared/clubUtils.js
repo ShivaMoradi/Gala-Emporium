@@ -71,7 +71,6 @@ const formattedDate = new Date(clubData.date).toLocaleDateString('en-US', {
     minute: 'numeric',
     hour12: true,
 });
-
 // Add a class based on clubName for styling differentiation
 const clubStyleClass = clubData.clubName.toLowerCase().replace(/\s+/g, '-');
 
