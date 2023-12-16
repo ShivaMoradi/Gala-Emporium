@@ -147,7 +147,7 @@ async function addClub() {
        location.reload();
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("You have to fill out the input fields!")
   }
 }
 window.addClub = addClub
@@ -171,7 +171,7 @@ async function editClub() {
        location.reload();
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("You have to fill out the input fields!")
   }
 
 

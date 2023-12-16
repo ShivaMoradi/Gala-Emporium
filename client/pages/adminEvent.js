@@ -152,7 +152,6 @@ export default async function htmlAdminEvent() {
 }
 
 async function addEvent() {
-      
         const eventName = document.querySelector('input[name="eventsName"]').value;
         const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
         const date = document.querySelector('input[name="eventsDate"]').value;
@@ -183,10 +182,10 @@ async function addEvent() {
           console.log(result)
              if (result.insertEvent) {
       alert(`${eventName.trim()} was added`)
-      $("[name=bookName]").val("")
+           location.reload();
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("You have to fill out the input fields!")
   }
            
            
@@ -232,11 +231,10 @@ async function editEvent() {
 
     if (result.editEventUpdated) {
       alert(`${eventName} was updated`)
-      $("h1").html(`Edit Page for: ${bookId} - ${bookName}`)
-      $("[name=bookName]").html(`${bookName}`)
+       location.reload();
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("You have to fill out the input fields!")
   }
    
 
@@ -247,8 +245,24 @@ async function editEvent() {
 window.editEvent = editEvent
 
 
+async function deleteEvent() {
+  const optionEvent = document.getElementById('eventEliminar');
+  const eventId = optionEvent.value;
+  const response = await fetch(`api/admevent/${eventId}`, { method: "delete" })
+  const result = await response.json()
+  console.log("delete Event - ", result);
 
+  if (result.message === "Club deleted successfully") {
+    alert('Event was deleted')
+    location.reload();
+     location.reload();
+  } else {
+    alert(result.message)
+  }
 
+}
+
+window.deleteEvent = deleteEvent
 
 
 
@@ -258,11 +272,6 @@ async function selectOptionDelete() {
   var inputElement = document.getElementById("eventEliminar");
     inputElement.innerHTML = ''
    console.log("inputElement",inputElement)
-  //var inputEl = document.getElementById("productoAna");
-
-  // Escuchar el cambio en el select
-  
-    // Obtener el valor seleccionado
     var selectedValue = selectElement.value;
    console.log("SelectValue",selectedValue)
   const clubDB = await obtenerDatos(selectedValue)
@@ -290,12 +299,7 @@ async function selectOptionEdit() {
   console.log("SelectDD",selectElement)
   var inputElement = document.getElementById("eventId");
     inputElement.innerHTML = ''                                 
-   console.log("inputElement",inputElement)
-  //var inputEl = document.getElementById("productoAna");
-
-  // Escuchar el cambio en el select
-  
-    // Obtener el valor seleccionado
+  console.log("inputElement", inputElement);
     var selectedValue = selectElement.value;
    console.log("SelectValue",selectedValue)
   const clubDB = await obtenerDatos(selectedValue)
@@ -314,7 +318,6 @@ async function selectOptionEdit() {
 }
 
 window.selectOptionEdit = selectOptionEdit
-
 
 async function selectOptionEditName() { 
   var inputElement = document.getElementById("eventId");
@@ -359,27 +362,6 @@ async function obtenerDatos(selectedValue) {
     return data;
 
   }
-async function deleteEvent() {
-  //const option = document.getElementById('productoEliminar');
-  //console.log("OPtion", option)
- // const clubId = option.value;
- // console.log("CULBID", clubId)
-  const optionEvent = document.getElementById('eventEliminar');
-  const eventId = optionEvent.value;
-  const response = await fetch(`api/admevent/${eventId}`, { method: "delete" })
-  const result = await response.json()
-  console.log("delete Event - ", result);
-
-  if (result.message === "Club deleted successfully") {
-    alert('Event was deleted')
-     location.reload();
-  } else {
-    alert(result.message)
-  }
-
-}
-
-window.deleteEvent = deleteEvent
 
 
   
