@@ -248,18 +248,21 @@ window.editEvent = editEvent
 async function deleteEvent() {
   const optionEvent = document.getElementById('eventEliminar');
   const eventId = optionEvent.value;
-  const response = await fetch(`api/admevent/${eventId}`, { method: "delete" })
-  const result = await response.json()
-  console.log("delete Event - ", result);
+  if (eventId) {
+    const response = await fetch(`api/admevent/${eventId}`, { method: "delete" })
+    const result = await response.json()
+    console.log("delete Event - ", result);
 
-  if (result.message === "Club deleted successfully") {
-    alert('Event was deleted')
-    location.reload();
-     location.reload();
-  } else {
-    alert(result.message)
+    if (result.message === "Club deleted successfully") {
+      alert('Event was deleted')
+      location.reload();
+    } else {
+      alert(result.message)
+    }
+
+  }else {
+    alert("You have to fill out the input fields!")
   }
-
 }
 
 window.deleteEvent = deleteEvent
