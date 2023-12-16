@@ -59,7 +59,7 @@ export default function (server, db) {
   server.delete('/api/events/:id', async (req, res) => {
     console.log("Entro en delete")
     console.log([req.params.id])
-    const result = await db.query(" DELETE club, events FROM club LEFT JOIN events ON club.id = events.clubId WHERE club.id = ?;; ", [req.params.id]);
+    const result = await db.query("DELETE FROM books WHERE id = ?;", [req.params.id]);
     if (result.affectedRows > 0) {
       res.json({ message: "club deleted successfully" })
     } else {

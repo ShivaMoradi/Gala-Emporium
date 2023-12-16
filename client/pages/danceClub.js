@@ -1,4 +1,4 @@
-import { clubPages, getClubEvents } from "./clubpages.js";
+//import { clubPages, getClubEvents } from "./clubpages.js";
 //import { eventsHTML } from "./addevents.js";
 
 export default async function danceclub () {

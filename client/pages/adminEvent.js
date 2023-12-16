@@ -121,7 +121,7 @@ export default async function htmlAdminEvent() {
             <div class="eliminar">
                 <h2>Delete Event</h2>
 
-                <form>
+                <form class="deleteEvent" onsubmit="deleteEvent(); return false">
                     <label>Club Name</label>
                     <select id="productoEliminar" onchange="selectOption()">
                        ${delt}
@@ -130,7 +130,8 @@ export default async function htmlAdminEvent() {
                       <select id="eventEliminar">
                        <option id="option" value=""> </option>
                     </select>
-                    <input class="button" type="button" id="botonEliminar" value="Delete Event">
+                  
+                    <input class="button" type="submit" id="botonEliminar" value="Delete Event">
                 </form>
             </div>
         </div>
@@ -194,6 +195,7 @@ async function selectOption() {
   var selectElement = document.getElementById("productoEliminar");
   console.log("SelectDD",selectElement)
   var inputElement = document.getElementById("eventEliminar");
+    inputElement.innerHTML = ''
    console.log("inputElement",inputElement)
   //var inputEl = document.getElementById("productoAna");
 
@@ -202,17 +204,18 @@ async function selectOption() {
     // Obtener el valor seleccionado
     var selectedValue = selectElement.value;
    console.log("SelectValue",selectedValue)
-    const clubDB = await obtenerDatos(selectedValue)
+  const clubDB = await obtenerDatos(selectedValue)
   console.log("Clubdb", clubDB)
   for (const key in clubDB) {
-       // <option id="option" value="${club[key].id}"> ${club[key].name}</option>
-        inputElement.value = clubDB[key].name 
+        const nuevaOpcion = document.createElement('option');
+          nuevaOpcion.value = clubDB[key].id;
+         nuevaOpcion.text = clubDB[key].name;
+          console.log("nuevaOpcion",nuevaOpcion)
+         inputElement.appendChild(nuevaOpcion);
         console.log("inputElement.value",clubDB[key].name )
       
   }
-   
   
-    //inputEl.value = clubDB[0].description
    }
  
 
@@ -227,9 +230,27 @@ async function obtenerDatos(selectedValue) {
     return data;
 
   }
+async function deleteEvent() {
+  //const option = document.getElementById('productoEliminar');
+  //console.log("OPtion", option)
+ // const clubId = option.value;
+ // console.log("CULBID", clubId)
+  const optionEvent = document.getElementById('eventEliminar');
+  const eventId = optionEvent.value;
+  const response = await fetch(`api/admclub/${eventId}`, { method: "delete" })
+  const result = await response.json()
+  console.log("delete club - ", result);
 
+  if (result.message === "Club deleted successfully") {
+    alert('Club was deleted')
+     location.reload();
+  } else {
+    alert(result.message)
+  }
 
+}
 
+window.deleteEvent = deleteEvent
 
 
   
