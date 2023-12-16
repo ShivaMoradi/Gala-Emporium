@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
 
 .club-container.book-club {
-  background-image: url("./images/bookClubBackground.jpg");
+  background-image: url("../images/bookClubBackground.jpg");
   /* Add more styles as needed */
 }
 
