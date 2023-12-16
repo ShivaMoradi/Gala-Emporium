@@ -57,10 +57,10 @@ async function addEvent() {
           console.log(result)
              if (result.insertEvent) {
       alert(`${eventName.trim()} was added`)
-      $("[name=bookName]").val("")
+      $("[name=eventName]").val("")
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("Please write event name!")
   }
            
            
