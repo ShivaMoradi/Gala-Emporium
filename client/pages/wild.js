@@ -30,23 +30,14 @@ export default async function wildClubHtml() {
     <section class="home" id="home">
       <div class="home-content">
         <div class="inner-content">
-          <h3>Welcome to Wild Club - Where the wildest events happen yiihaa!</h3>
+          <h3>Welcome to Wild Club - Where the Fun Never Ends!</h3>
+          <h2> Get ready for an extraordinary experience at Wild Club! We're all about non-stop fun, incredible music, and a vibe that'll leave you buzzing. Imagine lively beats, cool themes, and an atmosphere that's just pure joy. Wild Club isn't just a place; it's where amazing nights and awesome memories are made. Come, be part of the excitement, and let's make every visit a wild adventure you won't forget!</h2>
         </div>
         
         <div class="inner-content-img">
           <img src="./img/wildpicc.jpg" alt="img">
           <h2>A video from the wild club!</h2>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/V9H0F0pfLNM?si=N0LULc1p4BNepi0U" frameborder="0" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <h4>About Wild Club</h4>
-      <div class="about-sec">
-        <div class="about-content">
-          <h3>${clubData[0].name}</h3>
-          <p>${clubData[0].description}</p>
         </div>
       </div>
     </section>
