@@ -72,15 +72,15 @@ export default async function htmlAdminEvent() {
         <div class="contenedor">
             <!-- Añadir -->
             <div class="añadir">
-                <h2>Añadir</h2>
+                <h2>Add Event</h2>
                 <form class="addEvent" onsubmit="addEvent(); return false">
-                    <label>Nombre del producto</label>
+                    <label>Event Name</label>
                     <input type="text" id="eventsName" name="eventsName" placeholder="events name">
-                    <label>Valor del producto</label>
+                    <label> Description</label>
                     <input type="text" id="eventsDescription"  name="eventsDescription" placeholder="events description">
                     <label>Date</label>
                     <input type="datetime-local"  id="eventsDate" name="eventsDate" placeholder="events date">
-                     <label>Adrees</label>
+                     <label>address</label>
                     <input type="text" name="eventsAddress" id="eventsAddress" placeholder="events address">
                      <label>Price</label>
                      <input type="number" name="eventsPrice" id="eventsPrice" placeholder="events price">
@@ -95,15 +95,15 @@ export default async function htmlAdminEvent() {
             </div>
             <!-- Editar -->
             <div class="editar">
-                <h2>Editar</h2>
+                <h2>Edit Event</h2>
                 <form class="addEvent" onsubmit="addEvent(); return false">
-                    <label>Nombre del producto</label>
+                    <label>Event Name</label>
                     <input type="text" id="eventsName" name="eventsName" placeholder="events name">
-                    <label>Valor del producto</label>
+                    <label>Description</label>
                     <input type="text" id="eventsDescription"  name="eventsDescription" placeholder="events description">
                     <label>Date</label>
                     <input type="datetime-local"  id="eventsDate" name="eventsDate" placeholder="events date">
-                     <label>Adrees</label>
+                     <label>Addresss</label>
                     <input type="text" name="eventsAddress" id="eventsAddress" placeholder="events address">
                      <label>Price</label>
                      <input type="number" name="eventsPrice" id="eventsPrice" placeholder="events price">
@@ -113,20 +113,20 @@ export default async function htmlAdminEvent() {
                         </select>
                     <label>Imagen</label>
                     <input type="text" id="ImagenAñadir">
-                     <input id="submit" class="button" type="submit" value="Add Event">
+                     <input id="submit" class="button" type="submit" value="Edit Event">
                 </form>
             </div>
 
             <!-- Eliminar -->
             <div class="eliminar">
-                <h2>Eliminar</h2>
+                <h2>Delete Event</h2>
 
                 <form>
-                    <label>Nombre del producto</label>
+                    <label>Event Name</label>
                     <select id="productoEliminar">
                         <option value="">---</option>
                     </select>
-                    <input class="button" type="button" id="botonEliminar" value="Eliminar">
+                    <input class="button" type="button" id="botonEliminar" value="Delete Event">
                 </form>
             </div>
         </div>
