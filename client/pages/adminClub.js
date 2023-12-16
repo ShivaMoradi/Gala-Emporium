@@ -166,7 +166,7 @@ async function deleteClub() {
   console.log("OPtion", option)
   const clubId = option.value;
   console.log("CULBID",clubId)
-  //const response = await fetch(`api/admclub/${clubId}`, { method: "delete" })
+  const response = await fetch(`api/admclub/${clubId}`, { method: "delete" })
   const result = await response.json()
   console.log("delete club - ", result);
 

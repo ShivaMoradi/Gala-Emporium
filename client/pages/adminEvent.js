@@ -122,9 +122,13 @@ export default async function htmlAdminEvent() {
                 <h2>Delete Event</h2>
 
                 <form>
-                    <label>Event Name</label>
-                    <select id="productoEliminar">
-                        <option value="">---</option>
+                    <label>Club Name</label>
+                    <select id="productoEliminar" onchange="selectOption()">
+                       ${delt}
+                    </select>
+                   <label>Event Name</label>
+                      <select id="eventEliminar">
+                       <option id="option" value=""> </option>
                     </select>
                     <input class="button" type="button" id="botonEliminar" value="Delete Event">
                 </form>
@@ -184,7 +188,50 @@ async function addEvent() {
      
 }
 
-  window.addEvent = addEvent
+window.addEvent = addEvent
+  
+async function selectOption() {
+  var selectElement = document.getElementById("productoEliminar");
+  console.log("SelectDD",selectElement)
+  var inputElement = document.getElementById("eventEliminar");
+   console.log("inputElement",inputElement)
+  //var inputEl = document.getElementById("productoAna");
+
+  // Escuchar el cambio en el select
+  
+    // Obtener el valor seleccionado
+    var selectedValue = selectElement.value;
+   console.log("SelectValue",selectedValue)
+    const clubDB = await obtenerDatos(selectedValue)
+  console.log("Clubdb", clubDB)
+  for (const key in clubDB) {
+       // <option id="option" value="${club[key].id}"> ${club[key].name}</option>
+        inputElement.value = clubDB[key].name 
+        console.log("inputElement.value",clubDB[key].name )
+      
+  }
+   
+  
+    //inputEl.value = clubDB[0].description
+   }
+ 
+
+window.selectOption = selectOption
+
+
+async function obtenerDatos(selectedValue) {
+   console.log("AnteConsulta",selectedValue)
+    const response = await fetch(`api/admevent/${selectedValue}`)
+   const data = await response.json()
+   console.log("data",data)
+    return data;
+
+  }
+
+
+
+
+
   
 async function getClub() {
     const response = await fetch("/api/admclub")
