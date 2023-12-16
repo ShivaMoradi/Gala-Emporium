@@ -8,6 +8,7 @@ import club from './api/club.js'
 import login from './api/login.js'
 import booking from './api/booking.js'
 import admclub from "./api/admclub.js";
+import admevent from './api/admevent.js'
 
 
 const server = express()
@@ -66,6 +67,7 @@ db.connect(err => {
   login(server, db)
   booking(server, db)
   admclub(server, db)
+  admevent(server, db)
 
 
   // Start the server

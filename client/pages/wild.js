@@ -1,7 +1,7 @@
 export default async function wildClubHtml() {
   const newCSS = document.createElement('link');
   newCSS.rel = 'stylesheet';
-  newCSS.href = 'client\pages\wild.js';
+  newCSS.href = 'client\pages\wild.css';
 
   // Get the head element of the document
   const headElement = document.head;
@@ -28,26 +28,28 @@ export default async function wildClubHtml() {
     <section class="home" id="home">
       <div class="home-content">
         <div class="inner-content">
-          <h3>Welcome to Wild Club - Where the wildest events happen!</h3>
+          <h3>Welcome to Wild Club - Where the wildest events happens yiihaa!</h3>
         </div>
+        
         <div class="inner-content-img">
-          <img src="./img/home.jpg" alt="img">
-        </div>
+          <img src="./img/wildpicc.jpg" alt="img">
+           <h2>A video from the wild club!</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/V9H0F0pfLNM?si=N0LULc1p4BNepi0U" frameborder="0" allowfullscreen></iframe>
+
+
       </div>
     </section>
 
     <section class="about" id="about">
       <h4>About Wild Club</h4>
       <div class="about-sec">
-        <div class="img">
-          <img src="openedBook.jpg" alt="img">
-        </div>
         <div class="about-content">
           <h3>${clubData.name}</h3>
           <p>${clubData.description}</p>
         </div>
       </div>
     </section>
+    
   `;
 }
 
