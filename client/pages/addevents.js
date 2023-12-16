@@ -137,3 +137,4 @@ document.addEventListener("click", async (event) => {
         await bookEvent(eventsId);
     }
 });
+

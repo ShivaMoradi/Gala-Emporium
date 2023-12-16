@@ -55,6 +55,15 @@ export default async function htmlAdminEvent() {
     // Utiliza el método .remove() para quitar el elemento del DOM
     footer.remove();
   }
+    const club = await getClub();
+    let delt = "";
+
+    for (const key in club) {
+      delt += `
+            <option id="option" value="${club[key].id}"> ${club[key].name}</option>
+                  `    
+    }
+   
         return` <h1>Admin&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Event</h1>
         <nav class="navbar">
             <a href="#clubAdmin">Club</a>
@@ -64,40 +73,47 @@ export default async function htmlAdminEvent() {
             <!-- Añadir -->
             <div class="añadir">
                 <h2>Añadir</h2>
-                <form>
+                <form class="addEvent" onsubmit="addEvent(); return false">
                     <label>Nombre del producto</label>
-                    <input type="text" id="productoAñadir" name="nombreDelProducto">
-
+                    <input type="text" id="eventsName" name="eventsName" placeholder="events name">
                     <label>Valor del producto</label>
-                    <input type="number" id="valorAñadir">
-
-                    <label>Existencia</label>
-                    <input type="number" id="existenciaAñadir">
-
-                    <label>Url Imagen</label>
+                    <input type="text" id="eventsDescription"  name="eventsDescription" placeholder="events description">
+                    <label>Date</label>
+                    <input type="datetime-local"  id="eventsDate" name="eventsDate" placeholder="events date">
+                     <label>Adrees</label>
+                    <input type="text" name="eventsAddress" id="eventsAddress" placeholder="events address">
+                     <label>Price</label>
+                     <input type="number" name="eventsPrice" id="eventsPrice" placeholder="events price">
+                       <label>Club</label>
+                        <select id="eventsInsert" >
+                        ${delt}
+                        </select>
+                    <label>Imagen</label>
                     <input type="text" id="ImagenAñadir">
-
-                    <input class="button" type="button" id="botonAñadir" value="Añadir">
+                     <input id="submit" class="button" type="submit" value="Add Event">
                 </form>
             </div>
             <!-- Editar -->
             <div class="editar">
                 <h2>Editar</h2>
-                <form>
+                <form class="addEvent" onsubmit="addEvent(); return false">
                     <label>Nombre del producto</label>
-                    <select id="productoEditar">
-                        <option value="">---</option>
-                    </select>
-
-                    <label>Atributo</label>
-                    <select id="atributoEditar">
-                        <option value="">---</option>
-                    </select>
-
-                    <label>Nuevo valor</label>
-                    <input type="text" id="nuevoAtributo">
-
-                    <input class="button" type="button" id="botonEditar" value="Editar">
+                    <input type="text" id="eventsName" name="eventsName" placeholder="events name">
+                    <label>Valor del producto</label>
+                    <input type="text" id="eventsDescription"  name="eventsDescription" placeholder="events description">
+                    <label>Date</label>
+                    <input type="datetime-local"  id="eventsDate" name="eventsDate" placeholder="events date">
+                     <label>Adrees</label>
+                    <input type="text" name="eventsAddress" id="eventsAddress" placeholder="events address">
+                     <label>Price</label>
+                     <input type="number" name="eventsPrice" id="eventsPrice" placeholder="events price">
+                       <label>Club</label>
+                        <select id="eventsInsert" >
+                        ${delt}
+                        </select>
+                    <label>Imagen</label>
+                    <input type="text" id="ImagenAñadir">
+                     <input id="submit" class="button" type="submit" value="Add Event">
                 </form>
             </div>
 
@@ -124,4 +140,54 @@ export default async function htmlAdminEvent() {
         </div>
         </div>
         `
+}
+
+async function addEvent() {
+      
+        const eventName = document.querySelector('input[name="eventsName"]').value;
+        const eventDescription = document.querySelector('input[name="eventsDescription"]').value;
+        const date = document.querySelector('input[name="eventsDate"]').value;
+        const address = document.querySelector('input[name="eventsAddress"]').value;
+        const price = document.querySelector('input[name="eventsPrice"]').value;
+        const option = document.getElementById('eventsInsert');
+        const clubId = option.value;
+        // Assuming clubId is actually clubName
+        const clubDescription = "";  // Assuming clubDescription is not present in your form
+        if(eventName.trim().length > 0 && eventDescription.trim().length > 0 && date.trim().length > 0 && address.trim().length > 0 && price.trim().length > 0 && clubId.trim().length > 0 ){
+        const response = await fetch("/api/club", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                eventName,
+                eventDescription,
+                date,
+                address,
+                price,
+                clubId,
+                clubDescription,
+               
+            }),
+        });
+          const result = await response.json()
+          console.log(result)
+             if (result.insertEvent) {
+      alert(`${eventName.trim()} was added`)
+      $("[name=bookName]").val("")
+    }
+  } else {
+    alert("Du måste skriva något!")
+  }
+           
+           
+     
+}
+
+  window.addEvent = addEvent
+  
+async function getClub() {
+    const response = await fetch("/api/admclub")
+  const data = await response.json()
+    return data;
 }
