@@ -1,0 +1,34 @@
+
+/* Club page content*/ 
+#midnightOasisBody{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+#midnightOasisBody > header{
+    width: 100%;
+}
+
+/* Header Title Text */
+#midnightOasisBody > header h1{
+    color: white;
+}
+
+/* Banner image */ 
+#titleBackdrop{
+    width: 100%;
+    min-height: 25vh;
+    background-image: url(/client/images/midnightOasisCover.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid red;
+}
+
+
