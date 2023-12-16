@@ -36,12 +36,12 @@ export default async function clubPages(clubName) {
 
 
 
-                <div id="mediaContainer"> 
+                <div id="mediaContainer" class="mediaContainer ${clubDetails.clubName.toLowerCase().replace(' ', '-')}"> 
                 <p> Video and images goes here</p>       
                 <!---VIDEO AND IMAGES GO HERE-->
                 </div>
 
-                <article id="clubDescription">
+                <article id="clubDescription" class ="clubDescriptionContainer ${clubDetails.clubName.toLowerCase().replace(' ', '-')}">
                 <p>${clubDetails.clubDescription}</p>
                 <!-- CLUB DESRIPTION GOES HERE  -->
                 </article>
