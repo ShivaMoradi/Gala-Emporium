@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 
 /* Club page content*/ 
 #midnightOasisBody{
+    font-family: 'Roboto Condensed', sans-serif;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -15,20 +19,78 @@
 
 /* Header Title Text */
 #midnightOasisBody > header h1{
-    color: white;
+    font-family: 'Anton', sans-serif;;
+    font-size: 300%;
+    color: #Bb0c2c;
+
 }
 
 /* Banner image */ 
 #titleBackdrop{
     width: 100%;
-    min-height: 25vh;
-    background-image: url(/client/images/midnightOasisCover.png);
+    min-height: 50vh;
+    background-image: url(../images/midnightOasisCover.png);
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid red;
+
 }
 
 
+
+#midnightOasisMain{
+    display: flex;
+    flex-direction: column;
+}
+
+#aboutSection{
+    max-width: 50%;
+    text-align: center;
+}
+
+#eventBoxContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.eventBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    text-align: center;
+    margin-bottom: 2em; 
+    padding: 20px;
+    max-width: 600px; 
+    margin: 2em auto; 
+
+}
+
+.eventBox .eventImage{
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
+    display: block;
+    
+}
+
+
+.book-button {
+    background-color: #0f3c4c;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.book-button:hover {
+    background-color: #0b2d39; 
+}
