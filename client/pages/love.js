@@ -11,13 +11,13 @@ export default async function loveHtml() {
         // Obtener el elemento head del documento
         const headElement = document.head;
         // Obtener el enlace CSS existente que deseas reemplazar
-        
+        /*
         const css = document.querySelector('link[href="./stylesheet/style.css"]');
         console.log("ruta", css)
         if (css) {
             console.log("Entra css")
             headElement.removeChild(css); // Quitar el enlace existente
-        }
+        }*/
         headElement.appendChild(nuevoCSS);
         
         // Añadir el nuevo enlace CSS al head del documento
@@ -112,13 +112,11 @@ export default async function loveHtml() {
             <h5>Palece:${evenClub[key].address} </h5>
             <h5>Price:${evenClub[key].price} </h5>
             
-            <button class="btn  book-button" data-event-id="${evenClub[key].idEvent}">Buy Tycket</button>
+            <button class="btn  book-buttonEvent" data-event-id="${evenClub[key].idEvent}">Buy Tycket</button>
         </div>`
-             } else { eventsMoth += ""; }
-            } else {
-
-                eventsMoth += `<h2>Sorry we don't have an event this month</h2>`
-             }
+             } else { eventsMoth += `<h2>Sorry this we don't have an event this month</h2>`; }
+            } 
+                
       }
   
             return `
@@ -136,19 +134,16 @@ export default async function loveHtml() {
     </section>
 </body>
 <!---------------------------about section--------------->
-<section class="about" id="about">
+<div class="about" id="about">
     <h4>About Us</h4>
     <div class="about-sec">
-        <div class="img">
-            <img src="" alt="img">
-        </div>
         <div class="about-content">
             <h3></h3>
             <p>! ${evenClub[0].clubDescription}</p>
             
         </div>
     </div>
-</section>
+</div>
 <!-----------------------------services-------------------->
 <section class="service" id="service" >
     <h4>Events of the month</h4>
@@ -201,38 +196,43 @@ async function eventMonth() {
 
        async function bookEvent(eventsId) {
            try {
-    // Use window.prompt to get user email
-    const email = window.prompt("Ange din e-postadress:");
-               console.log("Email", email.length);
+               // Use window.prompt to get user email
+               const email = window.prompt("Ange din e-postadress:");
+               console.log("Email", email);
+               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                
-    if (email !=="" &&  email !== null) {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ eventsID: eventsId, userEmail: email }),
-      });
+               
+               if ( email !== null && email.trim() !== "") {
+                   console.log("ENTRA parte uno O NO", email)
+                   if (emailRegex.test(email)) {
+                       console.log("ENTRA O NO", email)
+                       const response = await fetch("/api/booking", {
+                           method: "POST",
+                           headers: { "Content-Type": "application/json" },
+                           body: JSON.stringify({
+                               eventsID: eventsId, userEmail: email
+                           }),
+                       });
+                       const result = await response.json();
+                       console.log('Result from server:', result);
+                       alert(`Du är bokad! Din order-ID är: ${result.orderNr}`);
+                       console.log('Response from server:', response);
 
-      console.log('Response from server:', response);
-
-      if (!response.ok) {
-        console.error(`Error booking event: ${response.statusText}`);
-        alert("Ett fel inträffade vid bokningen. Försök igen senare.11");
-        console.log('Error condition reached');
-        return;
-      }
-
-      const result = await response.json();
-      console.log('Result from server:', result);
-      alert(`Du är bokad! Din order-ID är: ${result.orderNr}`);
-    }
-  } catch (error) {
+      
+                   } else {
+                       alert("Enter a correct email address");
+                   }
+               } else {
+                        alert("You must write something in the writing box");
+               }
+           } catch (error) {
     console.error('Error booking event:', error);
-    alert("Ett fel inträffade vid bokningen. Försök igen senare.22");
+    alert("You must write something in the writing box");
   }
 } 
 
 document.addEventListener("click", async (event) => {
-    if (event.target.classList.contains("book-button")) {
+    if (event.target.classList.contains("book-button-event")) {
         const eventsId = event.target.dataset.eventId;
         await bookEvent(eventsId);
     }
@@ -240,7 +240,7 @@ document.addEventListener("click", async (event) => {
 
 
 document.addEventListener("click", async (event) => {
-    if (event.target.classList.contains("book-button-event")) {
+    if (event.target.classList.contains("book-buttonEvent")) {
         const eventsId = event.target.dataset.eventId;
         await bookEvent(eventsId);
     }

@@ -14,7 +14,6 @@
   box-sizing: border-box;
   font-family: 'PT Sans', sans-serif;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 html {
@@ -33,6 +32,26 @@ html::-webkit-scrollbar-thumb {
   background: var(--clr4);
 }
 body{background-color: rgb(241, 234, 234 );}
+ header h1 {
+     display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    font-family: 'PT Mono', monospace;
+    margin-left: 10px;
+    margin-bottom: -11px;
+ }
+
+nav{
+  margin: 30px 7px;
+  padding: 26px;
+}
+main .home {
+    margin: -204px;
+}
 
 .btn {
   margin-top: 2rem;
@@ -60,6 +79,9 @@ body{background-color: rgb(241, 234, 234 );}
 
 .btn:active {
   transform: translateY(-.1rem);
+}
+section .about {
+  margin: 300px;
 }
 
 section {
@@ -106,6 +128,53 @@ section p {
   word-wrap: normal;
 }
 
+div.about{
+  margin-top: 21%;
+  margin-bottom: 2%;
+}
+
+
+div.about h3{
+  font-size: 3rem;
+  color: var(--clr2);
+  text-transform: none;
+  text-align: center;
+  letter-spacing: .2rem;
+}
+div.about h4 {
+  margin: 0 0 1rem 25rem;
+  padding: .2rem;
+  width: 50%;
+  font-size: 3rem;
+  color: var(--clr2);
+  text-transform: none;
+  text-align: center;
+  align-items: center;
+  letter-spacing: .2rem;
+  clip-path: polygon(0% 15%, 25% 28%, 15% 0%, 85% 0%, 70% 28%, 100% 15%, 100% 85%, 67% 70%, 85% 100%, 15% 100%, 28% 66%, 0% 85%);
+  background: var(--clr3);
+
+}
+div.about h2 {
+  padding: 2rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--clr3);
+  text-transform: capitalize;
+  letter-spacing: .1rem;
+}
+div.about p {
+  color: var(--clr3);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  line-height: 2.5rem;
+  word-wrap: normal;
+}
+
+
+
+
+
 .head {
   position: fixed;
   top: 0;
@@ -119,6 +188,10 @@ section p {
   align-items: center;
   justify-content: space-between;
 }
+
+
+
+
 
 .head h1 {
   font-size: 2.5rem;
@@ -146,6 +219,7 @@ section p {
 
 .home {
   height: 100vh;
+  width: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/istockphoto.jpg") no-repeat;
   background-size: cover;
   background-position: center;
@@ -202,7 +276,6 @@ section p {
   color: var(--clr3);
   font-size: 1.4rem;
   font-weight: 600;
-  background: rgba(238, 238, 238,0.9)
   
 }
 
