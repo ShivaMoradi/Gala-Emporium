@@ -6,31 +6,28 @@ export default async function loveHtml() {
  
         const nuevoCSS = document.createElement('link');
         nuevoCSS.rel = 'stylesheet';
-        nuevoCSS.href = './styles/love.css';
+        nuevoCSS.href = './stylesheet/love.css';
         console.log("Entra ")
         // Obtener el elemento head del documento
         const headElement = document.head;
         // Obtener el enlace CSS existente que deseas reemplazar
-        const css = document.querySelector('link[href="./style.css"]');
+        
+        const css = document.querySelector('link[href="./stylesheet/style.css"]');
         console.log("ruta", css)
         if (css) {
             console.log("Entra css")
             headElement.removeChild(css); // Quitar el enlace existente
         }
         headElement.appendChild(nuevoCSS);
+        
         // Añadir el nuevo enlace CSS al head del documento
-  
-        const nav = document.getElementById('nav');
-        if (nav) {
-            // Utiliza el método .remove() para quitar el elemento del DOM
-            nav.remove();
-        }
+      /*
         const h1 = document.getElementById('website-title');
         if (h1) {
             // Utiliza el método .remove() para quitar el elemento del DOM
             h1.remove();
         }
-  
+       */
   
         const coverImageSection = document.getElementById('coverImage');
 
@@ -47,7 +44,7 @@ export default async function loveHtml() {
   
 
 
-
+       
 
         const footer = document.getElementById('footer');
         if (footer) {
@@ -78,7 +75,7 @@ export default async function loveHtml() {
             eventTag += ` <div class="blog-content">
             <div class="in-blog">
                 <div class="im">
-                    <img src="blog-1.jpg" alt="img">
+                    <img src="${evenClub[key].images}" alt="img">
                     <div class="in-blog-icon">
                         <a href="#"><i class="fas fa-calendar"></i>${dayEvent} ${m} ${year}</a>
                         <a href="#"><i class="fas fa-user"></i>${evenClub[key].price}.00kr</a>
@@ -108,7 +105,7 @@ export default async function loveHtml() {
                 if (monthEvent === currentMonth) {
                   console.log("Dime mamai",evenClub)
             eventsMoth += `<div class="inner-box">
-            <img src="s-1.png" alt="">
+            <img src="${evenClub[key].images}" alt="">
             <h2>${evenClub[key].eventName}</h2>
             <p>${evenClub[key].eventDescription}</p>
             <h5>Date:${dayEvent} ${monthEvent} </h5>
@@ -125,18 +122,6 @@ export default async function loveHtml() {
       }
   
             return `
-    <header class="head">
-        <h1>Love&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
-        <nav class="navbar">
-            <a href="">Home</a>
-            <a href="#rockClub">Rock Club</a>
-            <a href="#blueClub">Blue Club</a>
-            <a href="#bookClub">Book Club</a>
-            <a href="#jumpingClub">Jumping Club</a>
-            <a href="#contact">Admin</a>
-        </nav>
-       
-    </header>
 
 <section class="home" id="home">
         <div class="home-content">

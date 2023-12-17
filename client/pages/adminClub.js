@@ -2,7 +2,7 @@ export default async function htmlAdminClub() {
 
   const nuevoCSS = document.createElement('link');
   nuevoCSS.rel = 'stylesheet';
-  nuevoCSS.href = './styles/admin.css';
+  nuevoCSS.href = './stylesheet/admin.css';
   console.log("Entra ")
   // Obtener el elemento head del documento
   const headElement = document.head;
@@ -68,6 +68,7 @@ let delt = "";
 }
         return` <h1>Admin&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
         <nav class="navbar">
+             <a href="">Home</a>
             <a href="#eventAdmin">Event</a>
             
         </nav>

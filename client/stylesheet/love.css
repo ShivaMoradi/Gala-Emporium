@@ -22,6 +22,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 8rem;
   overflow-x: hidden;
+  
 }
 
 html::-webkit-scrollbar {
@@ -31,6 +32,7 @@ html::-webkit-scrollbar {
 html::-webkit-scrollbar-thumb {
   background: var(--clr4);
 }
+body{background-color: rgb(241, 234, 234 );}
 
 .btn {
   margin-top: 2rem;
@@ -136,64 +138,8 @@ section p {
   }
 }
 
-.head .navbar a {
-  color: var(--clr2);
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin: 0 2rem;
-}
 
-.head .navbar a:hover {
-  transition: .4s ease;
-  color: var(--clr6);
-}
 
-.head .side-bar i {
-  padding: 1.5rem;
-  font-size: 2.1rem;
-  border: none;
-  background: var(--clr2);
-  color: var(--clr4);
-}
-
-.head .side-bar i:hover {
-  background: var(--clr3);
-  color: var(--clr4);
-  transition: .5s ease all;
-}
-
-#bars {
-  display: none;
-}
-
-.search-bar {
-  height: 7rem;
-  padding: 0 1rem;
-  display: flex;
-  position: absolute;
-  top: 99%;
-  left: 50%;
-  right: 0;
-  align-items: center;
-  background: var(--clr3);
-  border: 2px solid var(--clr4);
-  clip-path: polygon(20% 0%, 80% 0%, 100% 0, 0 0);
-}
-
-.search-bar.active {
-  transition: .2s ease;
-  border: hidden;
-  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-}
-
-.search-bar input {
-  width: 100%;
-  background: none;
-  border: hidden;
-  text-transform: none;
-  font-size: 1.5rem;
-  color: #fff;
-}
 
 
 /*------------------------Home Section--------------------*/
@@ -256,8 +202,7 @@ section p {
   color: var(--clr3);
   font-size: 1.4rem;
   font-weight: 600;
-  border: 0.1rem solid var(--clr4);
-  background: #eee;
+  background: rgba(238, 238, 238,0.9)
   
 }
 
@@ -278,9 +223,6 @@ section p {
   padding-right: 1rem;
 }
 
-.about-content .btn {
-  border: .1rem solid var(--clr4);
-}
 
 
 /*---------------service section------*/
@@ -300,7 +242,7 @@ section p {
   padding: 3rem 2rem;
   text-align: center;
   border: .1rem solid var(--clr3);
-  background: #eee;
+  background:rgba(238, 238, 238, 0.4);
 }
 
 .inner-box:hover {
@@ -317,69 +259,6 @@ section p {
   font-size: 1.3rem;
   color: var(--clr3);
 }
-
-
-/*--------------menu section--------*/
-
-.menu-content {
-  display: grid;
-  grid-template-columns: 1.2fr 1.2fr 1.2fr;
-  grid-gap: .5rem;
-  flex-wrap: nowrap;
-}
-
-.in-box {
-  padding: 3rem 4rem;
-  text-align: center;
-  border: .1rem solid var(--clr4);
-  background: #eee;
-}
-
-.in-box:hover {
-  background: var(--clr4);
-  transition: .4s ease all;
-}
-
-.in-box img {
-  width: 20rem;
-  height: auto;
-}
-
-.in-box .far {
-  position: absolute;
-  font-size: 2.5rem;
-  margin-left: -7rem;
-  color: var(--clr3);
-}
-
-.in-box .veg-icon {
-  margin-left: 22rem;
-  position: absolute;
-  width: 3rem;
-}
-
-.star,
-.price {
-  padding: 1rem 0;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--clr3);
-  text-transform: capitalize;
-}
-
-.fa-star {
-  color: var(--clr5);
-}
-
-.in-box .far {
-  font-size: 2rem;
-  color: var(--clr3);
-}
-
-.in-box .fa-plus-circle {
-  color: var(--clr4);
-}
-
 
 /*----------------blog Section-0--------*/
 
@@ -464,10 +343,6 @@ section p {
   section h4 {
     margin-left: 10rem;
     text-align: center;
-  }
-
-  .search-bar input {
-    width: 100%;
   }
 
   .head .navbar {
