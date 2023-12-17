@@ -36,7 +36,7 @@ export default async function wildClubHtml() {
       <div class="rubrik-content">
         <div class="inner-contenttt">
           <h3>Welcome to Wild Club - Where the Fun Never Ends!</h3>
-          <h2> Get ready for an extraordinary experience at Wild Club! We're all about non-stop fun, incredible music, and a vibe that'll leave you buzzing. Imagine lively beats, cool themes, and an atmosphere that's just pure joy. Wild Club isn't just a place; it's where amazing nights and awesome memories are made. Come, be part of the excitement, and let's make every visit a wild adventure you won't forget!</h2>
+<h2>Experience non-stop fun, incredible music, and a vibe that'll leave you buzzing at Wild Club – where amazing nights and awesome memories come to life!</h2>
         </div>
         
         <div class="inner-contenttt-img">
@@ -63,12 +63,22 @@ async function fetchClubData() {
 
 // Function to create HTML for each event
 function createEventHTML(eventData) {
-  // Customize this part based on your event data structure
+
+  // Format date and time
+  const eventDateTime = new Date(eventData.date).toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true, 
+  });
+
   return `
     <div class="event">
       <h2>${eventData.eventName}</h2>
       <p>${eventData.eventDescription}</p>
-      <p>Time: ${eventData.date}</p>
+      <p>Date and Time: ${eventDateTime}</p>
       <p>Address: ${eventData.address}</p>
       <p>Price: ${eventData.price} Kr</p>
       <img src="${eventData.images}" alt="Event Images">
