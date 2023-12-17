@@ -32,7 +32,21 @@ export default async function midnightOasis(){
                     <p>${clubDetails.description}</p>
                 </section>
 
-                <section id="mediaBox"></section>
+                <section id="mediaBox">
+                    <figure class="mediaItem">
+                        <img src="./images/midnightOasisArt/Audience.jpg" alt="Audience - Peter Martensen">
+                    </figure>
+                
+                    <figure class="mediaItem">
+                        <iframe width="100%" height="auto" src="https://www.youtube.com/embed/Ch71BX1PskQ?si=L5-cIszfL_CA7xUL" title="Jazz Club Promotional Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </figure>
+                
+                    <figure class="mediaItem">
+                        <img src="./images/midnightOasisArt/ThePresence.jpg" alt="The Prencense - Peter Martensen">
+
+                    </figure>
+                    
+                </section>
                 
                 <section id="eventBoxContainer">
                     <h2>Events</h2>
@@ -62,7 +76,7 @@ function createEventHTML(eventData) {
       <p>${formattedDate}</p>
       <p>${eventData.eventDescription}</p>
       <p>Price: ${eventData.price}</p>
-      <button class="midnightBook-button" data-event-id="${eventData.id}">Book Now</button>
+      <button class ="btn book-button-event" id="midnightBook-button" data-event-id="${eventData.id}">Book Now</button>
     </div>
   `;
 }
