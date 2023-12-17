@@ -49,9 +49,13 @@ body {
   color: var(--text);
   background-color: var(--surface0);
   font-size: 20px;
-  font-family: 'PT Mono', monospace;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
+}
+header h1{
+
+    font-family: 'Brush Script MT', cursive;
 }
 
 nav {
@@ -98,6 +102,11 @@ main {
   flex-direction: column;
   align-items: center;
 }
+.grid-container{
+  display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
 
 main>h1 {
   text-align: center;
@@ -116,6 +125,7 @@ header {
   margin-left: 1vw;
   cursor: pointer;
   font-weight: bold;
+  font-size: 22px;
 }
 
 #menu-links-list a,
