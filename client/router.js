@@ -6,14 +6,15 @@ import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
 import danceclub from "./pages/danceClub.js";
 import loveHtml from "./pages/love.js";
-import clubHtmlAdmin from "./pages/admin.js";
 import htmlAdminClub from "./pages/adminClub.js";
 import htmlAdminEvent from "./pages/adminEvent.js";
 import wildClubHtml from "./pages/wild.js";
 
 
 
-async function router() {
+async function router () {
+  console.log( 'Router function is triggered' );
+
   let content;
   // Populate "content" with whatever
   switch (window.location.hash) {
@@ -52,7 +53,7 @@ async function router() {
       content = await event("Add new Event");
       break;
     case "#club":
-    content = await clubHtmlAdmin();
+    content = await clubHtml();
     break;
     case "#admin":
     content = await init();
@@ -61,11 +62,14 @@ async function router() {
       content = "<h1><bold>Page not found!</bold></h1>"
       break;
   }
+  console.log( 'Setting content to main:', content );
 
   // Populate <main> with whatever content.
   $('main').html(content);
 
 }
+  console.log('Setting content to main:', content);
+
 
 async function getAllEvents() {
   try {
@@ -83,7 +87,18 @@ async function getAllEvents() {
   }
 }
 
+// Log initial page load
+console.log( 'Initial page load' );
 
-window.onload = router
-window.onhashchange = router
+window.onload = () => {
+  // Log that the window.onload event is triggered
+  console.log( 'Window onload event is triggered' );
+  router();
+};
+
+window.onhashchange = () => {
+  // Log that the hash change event is triggered
+  console.log( 'Hash change event is triggered' );
+  router();
+};
 
