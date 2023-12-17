@@ -1,4 +1,4 @@
-import { event, addEvent } from "./addevents.js";
+import { event } from "./addevents.js";
 export default async function init() {
   return `
     <form onsubmit="login(); return false">
