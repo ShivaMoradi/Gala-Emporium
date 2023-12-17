@@ -21,7 +21,8 @@ async function router() {
       content = await getAllEvents();
       break;
     case "#rockClub":
-      content = await clubPages("rock club");
+      content = await clubPages( "rock club" );
+      console.log(content)
       break;
     case "#blueClub":
       content = await clubPages("blue club");

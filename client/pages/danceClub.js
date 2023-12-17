@@ -42,13 +42,13 @@ export async function danceclub () {
       </section>
        <section id="eventDisplayy" class="events">
       <!-- Render events here dynamically using the clubData -->
-      ${eventsHtml}
+      ${ eventsHtml }
     </section>
       
 </body>
 </html > `
 
-  }
+}
 
 
 
@@ -78,9 +78,9 @@ function createEventHTML ( eventData ) {
 
 
 
-  /*const clubPagesInstance = new clubPages();
-  const clubDetails = await clubPagesInstance.getClubDetails("Dance Club");
-  const eventsInstance = new getClubEvents();
-  const eventsHTML = await eventsInstance.getEventsHTML();
+/*const clubPagesInstance = new clubPages();
+const clubDetails = await clubPagesInstance.getClubDetails("Dance Club");
+const eventsInstance = new getClubEvents();
+const eventsHTML = await eventsInstance.getEventsHTML();
  
-  // Use the fetched clubDetails to populate your HTML*/
+// Use the fetched clubDetails to populate your HTML*/

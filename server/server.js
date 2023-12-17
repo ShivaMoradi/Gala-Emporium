@@ -33,16 +33,6 @@ user: 'root',
 password: 'swiftgiraffegallops',
 database: 'galaEmporia'
 
-
-/*Linus server
-host: '161.97.144.27',
-  port: '8015',
-  user: 'root',
-  password: 'jazzydogsjiving',
-  database: 'bookstore'
-*/
-
-
 })
 
 // Promisify the query method
