@@ -2,7 +2,7 @@
 - We used different functions, methods and tools to create the project.
 - We used HTML, CSS, JavaScript, API to server side, mySQL, DataGrip, Agil method, Trello, Whimsical, Teams. 
 
-Länk till ert git-repository: git@github.com:ShivaMoradi/Gala-Emporium.git
+Länk till ert git-repository:[ git@github.com:ShivaMoradi/Gala-Emporium.git](https://github.com/ShivaMoradi/Gala-Emporium)
 WeeHorse på github är inbjuden.
 
 En lista på era usernames i grupp 1:
