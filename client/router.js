@@ -3,6 +3,7 @@ $('#login').html(await login());
 import {createEventHTML, event } from "./pages/addevents.js";
 import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
+import midnightOasis from "./pages/midnightOasis.js";
 import clubHtml from "./pages/club.js";
 import loveHtml from "./pages/love.js";
 import clubHtmlAdmin from "./pages/admin.js";
@@ -10,6 +11,7 @@ import htmlAdminClub from "./pages/adminClub.js";
 import htmlAdminEvent from "./pages/adminEvent.js";
 import wildClubHtml from "./pages/wild.js";
 import danceClubHtml from "./pages/dance.js"
+import bookClub from "./pages/BookClub.js";
 
 
 
@@ -20,14 +22,11 @@ async function router() {
     case "":
       content = await getAllEvents();
       break;
-    case "#rockClub":
-      content = await clubPages("rock club");
-      break;
-    case "#blueClub":
-      content = await clubPages("blue club");
+    case "#midnightOasis":
+      content = await midnightOasis();
       break;
     case "#bookClub":
-      content = await clubPages("book club");
+      content = await bookClub();
       break;
     case "#danceclub":
       content = await danceClubHtml()

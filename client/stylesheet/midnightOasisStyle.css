@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+
+/* Club page content*/ 
+#midnightOasisBody{
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+#midnightOasisBody > header{
+    width: 100%;
+}
+
+/* Header Title Text */
+#midnightOasisBody > header h1{
+    font-family: 'Anton', sans-serif;;
+    font-size: 300%;
+    color: black;
+
+}
+
+/* Banner image */ 
+#titleBackdrop{
+    width: 100%;
+    min-height: 50vh;
+    background-image: url(../images/midnightOasisArt/Thelonious.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+#midnightOasisMain{
+    display: flex;
+    flex-direction: column;
+}
+
+#aboutSection{
+    max-width: 50%;
+    text-align: center;
+    font-style: italic;
+}
+
+#eventBoxContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#eventBoxContainer > h2{
+    font-size: 200%;
+    color: yellow;
+    margin: 0;
+    padding: 0;
+}
+
+
+.eventBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    text-align: center;
+    margin-bottom: 2em; 
+    max-width: 600px; 
+}
+
+.eventBox .eventImage{
+    max-width: 100%;
+    min-width: 300px;
+    height: auto;
+    display: block;
+    
+}
+
+.eventDescription{
+    font-style: italic;
+}
+
+#midnightBook-button {
+    background-color: #0f3c4c;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#midnightBook-button:hover {
+    background-color: #0b2d39; 
+}
+
+
+#mediaBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mediaItem {
+    flex: 1;
+    padding: 10px;
+}
+
+.mediaItem img, 
+.mediaItem iframe {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    font-style: italic;
+}
+
+
+
+@media (max-width: 768px) { 
+    #mediaBox {
+      flex-direction: column; 
+      align-items: center; 
+    }
+
+    .mediaItem {
+      width: 100%; 
+    }
+  }
+  
