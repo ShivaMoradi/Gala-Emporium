@@ -245,3 +245,13 @@ document.addEventListener("click", async (event) => {
         await bookEvent(eventsId);
     }
 });
+   async function deleteCss(){
+    const css = document.querySelector('link[href="./stylesheet/love.css"]');
+        console.login("DIME SI LO VAS A QUITAR ")
+        console.log("ruta", css)
+        if (css) {
+            console.log("Entra css")
+            headElement.removeChild(css); 
+        }
+}
+window.deleteCss =deleteCss 

@@ -68,7 +68,11 @@ export async function loginAdmin() {
     // Utiliza el método .remove() para quitar el elemento del DOM
     footer.remove();
   }
-  return ` <div class="contenedor">
+  return ` <h1>Admin&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
+        <nav class="navbar">
+             <a href="">Home</a>
+        </nav>
+        <div class="contenedor">
          <div class="añadir">
                 <h2>Login </h2>
                 <form onsubmit="login(); return false">
