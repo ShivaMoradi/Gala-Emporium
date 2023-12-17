@@ -81,7 +81,7 @@
 }
 
 
-.book-button {
+.midnightBook-button {
     background-color: #0f3c4c;
     border: none;
     padding: 10px 20px;
@@ -91,6 +91,6 @@
     margin-top: 10px;
 }
 
-.book-button:hover {
+.midnightBook-button:hover {
     background-color: #0b2d39; 
 }
