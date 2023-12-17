@@ -3,20 +3,20 @@ export default async function midnightOasis(){
     const eventInfo = await fetchEventInfo();
     
     if(!clubInfo || clubInfo.length === 0){
-        return `<p> There was an error returning club data for Midnight Oasis </p> `
+        return `<p> There was an error fetching club data for Midnight Oasis </p> `
     }
-
-
     const clubDetails = clubInfo[0]
-    console.log(clubInfo);
-    console.log(clubDetails);
-    console.log(eventInfo);
 
 
+    // Check if eventInfo contains events, return HTML div for each event.
+    let eventsHtml = eventInfo && eventInfo.length > 0 ? eventInfo.map(createEventHTML).join('') : eventsHtml = '<p>No upcoming events.</p>';
 
 
-    // Generate the events HTML if there are any events
-    let eventsHtml = '<p>No upcoming events.</p>';
+     
+  
+
+
+    console.log(eventsHtml)
 
     // Construct the HTML for the club details and events
     return `
@@ -27,13 +27,14 @@ export default async function midnightOasis(){
                 </div>
             </header>
             
-            <main>
-                <section>
-                    <h2>About</h2>
+            <main id="midnightOasisMain">
+                <section id="aboutSection">
                     <p>${clubDetails.description}</p>
                 </section>
+
+                <section id="mediaBox"></section>
                 
-                <section>
+                <section id="eventBoxContainer">
                     <h2>Events</h2>
                     ${eventsHtml}
                 </section>
@@ -41,6 +42,29 @@ export default async function midnightOasis(){
         </div>
     `;
 
+}
+
+
+function createEventHTML(eventData) {
+    const formattedDate = new Date(eventData.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+    });
+
+    return `
+    <div class='eventBox'>
+      <h3>${eventData.eventName}</h3>
+      <img src="${eventData.images}" class="eventImage">
+      <p>${formattedDate}</p>
+      <p>${eventData.eventDescription}</p>
+      <p>Price: ${eventData.price}</p>
+      <button class="book-button" data-event-id="${eventData.id}">Book Now</button>
+    </div>
+  `;
 }
 
 
