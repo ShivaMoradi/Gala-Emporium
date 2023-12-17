@@ -1,41 +1,35 @@
-import { getClubEvents} from "./clubpages.js";
 //import { eventsHTML } from "./addevents.js";
 
 
-const clubData = await getClubEvents( clubName.toLowerCase() )
-const clubDetails = clubData.find( club => club.clubName.toLowerCase() === clubName.toLowerCase() )
-
 export async function danceclub () {
-  const response = await fetch( "api/club" )
-  const result = await response.json()
-  if ( clubName == "Dance Club" ) {
+  const response = await fetch( '/api/club/Dance Club' );
+  const clubData = await response.json();
 
-    return ` 
-    <head>
-  <title>My Dance Club page</title>
-</head>
-<body>
-<div>
-   <nav>
-        <ul id="menu-links-list">
-          <li><a href="">Back to Home</a></li>
-                <li>
-                  <div class="dropdown-container">
-                       <div class="dropdown-trigger">Clubs</div>
-                       <div class="dropdown-menu">
-                            <ul>
-                                <li><a href="#rockClub">Rock Club</a></li>
-                                <li><a href="#blueClub">Blue Club</a></li>
-                                <li><a href="#bookClub">Book Club</a></li>
-                                <li> <a href="#danceClub">Dance club </a></li>
-                                <li> <a href="#loveClub">Loving club</a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li>
-            </ul>
-        </nav>
+  const newCSS = document.createElement( 'link' );
+  newCSS.rel = 'stylesheet';
+  newCSS.href = 'client/pages/dance.css';
+
+  // Get the head element of the document
+  const headElement = document.head;
+
+  // Get the existing CSS link you want to replace
+  const css = document.querySelector( 'link[href="client/stylesheet/style.css"]' );
+
+  if ( css ) {
+    headElement.removeChild( css ); // Remove the existing link
+  }
+
+  headElement.appendChild( newCSS ); // Add the new CSS link to the head of the document
+
+  // Render the page
+  const eventsHtml = clubData.map( eventData => createEventHTML( eventData ) ).join( '' );
+
+
+  return ` 
+     <header >
+      <h1>Min dance club</h1>
+</header>
+
     </div>
       <section>
               <img src="./images/dance.jpg" alt="dance club image">
@@ -46,20 +40,44 @@ export async function danceclub () {
       <button type="button" onclick= clubData > Show events</button>
 
       </section>
+       <section id="eventDisplayy" class="events">
+      <!-- Render events here dynamically using the clubData -->
+      ${eventsHtml}
+    </section>
       
 </body>
 </html > `
 
   }
 
+
+
+// Fetch club data dynamically from your backend API
+async function fetchclubData () {
+  const response = await fetch( "/api/club/Dance Club" );
+  const data = await response.json();
+  return data;
 }
 
-  
+// Function to create HTML for each event
+function createEventHTML ( eventData ) {
+  // Customize this part based on your event data structure
+  return `
+    <div class="event">
+      <h2>${ eventData.eventName }</h2>
+      <p>${ eventData.eventDescription }</p>
+      <p>Time: ${ eventData.date }</p>
+      <p>Address: ${ eventData.address }</p>
+      <p>Price: ${ eventData.price }</p>
+      <img src="${ eventData.images }" alt="Event Images">
+      <button class="btn book-button-event" data-event-id="${ eventData.idEvent }">Book Now</button>
+    </div>
+  `;
+}
 
 
 
 
-window.onload=danceclub
   /*const clubPagesInstance = new clubPages();
   const clubDetails = await clubPagesInstance.getClubDetails("Dance Club");
   const eventsInstance = new getClubEvents();

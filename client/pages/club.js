@@ -1,10 +1,4 @@
 export default async function clubHtml() {
-
-
-
-
-
-  
    let tr =""
   const club = await getClub();
   console.log(club);
@@ -93,7 +87,7 @@ async function addClub() {
        location.reload();
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("Please write your club name!")
   }
 }
 window.addClub = addClub
@@ -114,11 +108,8 @@ async function deleteClub(clubId) {
 window.deleteClub = deleteClub
 
 async function updateClub(clubId) {
-  
   const club = await fetch(`api/admclub/${clubId}`)
-
   const data = await club.json()
-  
   console.log("dataADmin",data)
    $("main").html(await `<div class="container mt-5">
   <div class="row">
@@ -164,7 +155,7 @@ async function editClub(clubId) {
        location.reload();
     }
   } else {
-    alert("Du måste skriva något!")
+    alert("please update the club!")
   }
 
  

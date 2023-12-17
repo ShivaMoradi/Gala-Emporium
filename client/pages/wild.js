@@ -1,7 +1,7 @@
 export default async function wildClubHtml() {
   const newCSS = document.createElement('link');
   newCSS.rel = 'stylesheet';
-  newCSS.href = 'client\pages\wild.css';
+  newCSS.href = 'client\pages\dance.css';
 
   // Get the head element of the document
   const headElement = document.head;
