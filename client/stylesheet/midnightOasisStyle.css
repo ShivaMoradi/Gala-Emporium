@@ -22,7 +22,7 @@
 #midnightOasisBody > header h1{
     font-family: 'Anton', sans-serif;;
     font-size: 300%;
-    color: #Bb0c2c;
+    color: black;
 
 }
 
@@ -30,7 +30,7 @@
 #titleBackdrop{
     width: 100%;
     min-height: 50vh;
-    background-image: url(../images/midnightOasisCover.png);
+    background-image: url(../images/midnightOasisArt/Thelonious.jpg);
     background-size: cover;
     background-position: center;
     display: flex;
@@ -58,6 +58,13 @@
 
 }
 
+#eventBoxContainer > h2{
+    font-size: 200%;
+    color: yellow;
+    margin: 0;
+    padding: 0;
+}
+
 
 .eventBox{
     display: flex;
@@ -67,10 +74,7 @@
     width: 40%;
     text-align: center;
     margin-bottom: 2em; 
-    padding: 20px;
     max-width: 600px; 
-    margin: 2em auto; 
-
 }
 
 .eventBox .eventImage{
@@ -125,11 +129,9 @@
       flex-direction: column; 
       align-items: center; 
     }
-  
+
     .mediaItem {
       width: 100%; 
     }
-  
-
   }
   
