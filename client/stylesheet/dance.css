@@ -1,0 +1,133 @@
+
+@media screen and (min-width: 0) {}
+
+@media screen and (min-width: 576px) {}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 992px) {}
+
+@media screen and (min-width: 1200px) {}
+
+@media screen and (min-width: 1920px) {}
+
+
+:root {
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --base: #1e1e2e;
+  --mantle: #7a6551;
+  --crust: #11111b;
+}
+
+
+
+
+/* Header styles */
+.my_header {
+  background:var(--base);
+  color:var(--pink);
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 28px;
+
+}
+
+/* Home Section styles */
+#pageTitle {
+ text-align: center;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.my_header img {
+width: 100%; 
+ text-align: center;
+  height: auto;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+
+}
+
+
+
+.myinner-content {
+  text-align: center;
+  position: relative;
+}
+
+
+
+.video {
+  width: 100%;
+  max-width: 45rem;
+  height: auto;
+  animation: icon 5s ease infinite;
+}
+
+
+
+
+
+
+/* Event Section styles */
+.Dance_events {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.Dance_events .event {
+  flex: 0 0 calc(33.33% - 20px);
+  /* Three items in a row, adjust the percentage as needed */
+  position: relative;
+  padding: 20px;
+  background-color: rgba(82, 176, 223, 0.7);
+  /* Semi-transparent white background */
+  border: 1px solid #d21092;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.Dance_events .event:hover {
+  transform: scale(1.05);
+}
+
+.Dance_events img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.Dance_events img:hover {
+  transform: scale(1.1);
+}
+

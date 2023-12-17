@@ -1,9 +1,15 @@
 import login from "./pages/login.js";
 $('#login').html(await login());
-import { createEventHTML } from "./pages/addevents.js";
+import {createEventHTML, event } from "./pages/addevents.js";
 import { bookEvent } from "./pages/booking.js";
 import clubPages from "./pages/clubpages.js";
 import clubHtml from "./pages/club.js";
+import loveHtml from "./pages/love.js";
+import clubHtmlAdmin from "./pages/admin.js";
+import htmlAdminClub from "./pages/adminClub.js";
+import htmlAdminEvent from "./pages/adminEvent.js";
+import wildClubHtml from "./pages/wild.js";
+import danceClubHtml from "./pages/dance.js"
 
 
 
@@ -23,17 +29,29 @@ async function router() {
     case "#bookClub":
       content = await clubPages("book club");
       break;
-    case "#jumpingClub":
-      content = await clubPages("jumping club");
+    case "#danceclub":
+      content = await danceClubHtml()
       break;
     case "#loveClub":
-      content = await clubPages("jumping club");
+      content = await loveHtml()
+      break;
+     case "#eventAdmin":
+      content = await  htmlAdminEvent()
+      break;
+    case "#clubAdmin":
+      content = await htmlAdminClub()
+      break;
+    case "":
+      content = await bookEvent();
+      break;
+    case "#wild":
+      content = await wildClubHtml()
       break;
     case "addevent":
       content = "<h1>Placeholder for addevent page</h1>"
       break;
     case "#club":
-    content = await clubHtml();
+    content = await clubHtmlAdmin();
     break;
     case "#admin":
     content = await init();
