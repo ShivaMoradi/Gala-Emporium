@@ -7,6 +7,9 @@ import apiRegister from './api-register.js'
 import club from './api/club.js'
 import login from './api/login.js'
 import booking from './api/booking.js'
+import admclub from "./api/admclub.js";
+import admevent from './api/admevent.js'
+
 
 const server = express()
 const port = 3000
@@ -62,7 +65,10 @@ db.connect(err => {
   apiRegister(server, db)
   club(server, db)
   login(server, db)
-  booking(server,db)
+  booking(server, db)
+  admclub(server, db)
+  admevent(server, db)
+
 
   // Start the server
   server.listen(port, () => {
