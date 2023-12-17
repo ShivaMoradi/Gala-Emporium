@@ -82,8 +82,8 @@ export default async function loveHtml() {
             
             <button class="btn  book-buttonEvent" data-event-id="${evenClub[key].idEvent}">Buy Tycket</button>
         </div>`
-             } else { eventsMoth += `<h2>Sorry this we don't have an event this month</h2>`; }
-            } 
+             }
+            }  else { eventsMoth += `<h2>Sorry this we don't have an event this month</h2>`; }
                 
       }
   
@@ -92,7 +92,7 @@ export default async function loveHtml() {
 <section class="home" id="home">
         <div class="home-content">
             <div class="inner-content">
-                <h3>Welcome to Web&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club Love</h3>
+                <h3>Welcome to Web&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Love Club </h3>
                 
             </div>
             <div class="inner-content-img">
@@ -164,7 +164,7 @@ async function eventMonth() {
 
        async function bookEvent(eventsId) {
            try {
-               // Use window.prompt to get user email
+               
                const email = window.prompt("Ange din e-postadress:");
                console.log("Email", email);
                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -173,7 +173,7 @@ async function eventMonth() {
                if ( email !== null && email.trim() !== "") {
                    console.log("ENTRA parte uno O NO", email)
                    if (emailRegex.test(email)) {
-                       console.log("ENTRA O NO", email)
+                       
                        const response = await fetch("/api/booking", {
                            method: "POST",
                            headers: { "Content-Type": "application/json" },
@@ -182,7 +182,7 @@ async function eventMonth() {
                            }),
                        });
                        const result = await response.json();
-                       console.log('Result from server:', result);
+                       
                        alert(`You are booked! Your order ID is: ${result.orderNr}`);
                        console.log('Response from server:', response);
 
