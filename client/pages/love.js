@@ -2,50 +2,20 @@ export default async function loveHtml() {
     const response = await fetch('/api/club/love club')
     const evenClub = await response.json()
     if (response) {
-        console.log("BD", evenClub,)
- 
-        const nuevoCSS = document.createElement('link');
+       const nuevoCSS = document.createElement('link');
         nuevoCSS.rel = 'stylesheet';
         nuevoCSS.href = './stylesheet/love.css';
-        console.log("Entra ")
-        // Obtener el elemento head del documento
         const headElement = document.head;
-        // Obtener el enlace CSS existente que deseas reemplazar
-        /*
-        const css = document.querySelector('link[href="./stylesheet/style.css"]');
-        console.log("ruta", css)
-        if (css) {
-            console.log("Entra css")
-            headElement.removeChild(css); // Quitar el enlace existente
-        }*/
         headElement.appendChild(nuevoCSS);
-        
-        // Añadir el nuevo enlace CSS al head del documento
-      /*
-        const h1 = document.getElementById('website-title');
-        if (h1) {
-            // Utiliza el método .remove() para quitar el elemento del DOM
-            h1.remove();
-        }
-       */
-  
         const coverImageSection = document.getElementById('coverImage');
-
-        // Verifica si el elemento existe antes de intentar quitarlo
         if (coverImageSection) {
-            // Utiliza el método .remove() para quitar el elemento del DOM
+            
             coverImageSection.remove();
         }
         const login = document.getElementById('login');
         if (login) {
-            // Utiliza el método .remove() para quitar el elemento del DOM
             login.remove();
         }
-  
-
-
-       
-
         const footer = document.getElementById('footer');
         if (footer) {
             // Utiliza el método .remove() para quitar el elemento del DOM
@@ -53,9 +23,7 @@ export default async function loveHtml() {
         }
         
         
-      
-        // Si hay un enlace existente, reemplazarlo con el nuevo enlace
-        /*Events*/
+
         let eventTag = ""
         for (const key in evenClub) {
                const datebd = evenClub[key].date
@@ -245,13 +213,24 @@ document.addEventListener("click", async (event) => {
         await bookEvent(eventsId);
     }
 });
-   async function deleteCss(){
-    const css = document.querySelector('link[href="./stylesheet/love.css"]');
-        console.login("DIME SI LO VAS A QUITAR ")
-        console.log("ruta", css)
-        if (css) {
-            console.log("Entra css")
-            headElement.removeChild(css); 
-        }
-}
-window.deleteCss =deleteCss 
+
+ const menuLinks = document.getElementById("menu-links");
+
+menuLinks.addEventListener("click", function (event) {
+    const headElement = document.head;
+    
+    // Verificar si el clic fue en un enlace (tag 'A')
+    if (event.target.tagName === "A") {
+        const currentHash = window.location.hash;
+
+        // Verificar si se está abandonando la ruta #loveClub
+        if (currentHash !== "#loveClub") {
+            const css = document.querySelector('link[href="./stylesheet/love.css"]');
+            if (css) {
+                console.log("Entra css");
+                headElement.removeChild(css);
+            }
+        } a = 1;
+    }
+    
+});

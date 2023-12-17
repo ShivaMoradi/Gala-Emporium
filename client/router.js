@@ -45,7 +45,6 @@ async function router() {
       break;
     case "#adminpage":
       content = await loginAdmin()  ;
-      //clubHtmlAdmin()
     break;
     case "#admin":
     content = await init();
