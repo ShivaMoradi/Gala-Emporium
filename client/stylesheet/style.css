@@ -53,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-header h1{
+ #website-title{
 
     font-family: 'Brush Script MT', cursive;
 }
