@@ -22,19 +22,19 @@ export default async function wildClubHtml() {
   const eventsHtml = clubData.map(eventData => createEventHTML(eventData)).join('');
 
   return `
-    <header class="head">
+    <header class="headss">
       <h1>Wild&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
       <!-- Navigation remains the same -->
     </header>
 
-    <section class="home" id="home">
-      <div class="home-content">
-        <div class="inner-content">
+    <section class="rubrik" id="rubrik">
+      <div class="rubrik-content">
+        <div class="inner-contenttt">
           <h3>Welcome to Wild Club - Where the Fun Never Ends!</h3>
           <h2> Get ready for an extraordinary experience at Wild Club! We're all about non-stop fun, incredible music, and a vibe that'll leave you buzzing. Imagine lively beats, cool themes, and an atmosphere that's just pure joy. Wild Club isn't just a place; it's where amazing nights and awesome memories are made. Come, be part of the excitement, and let's make every visit a wild adventure you won't forget!</h2>
         </div>
         
-        <div class="inner-content-img">
+        <div class="inner-contenttt-img">
           <img src="./img/wildpicc.jpg" alt="img">
           <h2>A video from the wild club!</h2>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/V9H0F0pfLNM?si=N0LULc1p4BNepi0U" frameborder="0" allowfullscreen></iframe>
@@ -42,7 +42,7 @@ export default async function wildClubHtml() {
       </div>
     </section>
 
-    <section id="eventDisplay" class="events">
+    <section id="eventDisplayy" class="eventss">
       <!-- Render events here dynamically using the clubData -->
       ${eventsHtml}
     </section>
