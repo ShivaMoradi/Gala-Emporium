@@ -215,7 +215,7 @@ async function eventMonth() {
                        });
                        const result = await response.json();
                        console.log('Result from server:', result);
-                       alert(`Du är bokad! Din order-ID är: ${result.orderNr}`);
+                       alert(`You are booked! Your order ID is: ${result.orderNr}`);
                        console.log('Response from server:', response);
 
       

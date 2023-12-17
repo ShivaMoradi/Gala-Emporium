@@ -198,22 +198,16 @@ window.addEvent = addEvent
 async function editEvent() {
   let eventsEdit = document.getElementById("eventsEdit");
   const clubId = eventsEdit.value;
-  console.log("clubId",clubId)
   let eventSelect = document.getElementById("eventId");
   const eventId = eventSelect.value;
   const eventName = document.querySelector('input[name="eventsNameEdit"]').value;
-   console.log("eventName",eventName)
   const eventDescription = document.querySelector('input[name="eventsDescriptionEdit"]').value;
    console.log("eventDescription",eventDescription)
   const date = document.querySelector('input[name="eventsDateEdit"]').value;
-  console.log("date ",date )
   const address = document.querySelector('input[name="eventsAddressEdit"]').value;
-  console.log("address",address)
   const price = document.querySelector('input[name="eventsPriceEdit"]').value;
-  console.log("price",price)
   const picture = document.querySelector('input[name="ImagenAñadirEdit"]').value;
-  console.log("picture",picture)
-   if (eventName.length > 0) {
+   if (eventName && eventDescription && date && address && price && picture) {
     const response = await fetch(`api/admevent/${eventId}`, {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
