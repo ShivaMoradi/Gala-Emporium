@@ -1,22 +1,17 @@
 export default async function midnightOasis(){
     const clubInfo = await fetchClubInfo();
-    const eventInfo = await fetchEventInfo();
+    let eventInfo = await fetchEventInfo();
     
     if(!clubInfo || clubInfo.length === 0){
         return `<p> There was an error fetching club data for Midnight Oasis </p> `
     }
-    const clubDetails = clubInfo[0]
 
+    const clubDetails = clubInfo[0]
+    eventInfo = sortEventsByDate(eventInfo);
 
     // Check if eventInfo contains events, return HTML div for each event.
     let eventsHtml = eventInfo && eventInfo.length > 0 ? eventInfo.map(createEventHTML).join('') : eventsHtml = '<p>No upcoming events.</p>';
 
-
-     
-  
-
-
-    console.log(eventsHtml)
 
     // Construct the HTML for the club details and events
     return `
@@ -83,7 +78,9 @@ function createEventHTML(eventData) {
 
 
 
-
+function sortEventsByDate(events) {
+    return events.sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
 
 
 async function fetchClubInfo(){
