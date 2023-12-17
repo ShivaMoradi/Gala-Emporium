@@ -1,43 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
-
-.club-container.book-club {
-  background-image: url("../images/bookClubBackground.jpg");
-  /* Add more styles as needed */
+/* Header styles */
+  
+.my-page{
+  background: #333;
+    color: black;
+    padding: 15px;
+    text-align: justify;
+    font-size: 2em;
+    background-image: url('../images/bookClubBackground.jpg');
+}
+.text-background {
+background: rgba(255, 255, 255, 0.7);
+border-radius: 50px;
+}
+.content-space{
+  padding: 60px;
+  text-align: center;
 }
 
-.club-container.book-club .clubDescriptionContainer {
-  background-color: rgba(255, 255, 255, 0.675);
+.allevents .events {
+  flex: 0 0 calc(33.33% - 20px);
+  position: relative;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+}
+/* Event Section styles */
+#eventDisplayy.allevents {
   display: grid;
-  width: 80%;
-  padding: 15px;
-  margin: 1%;
-  font-size: 20px;
-  color: black
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1%;
 }
 
-.event.book-club {
-  background-color: rgba(255, 255, 255, 0.675);
+.allevents .events:hover {
+  transform: scale(1.05);
+}
+
+.allevents img {
+  width: 50%;
+  max-height: 50%;
+  object-fit: cover;
   border-radius: 10px;
-  float: left;
-  width: 30%;
-  padding: 15px;
-  margin: 1%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-
-.event.book-club {
-  color: black;
-}
-
-.event.book-club p {
-  font-family: 'Open Sans', sans-serif;
-}
-
-/* changes the h3 and link font, color and nno underline*/
-.event.book-club h3 a.event-title-link {
-  font-family: 'Preahvihear', sans-serif;
-  color: black;
-  text-decoration: none;
-  /*removes the underline*/
+@media screen and (max-width: 768px) {
+  #eventDisplayy.allevents .events{
+    display: block;
+  }
 }
