@@ -1,9 +1,4 @@
 import { getEventsForClub, createEventHTML, event } from './addevents.js';
-const clubData = [
-    { clubName: "Dance Club", /* other club details */ },
-    { clubName: "Love Club", /* other club details */ },
-    // Other club data objects...
-];
 
 export default async function clubPages(clubName) {
     //Clubdata includes all event information.
