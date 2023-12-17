@@ -37,17 +37,22 @@ export default async function danceClubHtml () {
               <div class="myinner-content">
 
           <h2>Do you want to be active, happy and looks fit,you are in the right place, welcome! </h2>
-              <h3>Dance has always been a part of human culture, rituals and celebrations. Today, most dancing is about recreation and self-expression, although it can also be done as a competitive activity.</h3>
+              <strong>Dance has always been a part of human culture, rituals and celebrations. <br>Today, most dancing is about recreation and self-expression, although it can also be done as a competitive activity.</strong>
 </div>
               <section >
                 <button type="button" onclick= clubData > Show events</button>
+                <div class= "video">
+                </div>
+                                  <h2>You might like a video from Dance Club!</h2>
+
+                                  <iframe width="560" height="315"src="https://www.youtube.com/embed/watch?v=ZSoPGMmdVpo" frameborder="0" allowfullscreen></iframe>
+
               </section>
+
     </section >
-        <div class= "video">
-          <h2>You might like a video from Dance Club!</h2>
+        
 </div>
 
-          <iframe width="420" height="315"src="https://www.youtube.com/watch?v=PtPio146MNk?autoplay=1"></iframe>
     </section>
 
     <section id="Dance_eventDisplay" class="Dance_events">
