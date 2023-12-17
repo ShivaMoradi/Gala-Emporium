@@ -1,9 +1,4 @@
-//import { eventsHTML } from "./addevents.js";
-
-
 export async function danceclub () {
-  const response = await fetch( '/api/club/Dance Club' );
-  const clubData = await response.json();
 
   const newCSS = document.createElement( 'link' );
   newCSS.rel = 'stylesheet';
@@ -24,6 +19,7 @@ export async function danceclub () {
   // Render the page
   const eventsHtml = clubData.map( eventData => createEventHTML( eventData ) ).join( '' );
 
+  const clubData = await fetchClubData();
 
   return ` 
      <header >
@@ -53,7 +49,7 @@ export async function danceclub () {
 
 
 // Fetch club data dynamically from your backend API
-async function fetchclubData () {
+async function fetchClubData() {
   const response = await fetch( "/api/club/Dance Club" );
   const data = await response.json();
   return data;

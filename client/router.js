@@ -31,7 +31,7 @@ async function router() {
       content = await clubPages("book club");
       break;
     case "#danceClub":
-      content = await clubPages("dance club")
+      content = await danceclub();
       break;
     case "#loveClub":
       content = await loveHtml()
