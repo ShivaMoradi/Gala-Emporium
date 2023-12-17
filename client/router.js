@@ -11,6 +11,7 @@ import htmlAdminClub from "./pages/adminClub.js";
 import htmlAdminEvent from "./pages/adminEvent.js";
 import wildClubHtml from "./pages/wild.js";
 import danceClubHtml from "./pages/dance.js"
+import bookClub from "./pages/BookClub.js";
 
 
 
@@ -28,7 +29,7 @@ async function router() {
       content = await midnightOasis();
       break;
     case "#bookClub":
-      content = await clubPages("book club");
+      content = await bookClub();
       break;
     case "#danceclub":
       content = await danceClubHtml()
