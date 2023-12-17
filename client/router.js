@@ -22,9 +22,6 @@ async function router() {
     case "":
       content = await getAllEvents();
       break;
-    case "#rockClub":
-      content = await clubPages("rock club");
-      break;
     case "#midnightOasis":
       content = await midnightOasis();
       break;
