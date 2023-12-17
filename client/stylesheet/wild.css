@@ -1,14 +1,14 @@
 /* Header styles */
-.head {
+.headss {
   background: #333;
-  color: #fff;
+  color: #e41dbc;
   padding: 15px;
   text-align: center;
   font-size: 2em;
 }
 
 /* Home Section styles */
-.home {
+.rubrik {
   padding: 40px 0;
   text-align: center;
   height: 100vh;
@@ -19,57 +19,98 @@
   position: relative;
 }
 
-.home-content {
+.rubrik-content {
   display: grid;
   grid-template-columns: 1.2fr 1.2fr;
   max-width: 70rem;
   margin: 20rem auto 0;
 }
 
-.inner-content {
+.inner-contenttt {
   text-align: center;
   position: relative;
 }
 
-.inner-content-img {
+.inner-contenttt-img {
   margin-top: 2rem;
 }
 
-.inner-content-img img {
+.inner-contenttt-img img {
   width: 100%;
   max-width: 45rem;
   height: auto;
   animation: icon 5s ease infinite;
 }
 
-.home h3 {
+.rubrik h3 {
   font-size: 1.8em;
   color: #14d852;
 }
 
-/* About Section styles */
-.about {
-  padding: 40px 0;
-  background: #5727db;
+.rubrik h2 {
+  font-size: 1.8em;
+  color: #afbbe1;
 }
 
-.about-sec {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.about-content {
-  max-width: 600px;
+.rubrik h1 {
+  font-size: 1.8em;
+  color: #17e0e7;
 }
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
-  .home-content {
+  .rubrik-content {
     grid-template-columns: 1fr;
   }
 
-  .inner-content-img {
+  .inner-contenttt-img {
     margin-top: 1rem;
+  }
+}
+
+/* Event Section styles */
+.eventss {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.eventss .event {
+  flex: 0 0 calc(33.33% - 20px);
+  /* Three items in a row, adjust the percentage as needed */
+  position: relative;
+  padding: 20px;
+  background-color: rgba(82, 176, 223, 0.7);
+  /* Semi-transparent white background */
+  border: 1px solid #d21092;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+}
+
+.eventss .event:hover {
+  transform: scale(1.05);
+}
+
+.eventss img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.eventss img:hover {
+  transform: scale(1.1);
+}
+
+/* Additional adjustments for responsiveness */
+@media screen and (max-width: 768px) {
+  .eventss .event {
+    flex: 0 0 100%;
+    /* Full width on small screens */
   }
 }

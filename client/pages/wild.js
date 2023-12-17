@@ -22,10 +22,15 @@ export default async function wildClubHtml() {
   const eventsHtml = clubData.map(eventData => createEventHTML(eventData)).join('');
 
   return `
-    <header class="headss">
-      <h1>Wild&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
-      <!-- Navigation remains the same -->
-    </header>
+<head>
+      <!-- Add the Google Fonts link -->
+      <link href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&display=swap" rel="stylesheet">
+    </head>
+    <body>
+      <header class="headss" style="font-family: 'Rubik Broken Fax', sans-serif;">
+        <h1>Wild&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
+        <!-- Navigation remains the same -->
+      </header>
 
     <section class="rubrik" id="rubrik">
       <div class="rubrik-content">
@@ -36,7 +41,7 @@ export default async function wildClubHtml() {
         
         <div class="inner-contenttt-img">
           <img src="./img/wildpicc.jpg" alt="img">
-          <h2>A video from the wild club!</h2>
+          <h1>A video from the wild club!</h1>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/V9H0F0pfLNM?si=N0LULc1p4BNepi0U" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
