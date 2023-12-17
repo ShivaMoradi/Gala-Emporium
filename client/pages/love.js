@@ -19,7 +19,7 @@ export default async function loveHtml() {
         }
         headElement.appendChild(nuevoCSS);
         // Añadir el nuevo enlace CSS al head del documento
-  
+  /*
         const nav = document.getElementById('nav');
         if (nav) {
             // Utiliza el método .remove() para quitar el elemento del DOM
@@ -31,7 +31,7 @@ export default async function loveHtml() {
             h1.remove();
         }
   
-  
+  */
         const coverImageSection = document.getElementById('coverImage');
 
         // Verifica si el elemento existe antes de intentar quitarlo
@@ -125,18 +125,7 @@ export default async function loveHtml() {
       }
   
             return `
-    <header class="head">
-        <h1>Love&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
-        <nav class="navbar">
-            <a href="">Home</a>
-            <a href="#rockClub">Rock Club</a>
-            <a href="#blueClub">Blue Club</a>
-            <a href="#bookClub">Book Club</a>
-            <a href="#jumpingClub">Jumping Club</a>
-            <a href="#contact">Admin</a>
-        </nav>
-       
-    </header>
+    
 
 <section class="home" id="home">
         <div class="home-content">
