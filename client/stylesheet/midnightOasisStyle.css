@@ -81,7 +81,7 @@
 }
 
 
-.midnightBook-button {
+#midnightBook-button {
     background-color: #0f3c4c;
     border: none;
     padding: 10px 20px;
@@ -91,6 +91,28 @@
     margin-top: 10px;
 }
 
-.midnightBook-button:hover {
+#midnightBook-button:hover {
     background-color: #0b2d39; 
+}
+
+
+#mediaBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mediaItem {
+    flex: 1;
+    padding: 10px;
+}
+
+.mediaItem img, 
+.mediaItem iframe {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    font-style: italic;
 }
