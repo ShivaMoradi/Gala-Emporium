@@ -80,7 +80,7 @@ function createEventHTML ( eventData ) {
       <p>Address: ${ eventData.address }</p>
       <p>Price: ${ eventData.price } Kr</p>
       <img src="${ eventData.images }" alt="Event Images">
-      <button class="btn book-button-event" data-event-id="${ eventData.idEvent }">Book Now</button>
+      <button class="btn book-button" data-event-id="${ eventData.idEvent }">Book Now</button>
     </div>
   `;
 }

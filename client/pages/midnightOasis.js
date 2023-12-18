@@ -71,7 +71,7 @@ function createEventHTML(eventData) {
       <p>${formattedDate}</p>
       <p>${eventData.eventDescription}</p>
       <p>Price: ${eventData.price}</p>
-      <button class="btn book-button-event" id="midnightBook-button" data-event-id="${eventData.id}">Book Now</button>
+      <button class="btn book-button" id="midnightBook-button" data-event-id="${eventData.id}">Book Now</button>
     </div>
   `;
 }
