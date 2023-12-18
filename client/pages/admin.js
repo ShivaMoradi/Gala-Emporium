@@ -56,7 +56,7 @@ export default async function clubHtmlAdmin() {
     // Utiliza el método .remove() para quitar el elemento del DOM
     footer.remove();
   }
-        return` <h1>Love&nbsp;<i class="fas fa-pizza-slice"></i>&nbsp;Club</h1>
+        return` <h1>Admin&nbsp;<i class="fas fa-pizza-slice"></i></h1>
         <nav class="navbar">
              <a href="">Home</a>
             <a href="#eventAdmin">Event</a>

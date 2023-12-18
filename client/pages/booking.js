@@ -2,7 +2,7 @@ export async function bookEvent(eventsId) {
   try {
     // Use window.prompt to get user email
     const email = window.prompt("Ange din e-postadress:");
-
+     console.log("Entra",email)
     if (email) {
       const response = await fetch("/api/booking", {
         method: "POST",
