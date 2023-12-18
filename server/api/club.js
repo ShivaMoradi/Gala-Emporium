@@ -12,6 +12,16 @@ export default function (server, db) {
     res.json(club)
   })
  
+
+  server.get('/api/club/details/:clubName', async (req, res) => {//clubName
+    const club = await db.query("SELECT * FROM club WHERE name = ?", [req.params.clubName])
+    console.log(club)
+    res.json(club)
+  })
+
+
+
+
   server.post('/api/club', async (req, res) => {
     try {
       const { eventName, eventDescription, date, address, price, clubId, images } = req.body;

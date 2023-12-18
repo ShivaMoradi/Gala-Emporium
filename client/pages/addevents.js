@@ -29,7 +29,7 @@ function createEventHTML(clubData) {
       <img src="${clubData.images}" class="event-image" width="300" height="200">
       <p>Date and time: ${formattedDate}</p>
       <p>Description: ${clubData.eventDescription}</p>
-      <p>Price: ${clubData.price}</p>
+      <p>Price: ${clubData.price} Kr</p>
       <button class="book-button" data-event-id="${clubData.id}">Book Now</button>
     </div>
   `;

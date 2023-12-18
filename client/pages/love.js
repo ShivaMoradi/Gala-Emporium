@@ -7,6 +7,20 @@ export default async function loveHtml() {
         nuevoCSS.href = './stylesheet/love.css';
         const headElement = document.head;
         headElement.appendChild(nuevoCSS);
+        // Añadir el nuevo enlace CSS al head del documento
+  /*
+        const nav = document.getElementById('nav');
+        if (nav) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            nav.remove();
+        }
+        const h1 = document.getElementById('website-title');
+        if (h1) {
+            // Utiliza el método .remove() para quitar el elemento del DOM
+            h1.remove();
+        }
+  
+  */
         const coverImageSection = document.getElementById('coverImage');
         if (coverImageSection) {
             
@@ -88,6 +102,7 @@ export default async function loveHtml() {
       }
   
             return `
+    
 
 <section class="home" id="home">
         <div class="home-content">
@@ -162,7 +177,7 @@ async function eventMonth() {
         }
         
 
-       async function bookEvent(eventsId) {
+       async function bookEventlove(eventsId) {
            try {
                
                const email = window.prompt("Ange din e-postadress:");
@@ -202,7 +217,7 @@ async function eventMonth() {
 document.addEventListener("click", async (event) => {
     if (event.target.classList.contains("book-button-event")) {
         const eventsId = event.target.dataset.eventId;
-        await bookEvent(eventsId);
+        await bookEventlove(eventsId);
     }
 });
 
@@ -210,7 +225,7 @@ document.addEventListener("click", async (event) => {
 document.addEventListener("click", async (event) => {
     if (event.target.classList.contains("book-buttonEvent")) {
         const eventsId = event.target.dataset.eventId;
-        await bookEvent(eventsId);
+        await bookEventlove(eventsId);
     }
 });
 
@@ -230,7 +245,7 @@ menuLinks.addEventListener("click", function (event) {
                 console.log("Entra css");
                 headElement.removeChild(css);
             }
-        } a = 1;
+        } 
     }
     
 });
